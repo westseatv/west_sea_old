@@ -22,7 +22,7 @@ class GeneratorController extends GetxController {
           radNum = Random(Timeline.now * (index + index + 1)).nextInt(49) + 1;
           while (generated.contains(radNum)) {
             radNum =
-                Random(Timeline.now * (index + index + 20)).nextInt(49) + 1;
+                Random(Timeline.now + (index + index + 20)).nextInt(49) + 1;
           }
           return radNum;
         },

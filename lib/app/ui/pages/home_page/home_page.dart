@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:west_sea/app/ui/pages/home_screen.dart';
 import '../../../controllers/home_controller.dart';
 import '../../../routes/routes.dart';
 import '../../theme/apptheme.dart';
 import '../../utils/app_icons_icons.dart';
 import '../../utils/url_opener.dart';
+import '../../global_widgets/icon_txt_btn.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({super.key});
@@ -56,7 +57,15 @@ class HomePage extends GetView<HomeController> {
             drawer: drawer(),
             child: Scaffold(
               appBar: appBar(),
-              body: const HomeScreen(),
+              body: AlignedGridView.count(
+                crossAxisCount: 2,
+                itemCount: bodyBtns.length,
+                mainAxisSpacing: 4,
+                crossAxisSpacing: 4,
+                itemBuilder: (context, index) {
+                  return bodyBtns[index];
+                },
+              ),
               bottomNavigationBar: controller.isBannerLoaded.value
                   ? SizedBox(
                       height: AdSize.banner.height.toDouble(),
@@ -70,6 +79,36 @@ class HomePage extends GetView<HomeController> {
       );
     });
   }
+
+  List<IconTextBtn> get bodyBtns => [
+        IconTextBtn(
+          extent: Get.height * 0.4,
+          onTap: () => openUrl(url: 'https://www.49s.co.uk/49s/results'),
+          icon: AppIcons.lunchtime,
+          title: 'Lunchtime',
+        ),
+        IconTextBtn(
+          extent: Get.height * 0.4,
+          onTap: () => openUrl(url: 'https://www.49s.co.uk/49s/results'),
+          icon: AppIcons.teatime,
+          title: 'Teatime',
+        ),
+        IconTextBtn(
+          extent: Get.height * 0.4,
+          onTap: () {
+            Get.toNamed(Routes.generator);
+            controller.showInterstitialAd();
+          },
+          icon: AppIcons.generator,
+          title: 'Generator',
+        ),
+        IconTextBtn(
+          extent: Get.height * 0.4,
+          onTap: () => openUrl(url: 'https://www.youtube.com/@westseatv'),
+          icon: AppIcons.youtube,
+          title: 'Predictions',
+        ),
+      ];
 
   AppBar appBar() {
     return AppBar(
