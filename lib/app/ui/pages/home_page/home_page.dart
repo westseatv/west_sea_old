@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:west_sea/app/ui/pages/coming_soon.dart';
 import '../../../controllers/home_controller.dart';
 import '../../../routes/routes.dart';
 import '../../theme/apptheme.dart';
@@ -19,22 +22,20 @@ class HomePage extends GetView<HomeController> {
     return GetBuilder<HomeController>(builder: (controller) {
       return WillPopScope(
         onWillPop: () async {
-          bool willPop = false;
-          Get.defaultDialog<bool>(
+          Future<bool> will = false as Future<bool>;
+          Future<bool> willPop = Get.defaultDialog<bool>(
             onConfirm: () {
-              willPop = true;
               Navigator.pop(context);
             },
             onCancel: () {
-              willPop = false;
               Navigator.pop(context);
             },
             title: 'EXIT APP?',
             middleText: "",
             textConfirm: 'Yes',
             textCancel: 'No',
-            onWillPop: () async => true,
-          );
+            onWillPop: () async => will,
+          ) as Future<bool>;
           return willPop;
         },
         child: AdvancedDrawer(
@@ -80,19 +81,21 @@ class HomePage extends GetView<HomeController> {
     });
   }
 
-  List<IconTextBtn> get bodyBtns => [
+  List<Widget> get bodyBtns => [
         IconTextBtn(
           extent: Get.height * 0.4,
           onTap: () => openUrl(url: 'https://www.49s.co.uk/49s/results'),
           icon: AppIcons.lunchtime,
-          title: 'Lunchtime',
+          title: 'RESULTS',
         ),
         IconTextBtn(
           extent: Get.height * 0.4,
-          onTap: () => openUrl(url: 'https://www.49s.co.uk/49s/results'),
-          icon: AppIcons.teatime,
-          title: 'Teatime',
+          onTap: () => openUrl(url: 'https://www.youtube.com/@westseatv'),
+          icon: AppIcons.youtube,
+          title: 'STRATEGIES',
         ),
+        feature(image: 'foryou', title: 'FREE VOUCHER'),
+        feature(image: 'logo_49s', title: 'PREDICTIONS'),
         IconTextBtn(
           extent: Get.height * 0.4,
           onTap: () {
@@ -100,15 +103,43 @@ class HomePage extends GetView<HomeController> {
             controller.showInterstitialAd();
           },
           icon: AppIcons.generator,
-          title: 'Generator',
-        ),
-        IconTextBtn(
-          extent: Get.height * 0.4,
-          onTap: () => openUrl(url: 'https://www.youtube.com/@westseatv'),
-          icon: AppIcons.youtube,
-          title: 'Predictions',
+          title: 'GENERATOR',
         ),
       ];
+
+  InkWell feature({required String image, required String title}) {
+    return InkWell(
+      onTap: () {
+        Get.offAll(() => const ComingSoon());
+        controller.showInterstitialAd();
+      },
+      child: Container(
+        color: Colors.transparent,
+        height: Get.height * 0.4,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              flex: 2,
+              child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/$image' '.png'),
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              child: Text(
+                title,
+                style: appThemeData.textTheme.bodyText1,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
   AppBar appBar() {
     return AppBar(

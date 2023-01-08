@@ -12,12 +12,14 @@ class IconTextBtn extends StatelessWidget {
     this.bottomSpace,
     this.icon,
     required this.onTap,
+    this.isIcon,
   }) : super(key: key);
 
   final String? title;
   final double? extent;
   final double? bottomSpace;
   final IconData? icon;
+  final bool? isIcon;
   final Callback onTap;
 
   @override

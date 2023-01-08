@@ -1,0 +1,28 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Dev\\Flutter\\Projects\\west_sea\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v31\\values-night-v31.xml",
+            "map": [
+                {
+                    "source": "C:\\Dev\\Flutter\\Projects\\west_sea\\android\\app\\src\\main\\res\\values-night-v31\\styles.xml",
+                    "from": {
+                        "startLines": "3,16",
+                        "startColumns": "4,4",
+                        "startOffsets": "173,973",
+                        "endLines": "9,18",
+                        "endColumns": "12,12",
+                        "endOffsets": "622,1137"
+                    },
+                    "to": {
+                        "startLines": "2,9",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,509",
+                        "endLines": "8,11",
+                        "endColumns": "12,12",
+                        "endOffsets": "504,673"
+                    }
+                }
+            ]
+        }
+    ]
+}

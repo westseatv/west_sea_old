@@ -49,11 +49,12 @@ class GeneratorController extends GetxController {
 
   @override
   void onInit() {
-    super.onInit();
+    
     generate();
     createBannerAd();
     createInterstitialAd();
     generatorBannerAd.load();
+    super.onInit();
   }
 
   void createBannerAd() {
