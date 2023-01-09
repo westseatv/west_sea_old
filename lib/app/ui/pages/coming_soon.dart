@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:west_sea/app/controllers/home_controller.dart';
-import 'package:west_sea/app/ui/pages/home_page/home_page.dart';
 
 class ComingSoon extends StatefulWidget {
   const ComingSoon({super.key});
@@ -20,10 +19,7 @@ class _ComingSoonState extends State<ComingSoon> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            
-            Get.offAll(
-              () => const HomePage(),
-            );
+            Get.back();
             ctrl.createInterstitialAd();
           },
           icon: const Icon(Icons.arrow_back),

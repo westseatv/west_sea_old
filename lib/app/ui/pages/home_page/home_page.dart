@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -110,7 +108,7 @@ class HomePage extends GetView<HomeController> {
   InkWell feature({required String image, required String title}) {
     return InkWell(
       onTap: () {
-        Get.offAll(() => const ComingSoon());
+        Get.to(() => const ComingSoon());
         controller.showInterstitialAd();
       },
       child: Container(

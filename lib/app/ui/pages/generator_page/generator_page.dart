@@ -8,38 +8,27 @@ import '../../../controllers/generator_controller.dart';
 import '../../theme/apptheme.dart';
 import '../../utils/app_icons_icons.dart';
 import '../../utils/url_opener.dart';
+import '../home_page/home_page.dart';
 
 class GeneratorPage extends GetView<GeneratorController> {
   const GeneratorPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<GeneratorController>(builder: (controller) {
-      return WillPopScope(
-        onWillPop: () async {
-          Get.back();
-          return false;
-        },
-        child: AdvancedDrawer(
-          backdropColor: Colors.blueGrey,
-          controller: controller.drawerCtrl,
-          animationCurve: Curves.easeInOut,
-          animationDuration: const Duration(milliseconds: 300),
-          animateChildDecoration: true,
-          rtlOpening: false,
-          disabledGestures: false,
-          childDecoration: const BoxDecoration(
-            boxShadow: <BoxShadow>[
-              BoxShadow(
-                color: Colors.black12,
-                blurRadius: 0.0,
-              ),
-            ],
-            borderRadius: BorderRadius.all(Radius.circular(16)),
-          ),
-          drawer: drawer(),
+    return GetBuilder<GeneratorController>(
+      builder: (controller) {
+        return WillPopScope(
+          onWillPop: () async {
+            Get.off(() => const HomePage());
+            return false;
+          },
           child: Scaffold(
-            appBar: appBar(),
+            appBar: AppBar(
+              leading: IconButton(
+                onPressed: () => Get.off(() => const HomePage()),
+                icon: const Icon(Icons.arrow_back_ios),
+              ),
+            ),
             body: const GeneratorScreen(),
             bottomNavigationBar: controller.isBannerLoaded.value
                 ? SizedBox(
@@ -51,9 +40,9 @@ class GeneratorPage extends GetView<GeneratorController> {
                   )
                 : null,
           ),
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 
   AppBar appBar() {
