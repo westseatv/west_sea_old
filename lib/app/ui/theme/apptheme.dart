@@ -5,10 +5,11 @@ final ThemeData appThemeData = ThemeData(
   fontFamily: 'Bebas',
   textTheme: const TextTheme(
     bodyText1: TextStyle(
-      fontSize: 24.0,
+      fontSize: 20.0,
       fontWeight: FontWeight.bold,
     ),
   ),
+  
   scaffoldBackgroundColor: const Color.fromARGB(255, 72, 111, 179),
   appBarTheme: const AppBarTheme(
     elevation: 0,

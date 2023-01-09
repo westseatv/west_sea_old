@@ -8,7 +8,6 @@ import '../../../controllers/generator_controller.dart';
 import '../../theme/apptheme.dart';
 import '../../utils/app_icons_icons.dart';
 import '../../utils/url_opener.dart';
-import '../home_page/home_page.dart';
 
 class GeneratorPage extends GetView<GeneratorController> {
   const GeneratorPage({super.key});
@@ -19,13 +18,13 @@ class GeneratorPage extends GetView<GeneratorController> {
       builder: (controller) {
         return WillPopScope(
           onWillPop: () async {
-            Get.off(() => const HomePage());
+            Get.back();
             return false;
           },
           child: Scaffold(
             appBar: AppBar(
               leading: IconButton(
-                onPressed: () => Get.off(() => const HomePage()),
+                onPressed: () => Get.back(),
                 icon: const Icon(Icons.arrow_back_ios),
               ),
             ),
@@ -238,7 +237,7 @@ class GeneratorPage extends GetView<GeneratorController> {
       IconButton(
         onPressed: () {
           var link =
-              'https://play.google.com/store/apps/details?id=com.zakaweezy.west_sea_app&hl=en&gl=US';
+              'https://play.google.com/store/apps/details?id=com.westseatv.westsea_app&hl=en&gl=US';
           Share.share(
               'Download this app for UK 49\'s Results and Predictions \n\n $link');
         },

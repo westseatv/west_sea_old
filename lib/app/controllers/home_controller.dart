@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -10,12 +11,12 @@ class HomeController extends GetxController {
   var isBannerLoaded = false.obs;
   int attempts = 0;
 
+
   @override
-  void onInit() {
-    super.onInit();
+  void onReady() {
     createBannerAd();
     createInterstitialAd();
-    homeBannerAd.load();
+    super.onReady();
   }
 
   void createBannerAd() {
@@ -69,6 +70,32 @@ class HomeController extends GetxController {
       homeInterstitial!.show();
     }
   }
+
+  Future<bool?> showWarning(BuildContext context) => showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text(
+            'Exit App?',
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: const Text(
+                'Yes',
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: const Text(
+                'No',
+              ),
+            ),
+          ],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+        ),
+      );
 
   @override
   void onClose() {

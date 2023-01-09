@@ -1,4 +1,0 @@
-#Mon Jan 09 10:07:17 CAT 2023
-base.0=C\:\\Dev\\Flutter\\Projects\\west_sea\\build\\app\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
-renamed.0=classes.dex
-path.0=classes.dex

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Dev\\Flutter\\Projects\\west_sea\\build\\app\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "C:\\Users\\sanelebam\\Projects\\west sea tv\\west_sea\\build\\app\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Dev\\Flutter\\Projects\\west_sea\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "C:\\Users\\sanelebam\\Projects\\west sea tv\\west_sea\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:west_sea/app/bindings/predictionsdart_binding.dart';
+import 'package:west_sea/app/bindings/voucherdart_binding.dart';
 import 'package:west_sea/app/ui/pages/coming_soon.dart';
+import 'package:west_sea/app/ui/pages/predictionsdart_page/predictionsdart_page.dart';
+import 'package:west_sea/app/ui/pages/voucherdart_page/voucherdart_page.dart';
 import '../../../controllers/home_controller.dart';
 import '../../../routes/routes.dart';
 import '../../theme/apptheme.dart';
 import '../../utils/app_icons_icons.dart';
 import '../../utils/url_opener.dart';
-import '../../global_widgets/icon_txt_btn.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({super.key});
@@ -20,21 +24,10 @@ class HomePage extends GetView<HomeController> {
     return GetBuilder<HomeController>(builder: (controller) {
       return WillPopScope(
         onWillPop: () async {
-          Future<bool> will = false as Future<bool>;
-          Future<bool> willPop = Get.defaultDialog<bool>(
-            onConfirm: () {
-              Navigator.pop(context);
-            },
-            onCancel: () {
-              Navigator.pop(context);
-            },
-            title: 'EXIT APP?',
-            middleText: "",
-            textConfirm: 'Yes',
-            textCancel: 'No',
-            onWillPop: () async => will,
-          ) as Future<bool>;
-          return willPop;
+          bool isQuiting = false;
+          final quiting = await controller.showWarning(context);
+          isQuiting = quiting ?? false;
+          return isQuiting;
         },
         child: AdvancedDrawer(
             backdropColor: Colors.blueGrey,
@@ -80,37 +73,47 @@ class HomePage extends GetView<HomeController> {
   }
 
   List<Widget> get bodyBtns => [
-        IconTextBtn(
-          extent: Get.height * 0.4,
-          onTap: () => openUrl(url: 'https://www.49s.co.uk/49s/results'),
-          icon: AppIcons.lunchtime,
+        
+        feature(
+          image: 'results.jpeg',
           title: 'RESULTS',
+          onTap: () => openUrl(url: 'https://www.49s.co.uk/49s/results'),
         ),
-        IconTextBtn(
-          extent: Get.height * 0.4,
-          onTap: () => openUrl(url: 'https://www.youtube.com/@westseatv'),
-          icon: AppIcons.youtube,
+        feature(
+          image: 'youtube.png',
           title: 'STRATEGIES',
+          onTap: () => openUrl(url: 'https://www.youtube.com/@westseatv'),
         ),
-        feature(image: 'foryou', title: 'FREE VOUCHER'),
-        feature(image: 'logo_49s', title: 'PREDICTIONS'),
-        IconTextBtn(
-          extent: Get.height * 0.4,
+        feature(
+          image: 'foryou.png',
+          title: 'FREE VOUCHER',
+          onTap: () => Get.to(
+            () => const VoucherDartPage(),
+            binding: VoucherDartBinding(),
+          ),
+        ),
+        feature(
+          image: 'logo_49s.png',
+          title: 'PREDICTIONS',
           onTap: () {
-            Get.toNamed(Routes.generator);
-            controller.showInterstitialAd();
+            
+            Get.to(
+            () => const PredictionsPage(),
+            binding: PredictionsBinding(),
+          );
           },
-          icon: AppIcons.generator,
-          title: 'GENERATOR',
+        ),
+        feature(
+          image: 'generator.jpeg',
+          title: 'QUICK PICK',
+          onTap: () => Get.toNamed(Routes.generator),
         ),
       ];
 
-  InkWell feature({required String image, required String title}) {
+  InkWell feature(
+      {required String image, required String title, required Callback onTap}) {
     return InkWell(
-      onTap: () {
-        Get.to(() => const ComingSoon());
-        controller.showInterstitialAd();
-      },
+      onTap: onTap,
       child: Container(
         color: Colors.transparent,
         height: Get.height * 0.4,
@@ -122,7 +125,7 @@ class HomePage extends GetView<HomeController> {
               child: Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/$image' '.png'),
+                    image: AssetImage('assets/$image'),
                   ),
                 ),
               ),
@@ -183,130 +186,105 @@ class HomePage extends GetView<HomeController> {
       highlightColor: Colors.transparent,
       onTap: () => controller.drawerCtrl.hideDrawer(),
       child: SafeArea(
-        child: ListTileTheme(
-          textColor: Colors.white,
-          iconColor: Colors.white,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Container(
-                width: 128.0,
-                height: 128.0,
-                margin: const EdgeInsets.only(
-                  top: 24.0,
-                  bottom: 64.0,
-                ),
-                clipBehavior: Clip.antiAlias,
-                decoration: const BoxDecoration(
-                  color: Colors.black26,
-                  shape: BoxShape.circle,
-                ),
-                child: Image.asset('assets/icon.jpg'),
+        child: ListView(
+          children: [
+            Container(
+              width: 128.0,
+              height: 128.0,
+              margin: const EdgeInsets.only(
+                top: 24.0,
+                bottom: 64.0,
               ),
-              ListTile(
-                onTap: () {
-                  Get.toNamed(Routes.generator);
-                  controller.drawerCtrl.hideDrawer();
-                  controller.showInterstitialAd();
-                },
-                leading: const Icon(
-                  AppIcons.generator,
-                  color: Colors.grey,
-                ),
-                title: Text(
-                  'Generator',
-                  style: appThemeData.textTheme.bodySmall,
-                ),
+              clipBehavior: Clip.antiAlias,
+              decoration: const BoxDecoration(
+                color: Colors.black26,
+                shape: BoxShape.circle,
               ),
-              ListTile(
-                onTap: () {
-                  controller.drawerCtrl.hideDrawer();
-                  openUrl(
-                    url: 'https://www.youtube.com/@westseatv',
-                  );
-                },
-                leading: const Icon(
-                  AppIcons.youtube,
-                  color: Colors.red,
-                ),
-                title: Text(
-                  'Preditions and Tips',
-                  style: appThemeData.textTheme.bodySmall,
-                ),
+              child: Image.asset('assets/icon.jpg'),
+            ),
+            ListTile(
+              onTap: () {
+                Get.toNamed(Routes.generator);
+                controller.drawerCtrl.hideDrawer();
+                controller.showInterstitialAd();
+              },
+              leading: const Icon(
+                AppIcons.generator,
+                color: Colors.grey,
               ),
-              ListTile(
-                onTap: () {
-                  controller.drawerCtrl.hideDrawer();
-                  openUrl(
-                    url:
-                        'https://play.google.com/store/apps/details?id=com.westseatv.westsea_app&hl=en&gl=US',
-                  );
-                },
-                leading: const Icon(
-                  Icons.star,
-                  color: Color.fromARGB(255, 253, 172, 22),
-                ),
-                title: Text(
-                  'App Rating',
-                  style: appThemeData.textTheme.bodySmall,
-                ),
+              title: Text(
+                'Quick Pick',
+                style: appThemeData.textTheme.bodyText2,
               ),
-              ListTile(
-                onTap: () {
-                  controller.drawerCtrl.hideDrawer();
-                  var link =
-                      'https://play.google.com/store/apps/details?id=com.westseatv.westsea_app&hl=en&gl=US';
-                  Share.share(
-                      'Download this app for UK 49\'s Results and Predictions \n\n $link');
-                },
-                leading: const Icon(
-                  Icons.share,
-                  color: Colors.greenAccent,
-                ),
-                title: Text(
-                  'App Sharing',
-                  style: appThemeData.textTheme.bodySmall,
-                ),
+            ),
+            ListTile(
+              onTap: () {
+                controller.drawerCtrl.hideDrawer();
+                openUrl(
+                  url: 'https://www.youtube.com/@westseatv',
+                );
+              },
+              leading: const Icon(
+                AppIcons.youtube,
+                color: Colors.red,
               ),
-              ListTile(
-                onTap: () {
-                  controller.drawerCtrl.hideDrawer();
-                  openUrl(
-                    url: 'http://westseatv.com/',
-                  );
-                },
-                leading: const Icon(
-                  Icons.language,
-                  color: Colors.black,
-                ),
-                title: Text(
-                  'Our Website',
-                  style: appThemeData.textTheme.bodySmall,
-                ),
+              title: Text(
+                'Video Strategies',
+                style: appThemeData.textTheme.bodyText2,
               ),
-              const Spacer(),
-              DefaultTextStyle(
-                style: const TextStyle(
-                  fontSize: 12,
-                  color: Colors.white54,
-                ),
-                child: InkWell(
-                  hoverColor: Colors.transparent,
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () {
-                    controller.drawerCtrl.hideDrawer();
-                  },
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(
-                      vertical: 16.0,
-                    ),
-                    child: const Text('Terms of Service | Privacy Policy'),
-                  ),
-                ),
+            ),
+            ListTile(
+              onTap: () {
+                controller.drawerCtrl.hideDrawer();
+                openUrl(
+                  url:
+                      'https://play.google.com/store/apps/details?id=com.westseatv.westsea_app&hl=en&gl=US',
+                );
+              },
+              leading: const Icon(
+                Icons.star,
+                color: Color.fromARGB(255, 253, 172, 22),
               ),
-            ],
-          ),
+              title: Text(
+                'App Rating',
+                style: appThemeData.textTheme.bodyText2,
+              ),
+            ),
+            ListTile(
+              onTap: () {
+                controller.drawerCtrl.hideDrawer();
+                var link =
+                    'https://play.google.com/store/apps/details?id=com.westseatv.westsea_app&hl=en&gl=US';
+                Share.share(
+                    'Download this app for UK 49\'s Results and Predictions \n\n $link');
+              },
+              leading: const Icon(
+                Icons.share,
+                color: Colors.greenAccent,
+              ),
+              title: Text(
+                'App Sharing',
+                style: appThemeData.textTheme.bodyText2,
+              ),
+            ),
+            ListTile(
+              onTap: () {
+                controller.drawerCtrl.hideDrawer();
+                openUrl(
+                  url: 'http://westseatv.com/',
+                );
+              },
+              leading: const Icon(
+                Icons.language,
+                color: Colors.black,
+              ),
+              title: Text(
+                'Our Website',
+                style: appThemeData.textTheme.bodyText2,
+              ),
+            ),
+            
+          ],
         ),
       ),
     );

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Dev\\Flutter\\Projects\\west_sea\\build\\url_launcher_android\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-uz\\values-uz.xml",
+            "outputFile": "C:\\Users\\sanelebam\\Projects\\west sea tv\\west_sea\\build\\url_launcher_android\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-uz\\values-uz.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\mpaka\\.gradle\\caches\\transforms-3\\acbce933e4b464a5224ed377a62db1f5\\transformed\\core-1.6.0\\res\\values-uz\\values-uz.xml",
+                    "source": "C:\\Users\\sanelebam\\.gradle\\caches\\transforms-3\\acbce933e4b464a5224ed377a62db1f5\\transformed\\core-1.6.0\\res\\values-uz\\values-uz.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -16,10 +16,10 @@
             ]
         },
         {
-            "outputFile": "C:\\Dev\\Flutter\\Projects\\west_sea\\build\\url_launcher_android\\intermediates\\merged_res\\release\\values-uz\\values-uz.xml",
+            "outputFile": "C:\\Users\\sanelebam\\Projects\\west sea tv\\west_sea\\build\\url_launcher_android\\intermediates\\merged_res\\release\\values-uz\\values-uz.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\mpaka\\.gradle\\caches\\transforms-3\\acbce933e4b464a5224ed377a62db1f5\\transformed\\core-1.6.0\\res\\values-uz\\values-uz.xml",
+                    "source": "C:\\Users\\sanelebam\\.gradle\\caches\\transforms-3\\acbce933e4b464a5224ed377a62db1f5\\transformed\\core-1.6.0\\res\\values-uz\\values-uz.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -80,8 +80,8 @@ class GeneratorScreen extends GetView<GeneratorController> {
   Container ball(int number, int i) {
     return Container(
       alignment: Alignment.center,
-      width: 40,
-      height: 40,
+      width: 50,
+      height: 50,
       margin: const EdgeInsets.only(left: 2),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(

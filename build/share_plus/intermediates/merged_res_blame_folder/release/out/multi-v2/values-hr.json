@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Dev\\Flutter\\Projects\\west_sea\\build\\share_plus\\intermediates\\merged_res\\release\\values-hr\\values-hr.xml",
+            "outputFile": "C:\\Users\\sanelebam\\Projects\\west sea tv\\west_sea\\build\\share_plus\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-hr\\values-hr.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\mpaka\\.gradle\\caches\\transforms-3\\6710ee2e3546b398da00e75003abfc33\\transformed\\core-1.9.0\\res\\values-hr\\values-hr.xml",
+                    "source": "C:\\Users\\sanelebam\\.gradle\\caches\\transforms-3\\6710ee2e3546b398da00e75003abfc33\\transformed\\core-1.9.0\\res\\values-hr\\values-hr.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -16,10 +16,10 @@
             ]
         },
         {
-            "outputFile": "C:\\Dev\\Flutter\\Projects\\west_sea\\build\\share_plus\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-hr\\values-hr.xml",
+            "outputFile": "C:\\Users\\sanelebam\\Projects\\west sea tv\\west_sea\\build\\share_plus\\intermediates\\merged_res\\release\\values-hr\\values-hr.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\mpaka\\.gradle\\caches\\transforms-3\\6710ee2e3546b398da00e75003abfc33\\transformed\\core-1.9.0\\res\\values-hr\\values-hr.xml",
+                    "source": "C:\\Users\\sanelebam\\.gradle\\caches\\transforms-3\\6710ee2e3546b398da00e75003abfc33\\transformed\\core-1.9.0\\res\\values-hr\\values-hr.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

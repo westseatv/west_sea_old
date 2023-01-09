@@ -11,7 +11,7 @@ class ComingSoon extends StatefulWidget {
 }
 
 class _ComingSoonState extends State<ComingSoon> {
-  final ctrl = Get.put(HomeController());
+  final ctrl = Get.find<HomeController>();
 
   @override
   Widget build(BuildContext context) {
