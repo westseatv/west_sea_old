@@ -199,8 +199,8 @@ class PredictionsPage extends GetView<PredictionsControler> {
   Container ball(String number, int l, int i, int b) {
     return Container(
       alignment: Alignment.center,
-      width: 50,
-      height: 50,
+      width: 40,
+      height: 40,
       margin: const EdgeInsets.only(left: 10),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -208,8 +208,8 @@ class PredictionsPage extends GetView<PredictionsControler> {
         shape: BoxShape.circle,
       ),
       child: Container(
-        width: 40,
-        height: 40,
+        width: 30,
+        height: 30,
         alignment: Alignment.center,
         decoration: const BoxDecoration(
           color: Colors.white,

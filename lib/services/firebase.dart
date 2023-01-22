@@ -57,6 +57,7 @@ class FirebaseDb extends GetxController {
       default:
         Get.showSnackbar(
           const GetSnackBar(
+            duration: Duration(seconds: 5),
             message: 'Invalid ball',
             backgroundColor: Colors.red,
             snackPosition: SnackPosition.TOP,
