@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "734593698529",
+    "firebase_url": "https://west-sea-tv-5144e-default-rtdb.firebaseio.com",
+    "project_id": "west-sea-tv-5144e",
+    "storage_bucket": "west-sea-tv-5144e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:734593698529:android:b1f54cf71273e63da605a0",
+        "android_client_info": {
+          "package_name": "com.westseatv.westsea_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "734593698529-3e9eou5d9dp8b637i7iphoimitf0oplu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaSoKL7mbqbL2MApZbPkfZ_CBkeZNuXyU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "734593698529-3e9eou5d9dp8b637i7iphoimitf0oplu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

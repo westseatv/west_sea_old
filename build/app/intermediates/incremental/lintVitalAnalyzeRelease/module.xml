@@ -1,12 +1,12 @@
 <lint-module
     format="1"
-    dir="C:\Users\sanelebam\Projects\west sea tv\west_sea\android\app"
+    dir="/home/ubuntu/Documents/GitHub/west_sea_old/android/app"
     name=":app"
     type="APP"
     maven="android:app:"
     gradle="7.1.2"
-    buildFolder="C:\Users\sanelebam\Projects\west sea tv\west_sea\build\app"
-    bootClassPath="C:\Users\sanelebam\AppData\Local\Android\sdk\platforms\android-33\android.jar;C:\Users\sanelebam\AppData\Local\Android\sdk\build-tools\30.0.3\core-lambda-stubs.jar"
+    buildFolder="/home/ubuntu/Documents/GitHub/west_sea_old/build/app"
+    bootClassPath="/home/ubuntu/Android/Sdk/platforms/android-33/android.jar:/home/ubuntu/Android/Sdk/build-tools/30.0.3/core-lambda-stubs.jar"
     javaSourceLevel="1.8"
     compileTarget="android-33">
   <lintOptions

@@ -6,18 +6,10 @@ import '../services/ad_helper.dart';
 
 class HomeController extends GetxController {
   final drawerCtrl = AdvancedDrawerController();
-  late BannerAd homeBannerAd;
+  BannerAd? homeBannerAd;
   InterstitialAd? homeInterstitial;
   var isBannerLoaded = false.obs;
   int attempts = 0;
-
-
-  @override
-  void onReady() {
-    createBannerAd();
-    createInterstitialAd();
-    super.onReady();
-  }
 
   void createBannerAd() {
     homeBannerAd = BannerAd(
@@ -28,11 +20,12 @@ class HomeController extends GetxController {
           isBannerLoaded.value = true;
         },
         onAdFailedToLoad: (ad, error) {
-          homeBannerAd.dispose();
+          homeBannerAd!.dispose();
         },
       ),
       request: const AdRequest(),
     );
+    homeBannerAd!.load();
   }
 
   void createInterstitialAd() {
@@ -100,7 +93,7 @@ class HomeController extends GetxController {
   @override
   void onClose() {
     drawerCtrl.dispose();
-    homeBannerAd.dispose();
+    homeBannerAd!.dispose();
     homeInterstitial?.dispose();
     super.onClose();
   }

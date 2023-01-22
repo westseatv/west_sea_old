@@ -1,14 +1,14 @@
 [
     {
-        "merged": "C:\\Users\\sanelebam\\Projects\\west sea tv\\west_sea\\build\\google_mobile_ads\\intermediates\\merged_res\\release\\color\\common_google_signin_btn_text_light.xml",
-        "source": "C:\\Users\\sanelebam\\.gradle\\caches\\transforms-3\\1a4e1339d0594b9523319f9876c3a77c\\transformed\\jetified-play-services-base-18.0.0\\res\\color\\common_google_signin_btn_text_light.xml"
+        "merged": "/home/ubuntu/Documents/GitHub/west_sea_old/build/google_mobile_ads/intermediates/merged_res/release/color/common_google_signin_btn_text_dark.xml",
+        "source": "/home/ubuntu/.gradle/caches/transforms-3/d44249247dc370c66a6b8a9ba0539951/transformed/jetified-play-services-base-18.0.0/res/color/common_google_signin_btn_text_dark.xml"
     },
     {
-        "merged": "C:\\Users\\sanelebam\\Projects\\west sea tv\\west_sea\\build\\google_mobile_ads\\intermediates\\merged_res\\release\\color\\common_google_signin_btn_tint.xml",
-        "source": "C:\\Users\\sanelebam\\.gradle\\caches\\transforms-3\\1a4e1339d0594b9523319f9876c3a77c\\transformed\\jetified-play-services-base-18.0.0\\res\\color\\common_google_signin_btn_tint.xml"
+        "merged": "/home/ubuntu/Documents/GitHub/west_sea_old/build/google_mobile_ads/intermediates/merged_res/release/color/common_google_signin_btn_tint.xml",
+        "source": "/home/ubuntu/.gradle/caches/transforms-3/d44249247dc370c66a6b8a9ba0539951/transformed/jetified-play-services-base-18.0.0/res/color/common_google_signin_btn_tint.xml"
     },
     {
-        "merged": "C:\\Users\\sanelebam\\Projects\\west sea tv\\west_sea\\build\\google_mobile_ads\\intermediates\\merged_res\\release\\color\\common_google_signin_btn_text_dark.xml",
-        "source": "C:\\Users\\sanelebam\\.gradle\\caches\\transforms-3\\1a4e1339d0594b9523319f9876c3a77c\\transformed\\jetified-play-services-base-18.0.0\\res\\color\\common_google_signin_btn_text_dark.xml"
+        "merged": "/home/ubuntu/Documents/GitHub/west_sea_old/build/google_mobile_ads/intermediates/merged_res/release/color/common_google_signin_btn_text_light.xml",
+        "source": "/home/ubuntu/.gradle/caches/transforms-3/d44249247dc370c66a6b8a9ba0539951/transformed/jetified-play-services-base-18.0.0/res/color/common_google_signin_btn_text_light.xml"
     }
 ]

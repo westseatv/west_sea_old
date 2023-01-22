@@ -130,9 +130,16 @@
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
     <string name="copy_toast_msg">Link copied to clipboard</string>
+    <string name="default_web_client_id" translatable="false">734593698529-3e9eou5d9dp8b637i7iphoimitf0oplu.apps.googleusercontent.com</string>
     <string name="fallback_menu_item_copy_link">Copy link</string>
     <string name="fallback_menu_item_open_in_browser">Open in browser</string>
     <string name="fallback_menu_item_share_link">Share link</string>
+    <string name="firebase_database_url" translatable="false">https://west-sea-tv-5144e-default-rtdb.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">734593698529</string>
+    <string name="google_api_key" translatable="false">AIzaSyAaSoKL7mbqbL2MApZbPkfZ_CBkeZNuXyU</string>
+    <string name="google_app_id" translatable="false">1:734593698529:android:b1f54cf71273e63da605a0</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAaSoKL7mbqbL2MApZbPkfZ_CBkeZNuXyU</string>
+    <string name="google_storage_bucket" translatable="false">west-sea-tv-5144e.appspot.com</string>
     <string description="Text of the notification which directs the user to the landing page of the ad. [CHAR_LIMIT=NONE]" name="offline_notification_text">
       Tap to open ad</string>
     <string description="Title of the notification which directs the user to the landing page of the ad. [CHAR_LIMIT=NONE]" name="offline_notification_title">
@@ -147,6 +154,7 @@
       We\'ll send you a notification with a link to the advertiser site.</string>
     <string description="Title of the dialog presented when an ad is clicked while offline. [CHAR_LIMIT=NONE]" name="offline_opt_in_title">
       Open ad when you\'re back online.</string>
+    <string name="project_id" translatable="false">west-sea-tv-5144e</string>
     <string name="s1">Save image</string>
     <string name="s2">"Allow Ad to store image in Picture gallery?"</string>
     <string name="s3">Accept</string>

@@ -42,18 +42,15 @@ class GeneratorController extends GetxController {
     );
   }
 
-  late BannerAd generatorBannerAd;
+  BannerAd? generatorBannerAd;
   InterstitialAd? generatorInterstitial;
   var isBannerLoaded = false.obs;
   int attempts = 0;
 
   @override
   void onInit() {
-    
     generate();
-    createBannerAd();
     createInterstitialAd();
-    generatorBannerAd.load();
     super.onInit();
   }
 
@@ -66,11 +63,12 @@ class GeneratorController extends GetxController {
           isBannerLoaded.value = true;
         },
         onAdFailedToLoad: (ad, error) {
-          generatorBannerAd.dispose();
+          generatorBannerAd!.dispose();
         },
       ),
       request: const AdRequest(),
     );
+    generatorBannerAd!.load();
   }
 
   void createInterstitialAd() {
@@ -113,7 +111,7 @@ class GeneratorController extends GetxController {
   @override
   void onClose() {
     drawerCtrl.dispose();
-    generatorBannerAd.dispose();
+    generatorBannerAd!.dispose();
     generatorInterstitial?.dispose();
     super.onClose();
   }

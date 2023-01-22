@@ -15,6 +15,10 @@ class GeneratorPage extends GetView<GeneratorController> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<GeneratorController>(
+      initState: (state) {
+        controller.createBannerAd();
+        controller.createInterstitialAd();
+      },
       builder: (controller) {
         return WillPopScope(
           onWillPop: () async {
@@ -24,17 +28,22 @@ class GeneratorPage extends GetView<GeneratorController> {
           child: Scaffold(
             appBar: AppBar(
               leading: IconButton(
-                onPressed: () => Get.back(),
+                onPressed: () {
+                  controller.showInterstitialAd();
+                  Get.back();
+                },
                 icon: const Icon(Icons.arrow_back_ios),
               ),
             ),
             body: const GeneratorScreen(),
-            bottomNavigationBar: controller.isBannerLoaded.value
-                ? SizedBox(
-                    height: AdSize.banner.height.toDouble(),
-                    width: AdSize.banner.width.toDouble(),
-                    child: AdWidget(
-                      ad: controller.generatorBannerAd,
+            bottomNavigationBar: controller.generatorBannerAd != null
+                ? StatefulBuilder(
+                    builder: (context, setState) => SizedBox(
+                      height: AdSize.banner.height.toDouble(),
+                      width: AdSize.banner.width.toDouble(),
+                      child: AdWidget(
+                        ad: controller.generatorBannerAd!,
+                      ),
                     ),
                   )
                 : null,

@@ -2,12 +2,15 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:west_sea/app/controllers/home_controller.dart';
+import 'package:west_sea/services/firebase.dart';
 
 class PredictionsControler extends GetxController {
+  final firebaseDb = Get.put(FirebaseDb());
+  final homeCtrl = Get.put(HomeController());
   int index = 0;
   List<Color> colors(int l, int b) {
     int length = b * l;
-
 
     return List.generate(
       length,
@@ -21,7 +24,9 @@ class PredictionsControler extends GetxController {
   }
 
   @override
-  void onInit() {
-    super.onInit();
+  void onClose() {
+    firebaseDb.onClose();
+    homeCtrl.dispose();
+    super.onClose();
   }
 }

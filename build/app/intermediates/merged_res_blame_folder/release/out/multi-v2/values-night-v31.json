@@ -1,17 +1,17 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\sanelebam\\Projects\\west sea tv\\west_sea\\build\\app\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-night-v31\\values-night-v31.xml",
+            "outputFile": "/home/ubuntu/Documents/GitHub/west_sea_old/build/app/intermediates/incremental/mergeReleaseResources/merged.dir/values-night-v31/values-night-v31.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\sanelebam\\Projects\\west sea tv\\west_sea\\android\\app\\src\\main\\res\\values-night-v31\\styles.xml",
+                    "source": "/home/ubuntu/Documents/GitHub/west_sea_old/android/app/src/main/res/values-night-v31/styles.xml",
                     "from": {
                         "startLines": "3,16",
                         "startColumns": "4,4",
-                        "startOffsets": "176,989",
+                        "startOffsets": "173,973",
                         "endLines": "9,18",
                         "endColumns": "12,12",
-                        "endOffsets": "631,1155"
+                        "endOffsets": "622,1137"
                     },
                     "to": {
                         "startLines": "2,9",

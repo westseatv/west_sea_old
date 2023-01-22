@@ -7,7 +7,6 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:west_sea/app/bindings/predictionsdart_binding.dart';
 import 'package:west_sea/app/bindings/voucherdart_binding.dart';
-import 'package:west_sea/app/ui/pages/coming_soon.dart';
 import 'package:west_sea/app/ui/pages/predictionsdart_page/predictionsdart_page.dart';
 import 'package:west_sea/app/ui/pages/voucherdart_page/voucherdart_page.dart';
 import '../../../controllers/home_controller.dart';
@@ -21,15 +20,20 @@ class HomePage extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeController>(builder: (controller) {
-      return WillPopScope(
-        onWillPop: () async {
-          bool isQuiting = false;
-          final quiting = await controller.showWarning(context);
-          isQuiting = quiting ?? false;
-          return isQuiting;
-        },
-        child: AdvancedDrawer(
+    return GetBuilder<HomeController>(
+      initState: (state) {
+        controller.createBannerAd();
+        controller.createInterstitialAd();
+      },
+      builder: (controller) {
+        return WillPopScope(
+          onWillPop: () async {
+            bool isQuiting = false;
+            final quiting = await controller.showWarning(context);
+            isQuiting = quiting ?? false;
+            return isQuiting;
+          },
+          child: AdvancedDrawer(
             backdropColor: Colors.blueGrey,
             controller: controller.drawerCtrl,
             animationCurve: Curves.easeInOut,
@@ -58,22 +62,25 @@ class HomePage extends GetView<HomeController> {
                   return bodyBtns[index];
                 },
               ),
-              bottomNavigationBar: controller.isBannerLoaded.value
-                  ? SizedBox(
-                      height: AdSize.banner.height.toDouble(),
-                      width: AdSize.banner.width.toDouble(),
-                      child: AdWidget(
-                        ad: controller.homeBannerAd,
+              bottomNavigationBar: controller.homeBannerAd == null
+                  ? null
+                  : StatefulBuilder(
+                      builder: (context, setState) => SizedBox(
+                        height: AdSize.banner.height.toDouble(),
+                        width: AdSize.banner.width.toDouble(),
+                        child: AdWidget(
+                          ad: controller.homeBannerAd!,
+                        ),
                       ),
-                    )
-                  : null,
-            )),
-      );
-    });
+                    ),
+            ),
+          ),
+        );
+      },
+    );
   }
 
   List<Widget> get bodyBtns => [
-        
         feature(
           image: 'results.jpeg',
           title: 'RESULTS',
@@ -87,32 +94,40 @@ class HomePage extends GetView<HomeController> {
         feature(
           image: 'foryou.png',
           title: 'FREE VOUCHER',
-          onTap: () => Get.to(
-            () => const VoucherDartPage(),
-            binding: VoucherDartBinding(),
-          ),
+          onTap: () {
+            controller.showInterstitialAd();
+            Get.to(
+              () => const VoucherDartPage(),
+              binding: VoucherDartBinding(),
+            );
+          },
         ),
         feature(
           image: 'logo_49s.png',
           title: 'PREDICTIONS',
           onTap: () {
-            
+            controller.showInterstitialAd();
             Get.to(
-            () => const PredictionsPage(),
-            binding: PredictionsBinding(),
-          );
+              () => const PredictionsPage(),
+              binding: PredictionsBinding(),
+            );
           },
         ),
         feature(
           image: 'generator.jpeg',
           title: 'QUICK PICK',
-          onTap: () => Get.toNamed(Routes.generator),
+          onTap: () {
+            controller.showInterstitialAd();
+            Get.toNamed(Routes.generator);
+          },
         ),
       ];
 
   InkWell feature(
       {required String image, required String title, required Callback onTap}) {
     return InkWell(
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
       onTap: onTap,
       child: Container(
         color: Colors.transparent,
@@ -283,7 +298,6 @@ class HomePage extends GetView<HomeController> {
                 style: appThemeData.textTheme.bodyText2,
               ),
             ),
-            
           ],
         ),
       ),

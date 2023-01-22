@@ -228,6 +228,7 @@ layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
 mipmap ic_launcher
+raw firebase_common_keep
 string androidx_startup
 string common_google_play_services_enable_button
 string common_google_play_services_enable_text
@@ -248,9 +249,16 @@ string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
 string copy_toast_msg
+string default_web_client_id
 string fallback_menu_item_copy_link
 string fallback_menu_item_open_in_browser
 string fallback_menu_item_share_link
+string firebase_database_url
+string gcm_defaultSenderId
+string google_api_key
+string google_app_id
+string google_crash_reporting_api_key
+string google_storage_bucket
 string offline_notification_text
 string offline_notification_title
 string offline_opt_in_confirm
@@ -258,6 +266,7 @@ string offline_opt_in_confirmation
 string offline_opt_in_decline
 string offline_opt_in_message
 string offline_opt_in_title
+string project_id
 string s1
 string s2
 string s3

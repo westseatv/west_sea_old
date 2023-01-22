@@ -1,18 +1,18 @@
 [
     {
-        "merged": "C:\\Users\\sanelebam\\Projects\\west sea tv\\west_sea\\build\\flutter_native_splash\\intermediates\\merged_res\\release\\drawable\\notification_bg_low.xml",
-        "source": "C:\\Users\\sanelebam\\.gradle\\caches\\transforms-3\\acbce933e4b464a5224ed377a62db1f5\\transformed\\core-1.6.0\\res\\drawable\\notification_bg_low.xml"
+        "merged": "/home/ubuntu/Documents/GitHub/west_sea_old/build/flutter_native_splash/intermediates/merged_res/release/drawable/notification_icon_background.xml",
+        "source": "/home/ubuntu/.gradle/caches/transforms-3/b11c0e2c212c747cb4bcf29314469768/transformed/core-1.6.0/res/drawable/notification_icon_background.xml"
     },
     {
-        "merged": "C:\\Users\\sanelebam\\Projects\\west sea tv\\west_sea\\build\\flutter_native_splash\\intermediates\\merged_res\\release\\drawable\\notification_bg.xml",
-        "source": "C:\\Users\\sanelebam\\.gradle\\caches\\transforms-3\\acbce933e4b464a5224ed377a62db1f5\\transformed\\core-1.6.0\\res\\drawable\\notification_bg.xml"
+        "merged": "/home/ubuntu/Documents/GitHub/west_sea_old/build/flutter_native_splash/intermediates/merged_res/release/drawable/notification_bg_low.xml",
+        "source": "/home/ubuntu/.gradle/caches/transforms-3/b11c0e2c212c747cb4bcf29314469768/transformed/core-1.6.0/res/drawable/notification_bg_low.xml"
     },
     {
-        "merged": "C:\\Users\\sanelebam\\Projects\\west sea tv\\west_sea\\build\\flutter_native_splash\\intermediates\\merged_res\\release\\drawable\\notification_icon_background.xml",
-        "source": "C:\\Users\\sanelebam\\.gradle\\caches\\transforms-3\\acbce933e4b464a5224ed377a62db1f5\\transformed\\core-1.6.0\\res\\drawable\\notification_icon_background.xml"
+        "merged": "/home/ubuntu/Documents/GitHub/west_sea_old/build/flutter_native_splash/intermediates/merged_res/release/drawable/notification_bg.xml",
+        "source": "/home/ubuntu/.gradle/caches/transforms-3/b11c0e2c212c747cb4bcf29314469768/transformed/core-1.6.0/res/drawable/notification_bg.xml"
     },
     {
-        "merged": "C:\\Users\\sanelebam\\Projects\\west sea tv\\west_sea\\build\\flutter_native_splash\\intermediates\\merged_res\\release\\drawable\\notification_tile_bg.xml",
-        "source": "C:\\Users\\sanelebam\\.gradle\\caches\\transforms-3\\acbce933e4b464a5224ed377a62db1f5\\transformed\\core-1.6.0\\res\\drawable\\notification_tile_bg.xml"
+        "merged": "/home/ubuntu/Documents/GitHub/west_sea_old/build/flutter_native_splash/intermediates/merged_res/release/drawable/notification_tile_bg.xml",
+        "source": "/home/ubuntu/.gradle/caches/transforms-3/b11c0e2c212c747cb4bcf29314469768/transformed/core-1.6.0/res/drawable/notification_tile_bg.xml"
     }
 ]

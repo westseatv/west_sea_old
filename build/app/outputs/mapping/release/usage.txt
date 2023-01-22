@@ -1123,7 +1123,8 @@ androidx.core.content.ContextCompat$Api19Impl:
     private void <init>()
 androidx.core.content.ContextCompat$Api21Impl
 androidx.core.content.ContextCompat$Api23Impl
-androidx.core.content.ContextCompat$Api24Impl
+androidx.core.content.ContextCompat$Api24Impl:
+    private void <init>()
 androidx.core.content.ContextCompat$Api26Impl:
     private void <init>()
 androidx.core.content.ContextCompat$Api28Impl:
@@ -1140,7 +1141,6 @@ androidx.core.content.ContextCompat:
     private static final java.lang.String TAG
     private static android.util.TypedValue sTempValue
     protected void <init>()
-    public static android.content.Context createDeviceProtectedStorageContext(android.content.Context)
     private static java.io.File createFilesDir(java.io.File)
     public static java.lang.String getAttributionTag(android.content.Context)
     public static java.io.File getCodeCacheDir(android.content.Context)
@@ -1599,8 +1599,10 @@ androidx.core.os.TraceCompat
 androidx.core.os.TraceKt
 androidx.core.os.UserHandleCompat$Api24Impl
 androidx.core.os.UserHandleCompat
-androidx.core.os.UserManagerCompat$Api24Impl
-androidx.core.os.UserManagerCompat
+androidx.core.os.UserManagerCompat$Api24Impl:
+    private void <init>()
+androidx.core.os.UserManagerCompat:
+    private void <init>()
 androidx.core.provider.CallbackWithHandler$1
 androidx.core.provider.CallbackWithHandler$2
 androidx.core.provider.CallbackWithHandler
@@ -3833,6 +3835,7 @@ com.example.west_sea.R$id
 com.example.west_sea.R$integer
 com.example.west_sea.R$layout
 com.example.west_sea.R$mipmap
+com.example.west_sea.R$raw
 com.example.west_sea.R$string
 com.example.west_sea.R$style
 com.example.west_sea.R$styleable
@@ -4617,13 +4620,16 @@ com.google.android.gms.common.GooglePlayServicesUtilLight:
     public static boolean isSidewinderDevice(android.content.Context)
     public static boolean uidHasPackageName(android.content.Context,int,java.lang.String)
 com.google.android.gms.common.GoogleSignatureVerifier:
-    private volatile java.lang.String zzc
+    private static volatile java.util.Set zzb
+    private volatile java.lang.String zzd
     public boolean isGooglePublicSignedPackage(android.content.pm.PackageInfo)
     public boolean isPackageGoogleSigned(java.lang.String)
     public boolean isUidGoogleSigned(int)
-    private final com.google.android.gms.common.zzw zzc(java.lang.String,boolean,boolean)
+    private final com.google.android.gms.common.zzx zzc(java.lang.String,boolean,boolean)
 com.google.android.gms.common.GoogleSourceStampsChecker
 com.google.android.gms.common.GoogleSourceStampsResult
+com.google.android.gms.common.PackageSignatureVerifier
+com.google.android.gms.common.PackageVerificationResult
 com.google.android.gms.common.ProGuardCanary
 com.google.android.gms.common.R$integer
 com.google.android.gms.common.R$string:
@@ -5108,7 +5114,7 @@ com.google.android.gms.common.internal.PendingResultUtil
 com.google.android.gms.common.internal.Preconditions:
     private void <init>()
     public static void checkHandlerThread(android.os.Handler,java.lang.String)
-    public static void checkNotMainThread()
+    public static void checkMainThread()
     public static int checkNotZero(int)
     public static int checkNotZero(int,java.lang.Object)
     public static long checkNotZero(long)
@@ -5120,7 +5126,6 @@ com.google.android.gms.common.internal.ServiceSpecificExtraArgs$GamesExtraArgs
 com.google.android.gms.common.internal.ServiceSpecificExtraArgs$PlusExtraArgs
 com.google.android.gms.common.internal.ServiceSpecificExtraArgs
 com.google.android.gms.common.internal.ShowFirstParty
-com.google.android.gms.common.internal.StringResourceValueReader
 com.google.android.gms.common.internal.TelemetryLogging:
     private void <init>()
 com.google.android.gms.common.internal.TelemetryLoggingOptions$Builder:
@@ -5218,6 +5223,7 @@ com.google.android.gms.common.internal.safeparcel.SafeParcelable$Constructor
 com.google.android.gms.common.internal.safeparcel.SafeParcelable$Field
 com.google.android.gms.common.internal.safeparcel.SafeParcelable$Indicator
 com.google.android.gms.common.internal.safeparcel.SafeParcelable$Param
+com.google.android.gms.common.internal.safeparcel.SafeParcelable$RemovedParam
 com.google.android.gms.common.internal.safeparcel.SafeParcelable$Reserved
 com.google.android.gms.common.internal.safeparcel.SafeParcelable$VersionField
 com.google.android.gms.common.internal.safeparcel.SafeParcelableSerializer
@@ -5344,7 +5350,6 @@ com.google.android.gms.common.util.Base64Utils:
     public static byte[] decodeUrlSafe(java.lang.String)
     public static byte[] decodeUrlSafeNoPadding(java.lang.String)
     public static java.lang.String encodeUrlSafe(byte[])
-    public static java.lang.String encodeUrlSafeNoPadding(byte[])
 com.google.android.gms.common.util.BiConsumer
 com.google.android.gms.common.util.ClientLibraryUtils:
     private void <init>()
@@ -5403,19 +5408,22 @@ com.google.android.gms.common.util.PlatformVersion:
     private void <init>()
     public static boolean isAtLeastHoneycomb()
     public static boolean isAtLeastHoneycombMR1()
-    public static boolean isAtLeastIceCreamSandwich()
     public static boolean isAtLeastIceCreamSandwichMR1()
     public static boolean isAtLeastJellyBeanMR1()
     public static boolean isAtLeastLollipopMR1()
     public static boolean isAtLeastP()
-    public static boolean isAtLeastS()
+    public static boolean isAtLeastSv2()
     public static boolean isAtLeastT()
-com.google.android.gms.common.util.ProcessUtils
+    public static boolean isAtLeastU()
+com.google.android.gms.common.util.ProcessUtils:
+    private void <init>()
 com.google.android.gms.common.util.RetainForClient
 com.google.android.gms.common.util.ScopeUtil
 com.google.android.gms.common.util.SharedPreferencesUtils:
     private void <init>()
-com.google.android.gms.common.util.Strings
+com.google.android.gms.common.util.Strings:
+    private void <init>()
+    public static java.lang.String emptyToNull(java.lang.String)
 com.google.android.gms.common.util.UidVerifier
 com.google.android.gms.common.util.VisibleForTesting
 com.google.android.gms.common.util.WorkSourceUtil
@@ -5431,16 +5439,24 @@ com.google.android.gms.common.wrappers.PackageManagerWrapper:
 com.google.android.gms.common.zaa
 com.google.android.gms.common.zab
 com.google.android.gms.common.zza
+com.google.android.gms.common.zzaa
+com.google.android.gms.common.zzab
+com.google.android.gms.common.zzac
+com.google.android.gms.common.zzad
+com.google.android.gms.common.zzae
 com.google.android.gms.common.zzd
-com.google.android.gms.common.zzm:
+com.google.android.gms.common.zze
+com.google.android.gms.common.zzn:
     private static volatile com.google.android.gms.common.internal.zzaf zze
-    static com.google.android.gms.common.zzw zza(java.lang.String,com.google.android.gms.common.zzi,boolean,boolean)
-    static com.google.android.gms.common.zzw zzb(java.lang.String,boolean,boolean,boolean)
-    static synthetic java.lang.String zzc(boolean,java.lang.String,com.google.android.gms.common.zzi)
-    static boolean zze()
-    private static com.google.android.gms.common.zzw zzf(java.lang.String,com.google.android.gms.common.zzi,boolean,boolean)
-    private static void zzg()
-com.google.android.gms.common.zzn
+    static com.google.android.gms.common.zzx zza(java.lang.String,com.google.android.gms.common.zzj,boolean,boolean)
+    static com.google.android.gms.common.zzx zzb(java.lang.String,boolean,boolean,boolean)
+    static com.google.android.gms.common.zzx zzc(java.lang.String,boolean,boolean,boolean)
+    static synthetic java.lang.String zzd(boolean,java.lang.String,com.google.android.gms.common.zzj)
+    static boolean zzf()
+    static boolean zzg()
+    private static com.google.android.gms.common.zzx zzh(java.lang.String,com.google.android.gms.common.zzj,boolean,boolean)
+    private static com.google.android.gms.common.zzx zzi(java.lang.String,boolean,boolean,boolean,boolean)
+    private static void zzj()
 com.google.android.gms.common.zzo
 com.google.android.gms.common.zzp
 com.google.android.gms.common.zzq
@@ -5469,6 +5485,11 @@ com.google.android.gms.dynamic.zaf
 com.google.android.gms.dynamic.zag
 com.google.android.gms.dynamic.zah
 com.google.android.gms.dynamic.zza
+com.google.android.gms.dynamite.DynamiteModule:
+    public static final int LOCAL
+    public static final int NONE
+    public static final int NO_SELECTION
+    public static final int REMOTE
 com.google.android.gms.internal.ads.zzaax:
     public void <init>()
 com.google.android.gms.internal.ads.zzabb:
@@ -6412,9 +6433,9 @@ com.google.android.gms.internal.common.zzai
 com.google.android.gms.internal.common.zzaj
 com.google.android.gms.internal.common.zzak
 com.google.android.gms.internal.common.zzc:
-    public static void zzc(android.os.Parcel,android.os.Parcelable)
     public static void zzd(android.os.Parcel,android.os.Parcelable)
-    public static boolean zzf(android.os.Parcel)
+    public static void zze(android.os.Parcel,android.os.Parcelable)
+    public static boolean zzg(android.os.Parcel)
 com.google.android.gms.internal.common.zze
 com.google.android.gms.internal.common.zzf
 com.google.android.gms.internal.common.zzg
@@ -6705,9 +6726,7 @@ com.google.android.gms.tasks.Task:
     public com.google.android.gms.tasks.Task addOnCanceledListener(com.google.android.gms.tasks.OnCanceledListener)
     public com.google.android.gms.tasks.Task addOnCompleteListener(android.app.Activity,com.google.android.gms.tasks.OnCompleteListener)
     public abstract com.google.android.gms.tasks.Task addOnFailureListener(android.app.Activity,com.google.android.gms.tasks.OnFailureListener)
-    public abstract com.google.android.gms.tasks.Task addOnFailureListener(com.google.android.gms.tasks.OnFailureListener)
     public abstract com.google.android.gms.tasks.Task addOnSuccessListener(android.app.Activity,com.google.android.gms.tasks.OnSuccessListener)
-    public abstract com.google.android.gms.tasks.Task addOnSuccessListener(com.google.android.gms.tasks.OnSuccessListener)
     public com.google.android.gms.tasks.Task continueWith(com.google.android.gms.tasks.Continuation)
     public abstract java.lang.Object getResult(java.lang.Class)
     public com.google.android.gms.tasks.Task onSuccessTask(com.google.android.gms.tasks.SuccessContinuation)
@@ -6719,26 +6738,20 @@ com.google.android.gms.tasks.TaskExecutors:
     private void <init>()
 com.google.android.gms.tasks.Tasks:
     private void <init>()
-    public static java.lang.Object await(com.google.android.gms.tasks.Task)
     public static java.lang.Object await(com.google.android.gms.tasks.Task,long,java.util.concurrent.TimeUnit)
     public static com.google.android.gms.tasks.Task call(java.util.concurrent.Callable)
     public static com.google.android.gms.tasks.Task forCanceled()
-    public static com.google.android.gms.tasks.Task whenAll(java.util.Collection)
-    public static varargs com.google.android.gms.tasks.Task whenAll(com.google.android.gms.tasks.Task[])
     public static com.google.android.gms.tasks.Task whenAllComplete(java.util.Collection)
     public static varargs com.google.android.gms.tasks.Task whenAllComplete(com.google.android.gms.tasks.Task[])
     public static com.google.android.gms.tasks.Task whenAllSuccess(java.util.Collection)
     public static varargs com.google.android.gms.tasks.Task whenAllSuccess(com.google.android.gms.tasks.Task[])
     public static com.google.android.gms.tasks.Task withTimeout(com.google.android.gms.tasks.Task,long,java.util.concurrent.TimeUnit)
-    private static java.lang.Object zza(com.google.android.gms.tasks.Task)
-    private static void zzb(com.google.android.gms.tasks.Task,com.google.android.gms.tasks.zzae)
 com.google.android.gms.tasks.zza
 com.google.android.gms.tasks.zzaa
 com.google.android.gms.tasks.zzab
-com.google.android.gms.tasks.zzac
-com.google.android.gms.tasks.zzad
-com.google.android.gms.tasks.zzae
-com.google.android.gms.tasks.zzaf
+com.google.android.gms.tasks.zzad:
+    private void <init>()
+    public final boolean zzb(long,java.util.concurrent.TimeUnit)
 com.google.android.gms.tasks.zzb
 com.google.android.gms.tasks.zzd:
     public final void zzc()
@@ -6763,9 +6776,7 @@ com.google.android.gms.tasks.zzw:
     public final com.google.android.gms.tasks.Task addOnCanceledListener(com.google.android.gms.tasks.OnCanceledListener)
     public final com.google.android.gms.tasks.Task addOnCompleteListener(android.app.Activity,com.google.android.gms.tasks.OnCompleteListener)
     public final com.google.android.gms.tasks.Task addOnFailureListener(android.app.Activity,com.google.android.gms.tasks.OnFailureListener)
-    public final com.google.android.gms.tasks.Task addOnFailureListener(com.google.android.gms.tasks.OnFailureListener)
     public final com.google.android.gms.tasks.Task addOnSuccessListener(android.app.Activity,com.google.android.gms.tasks.OnSuccessListener)
-    public final com.google.android.gms.tasks.Task addOnSuccessListener(com.google.android.gms.tasks.OnSuccessListener)
     public final com.google.android.gms.tasks.Task continueWith(com.google.android.gms.tasks.Continuation)
     public final java.lang.Object getResult(java.lang.Class)
     public final com.google.android.gms.tasks.Task onSuccessTask(com.google.android.gms.tasks.SuccessContinuation)
@@ -6807,9 +6818,796 @@ com.google.errorprone.annotations.concurrent.GuardedBy
 com.google.errorprone.annotations.concurrent.LazyInit
 com.google.errorprone.annotations.concurrent.LockMethod
 com.google.errorprone.annotations.concurrent.UnlockMethod
-com.google.firebase.FirebaseApiNotAvailableException
-com.google.firebase.FirebaseException
+com.google.firebase.BuildConfig
+com.google.firebase.FirebaseApiNotAvailableException:
+    public void <init>(java.lang.String)
+com.google.firebase.FirebaseApp:
+    public static final java.lang.String DEFAULT_APP_NAME
+    private static final java.lang.String FIREBASE_ANDROID
+    private static final java.lang.String FIREBASE_COMMON
+    private static final java.lang.String KOTLIN
+    private static final java.lang.String LOG_TAG
+    public void addLifecycleEventListener(com.google.firebase.FirebaseAppLifecycleListener)
+    public static void clearInstancesForTest()
+    public static java.lang.String getPersistenceKey(java.lang.String,com.google.firebase.FirebaseOptions)
+    void initializeAllComponents()
+    public void removeBackgroundStateChangeListener(com.google.firebase.FirebaseApp$BackgroundStateChangeListener)
+    public void removeLifecycleEventListener(com.google.firebase.FirebaseAppLifecycleListener)
+    public void setDataCollectionDefaultEnabled(boolean)
+com.google.firebase.FirebaseCommonRegistrar:
+    private static final java.lang.String ANDROID_INSTALLER
+    private static final java.lang.String ANDROID_PLATFORM
+    private static final java.lang.String DEVICE_BRAND
+    private static final java.lang.String DEVICE_MODEL
+    private static final java.lang.String DEVICE_NAME
+    private static final java.lang.String FIREBASE_ANDROID
+    private static final java.lang.String FIREBASE_COMMON
+    private static final java.lang.String KOTLIN
+    private static final java.lang.String MIN_SDK
+    private static final java.lang.String TARGET_SDK
+com.google.firebase.FirebaseError
+com.google.firebase.FirebaseException:
+    protected void <init>()
+    public void <init>(java.lang.String)
+    public void <init>(java.lang.String,java.lang.Throwable)
 com.google.firebase.FirebaseExceptionMapper
+com.google.firebase.FirebaseNetworkException
+com.google.firebase.FirebaseOptions$Builder:
+    public void <init>(com.google.firebase.FirebaseOptions)
+com.google.firebase.FirebaseOptions:
+    private static final java.lang.String API_KEY_RESOURCE_NAME
+    private static final java.lang.String APP_ID_RESOURCE_NAME
+    private static final java.lang.String DATABASE_URL_RESOURCE_NAME
+    private static final java.lang.String GA_TRACKING_ID_RESOURCE_NAME
+    private static final java.lang.String GCM_SENDER_ID_RESOURCE_NAME
+    private static final java.lang.String PROJECT_ID_RESOURCE_NAME
+    private static final java.lang.String STORAGE_BUCKET_RESOURCE_NAME
+    static synthetic java.lang.String access$000(com.google.firebase.FirebaseOptions)
+    static synthetic java.lang.String access$100(com.google.firebase.FirebaseOptions)
+    static synthetic java.lang.String access$200(com.google.firebase.FirebaseOptions)
+    static synthetic java.lang.String access$300(com.google.firebase.FirebaseOptions)
+    static synthetic java.lang.String access$400(com.google.firebase.FirebaseOptions)
+    static synthetic java.lang.String access$500(com.google.firebase.FirebaseOptions)
+    static synthetic java.lang.String access$600(com.google.firebase.FirebaseOptions)
+com.google.firebase.FirebaseTooManyRequestsException
+com.google.firebase.R$attr
+com.google.firebase.R$color
+com.google.firebase.R$dimen
+com.google.firebase.R$drawable
+com.google.firebase.R$id
+com.google.firebase.R$integer
+com.google.firebase.R$layout
+com.google.firebase.R$raw
+com.google.firebase.R$string
+com.google.firebase.R$style
+com.google.firebase.R$styleable
+com.google.firebase.R
+com.google.firebase.annotations.DeferredApi
+com.google.firebase.annotations.PreviewApi
+com.google.firebase.annotations.PublicApi
+com.google.firebase.appcheck.AppCheckTokenResult:
+    public abstract com.google.firebase.FirebaseException getError()
+com.google.firebase.appcheck.interop.AppCheckTokenListener:
+    public abstract void onAppCheckTokenChanged(com.google.firebase.appcheck.AppCheckTokenResult)
+com.google.firebase.appcheck.interop.BuildConfig
+com.google.firebase.appcheck.interop.InternalAppCheckTokenProvider:
+    public abstract void removeAppCheckTokenListener(com.google.firebase.appcheck.interop.AppCheckTokenListener)
+com.google.firebase.appcheck.interop.R$attr
+com.google.firebase.appcheck.interop.R$color
+com.google.firebase.appcheck.interop.R$dimen
+com.google.firebase.appcheck.interop.R$drawable
+com.google.firebase.appcheck.interop.R$id
+com.google.firebase.appcheck.interop.R$integer
+com.google.firebase.appcheck.interop.R$layout
+com.google.firebase.appcheck.interop.R$raw
+com.google.firebase.appcheck.interop.R$string
+com.google.firebase.appcheck.interop.R$style
+com.google.firebase.appcheck.interop.R$styleable
+com.google.firebase.appcheck.interop.R
+com.google.firebase.auth.FirebaseAuthException
+com.google.firebase.auth.GetTokenResult:
+    private java.util.Map zzb
+    public void <init>(java.lang.String,java.util.Map)
+    public long getAuthTimestamp()
+    public java.util.Map getClaims()
+    public long getExpirationTimestamp()
+    public long getIssuedAtTimestamp()
+    public java.lang.String getSignInProvider()
+    public java.lang.String getSignInSecondFactor()
+    private final long zza(java.lang.String)
+com.google.firebase.auth.internal.IdTokenListener:
+    public abstract void onIdTokenChanged(com.google.firebase.internal.InternalTokenResult)
+com.google.firebase.auth.internal.InternalAuthProvider:
+    public abstract java.lang.String getUid()
+    public abstract void removeIdTokenListener(com.google.firebase.auth.internal.IdTokenListener)
+com.google.firebase.auth.internal.R
+com.google.firebase.components.BuildConfig
+com.google.firebase.components.Component$Builder:
+    public com.google.firebase.components.Component$Builder alwaysEager()
+    public com.google.firebase.components.Component$Builder eagerInDefaultApp()
+    public com.google.firebase.components.Component$Builder publishes(java.lang.Class)
+    private com.google.firebase.components.Component$Builder setInstantiation(int)
+com.google.firebase.components.Component:
+    public boolean isLazy()
+    private static synthetic java.lang.Object lambda$of$0(java.lang.Object,com.google.firebase.components.ComponentContainer)
+    public static com.google.firebase.components.Component of(java.lang.Class,java.lang.Object)
+com.google.firebase.components.ComponentDiscovery:
+    private static final java.lang.String COMPONENT_KEY_PREFIX
+    private static final java.lang.String COMPONENT_SENTINEL_VALUE
+    static final java.lang.String TAG
+    public java.util.List discover()
+com.google.firebase.components.ComponentRuntime:
+    public varargs void <init>(java.util.concurrent.Executor,java.lang.Iterable,com.google.firebase.components.Component[])
+    public void discoverComponents()
+    java.util.Collection getAllComponentsForTest()
+    public void initializeAllComponentsForTests()
+    private static synthetic com.google.firebase.components.ComponentRegistrar lambda$toProviders$1(com.google.firebase.components.ComponentRegistrar)
+    private static java.lang.Iterable toProviders(java.lang.Iterable)
+com.google.firebase.components.CycleDetector:
+    void <init>()
+com.google.firebase.components.Dependency:
+    public static com.google.firebase.components.Dependency optional(java.lang.Class)
+    public static com.google.firebase.components.Dependency optionalProvider(java.lang.Class)
+    public static com.google.firebase.components.Dependency setOfProvider(java.lang.Class)
+com.google.firebase.components.DependencyCycleException:
+    public java.util.List getComponentsInCycle()
+com.google.firebase.components.EventBus:
+    public void subscribe(java.lang.Class,com.google.firebase.events.EventHandler)
+    public synchronized void subscribe(java.lang.Class,java.util.concurrent.Executor,com.google.firebase.events.EventHandler)
+    public synchronized void unsubscribe(java.lang.Class,com.google.firebase.events.EventHandler)
+com.google.firebase.components.Lazy:
+    void <init>(java.lang.Object)
+    boolean isInitialized()
+com.google.firebase.components.Preconditions:
+    public void <init>()
+com.google.firebase.components.R
+com.google.firebase.database.BuildConfig
+com.google.firebase.database.DataSnapshot:
+    public com.google.firebase.database.DataSnapshot child(java.lang.String)
+    public java.lang.Object getValue(com.google.firebase.database.GenericTypeIndicator)
+    public java.lang.Object getValue(java.lang.Class)
+    public boolean hasChild(java.lang.String)
+    public boolean hasChildren()
+com.google.firebase.database.DatabaseError:
+    public static final int DATA_STALE
+    public static final int DISCONNECTED
+    public static final int EXPIRED_TOKEN
+    public static final int INVALID_TOKEN
+    public static final int MAX_RETRIES
+    public static final int NETWORK_ERROR
+    public static final int OPERATION_FAILED
+    public static final int OVERRIDDEN_BY_SET
+    public static final int PERMISSION_DENIED
+    public static final int UNAVAILABLE
+    public static final int UNKNOWN_ERROR
+    public static final int USER_CODE_EXCEPTION
+    public static final int WRITE_CANCELED
+com.google.firebase.database.DatabaseReference$5
+com.google.firebase.database.DatabaseReference:
+    private static com.google.firebase.database.core.DatabaseConfig defaultConfig
+    private void <init>(com.google.firebase.database.core.utilities.ParsedUrl,com.google.firebase.database.core.DatabaseConfig)
+    void <init>(java.lang.String,com.google.firebase.database.core.DatabaseConfig)
+    public com.google.firebase.database.FirebaseDatabase getDatabase()
+    private static synchronized com.google.firebase.database.core.DatabaseConfig getDefaultConfig()
+    public com.google.firebase.database.DatabaseReference getRoot()
+    public static void goOffline()
+    static void goOffline(com.google.firebase.database.core.DatabaseConfig)
+    public static void goOnline()
+    static void goOnline(com.google.firebase.database.core.DatabaseConfig)
+    public com.google.firebase.database.DatabaseReference push()
+    public com.google.android.gms.tasks.Task removeValue()
+    public void removeValue(com.google.firebase.database.DatabaseReference$CompletionListener)
+    public void runTransaction(com.google.firebase.database.Transaction$Handler)
+    void setHijackHash(boolean)
+    public void setPriority(java.lang.Object,com.google.firebase.database.DatabaseReference$CompletionListener)
+    public void setValue(java.lang.Object,com.google.firebase.database.DatabaseReference$CompletionListener)
+    public void setValue(java.lang.Object,java.lang.Object,com.google.firebase.database.DatabaseReference$CompletionListener)
+    public void updateChildren(java.util.Map,com.google.firebase.database.DatabaseReference$CompletionListener)
+com.google.firebase.database.FirebaseDatabase:
+    private static final java.lang.String SDK_VERSION
+    static com.google.firebase.database.FirebaseDatabase createForTests(com.google.firebase.FirebaseApp,com.google.firebase.database.core.RepoInfo,com.google.firebase.database.core.DatabaseConfig)
+    public com.google.firebase.FirebaseApp getApp()
+    com.google.firebase.database.core.DatabaseConfig getConfig()
+    public static com.google.firebase.database.FirebaseDatabase getInstance()
+    public static com.google.firebase.database.FirebaseDatabase getInstance(java.lang.String)
+    public com.google.firebase.database.DatabaseReference getReference()
+    public com.google.firebase.database.DatabaseReference getReferenceFromUrl(java.lang.String)
+com.google.firebase.database.GenericTypeIndicator
+com.google.firebase.database.InternalHelpers:
+    public void <init>()
+    public static com.google.firebase.database.FirebaseDatabase createDatabaseForTests(com.google.firebase.FirebaseApp,com.google.firebase.database.core.RepoInfo,com.google.firebase.database.core.DatabaseConfig)
+com.google.firebase.database.Logger
+com.google.firebase.database.MutableData$1$1
+com.google.firebase.database.MutableData$1
+com.google.firebase.database.MutableData$2$1
+com.google.firebase.database.MutableData$2
+com.google.firebase.database.MutableData:
+    synthetic void <init>(com.google.firebase.database.core.SnapshotHolder,com.google.firebase.database.core.Path,com.google.firebase.database.MutableData$1)
+    static synthetic com.google.firebase.database.core.SnapshotHolder access$000(com.google.firebase.database.MutableData)
+    static synthetic com.google.firebase.database.core.Path access$100(com.google.firebase.database.MutableData)
+    public com.google.firebase.database.MutableData child(java.lang.String)
+    public java.lang.Iterable getChildren()
+    public long getChildrenCount()
+    public java.lang.Object getPriority()
+    public java.lang.Object getValue(com.google.firebase.database.GenericTypeIndicator)
+    public java.lang.Object getValue(java.lang.Class)
+    public boolean hasChild(java.lang.String)
+    public boolean hasChildren()
+    public void setPriority(java.lang.Object)
+com.google.firebase.database.OnDisconnect:
+    public void cancel(com.google.firebase.database.DatabaseReference$CompletionListener)
+    public com.google.android.gms.tasks.Task removeValue()
+    public void removeValue(com.google.firebase.database.DatabaseReference$CompletionListener)
+    public void setValue(java.lang.Object,double,com.google.firebase.database.DatabaseReference$CompletionListener)
+    public void setValue(java.lang.Object,com.google.firebase.database.DatabaseReference$CompletionListener)
+    public void setValue(java.lang.Object,java.lang.String,com.google.firebase.database.DatabaseReference$CompletionListener)
+    public void setValue(java.lang.Object,java.util.Map,com.google.firebase.database.DatabaseReference$CompletionListener)
+    public void updateChildren(java.util.Map,com.google.firebase.database.DatabaseReference$CompletionListener)
+com.google.firebase.database.Query$1
+com.google.firebase.database.Query:
+    public void addListenerForSingleValueEvent(com.google.firebase.database.ValueEventListener)
+    public com.google.firebase.database.Query equalTo(double)
+    public com.google.firebase.database.Query equalTo(double,java.lang.String)
+    public com.google.firebase.database.Query equalTo(java.lang.String)
+    public com.google.firebase.database.Query equalTo(java.lang.String,java.lang.String)
+    public com.google.firebase.database.Query equalTo(boolean)
+    public com.google.firebase.database.Query equalTo(boolean,java.lang.String)
+    public com.google.firebase.database.core.Repo getRepo()
+    private void validateEqualToCall()
+com.google.firebase.database.R$attr
+com.google.firebase.database.R$color
+com.google.firebase.database.R$dimen
+com.google.firebase.database.R$drawable
+com.google.firebase.database.R$id
+com.google.firebase.database.R$integer
+com.google.firebase.database.R$layout
+com.google.firebase.database.R$raw
+com.google.firebase.database.R$string
+com.google.firebase.database.R$style
+com.google.firebase.database.R$styleable
+com.google.firebase.database.R
+com.google.firebase.database.ServerValue
+com.google.firebase.database.Transaction:
+    public void <init>()
+com.google.firebase.database.android.AndroidAppCheckTokenProvider$$InternalSyntheticLambda$4$1bfa4e1986579724fcbf8b1bb39a53f53af2e219e437f3aefe4acd464d921f2e$0:
+    public final void onAppCheckTokenChanged(com.google.firebase.appcheck.AppCheckTokenResult)
+com.google.firebase.database.android.AndroidAppCheckTokenProvider:
+    public static synthetic void $r8$lambda$60vFfzkhuN4dN7asQDMFpqCxmE0(java.util.concurrent.ExecutorService,com.google.firebase.database.core.TokenProvider$TokenChangeListener,com.google.firebase.appcheck.AppCheckTokenResult)
+    private static synthetic void lambda$addTokenChangeListener$3(com.google.firebase.database.core.TokenProvider$TokenChangeListener,com.google.firebase.appcheck.AppCheckTokenResult)
+    private static synthetic void lambda$addTokenChangeListener$4(java.util.concurrent.ExecutorService,com.google.firebase.database.core.TokenProvider$TokenChangeListener,com.google.firebase.appcheck.AppCheckTokenResult)
+    public void removeTokenChangeListener(com.google.firebase.database.core.TokenProvider$TokenChangeListener)
+com.google.firebase.database.android.AndroidAuthTokenProvider$$InternalSyntheticLambda$4$aaa187e0c2806dfeb45ebdbbe6acdc6e0daa6e89bad702f1bcca437b2b2d0a62$0:
+    public final void onIdTokenChanged(com.google.firebase.internal.InternalTokenResult)
+com.google.firebase.database.android.AndroidAuthTokenProvider:
+    public static synthetic void $r8$lambda$osJYqH9k0s6WcvseFM2DDFHB78I(java.util.concurrent.ExecutorService,com.google.firebase.database.core.TokenProvider$TokenChangeListener,com.google.firebase.internal.InternalTokenResult)
+    private static synthetic void lambda$addTokenChangeListener$3(com.google.firebase.database.core.TokenProvider$TokenChangeListener,com.google.firebase.internal.InternalTokenResult)
+    private static synthetic void lambda$addTokenChangeListener$4(java.util.concurrent.ExecutorService,com.google.firebase.database.core.TokenProvider$TokenChangeListener,com.google.firebase.internal.InternalTokenResult)
+    public void removeTokenChangeListener(com.google.firebase.database.core.TokenProvider$TokenChangeListener)
+com.google.firebase.database.android.AndroidEventTarget:
+    public void shutdown()
+com.google.firebase.database.android.AndroidPlatform:
+    private static final java.lang.String APP_IN_BACKGROUND_INTERRUPT_REASON
+    public java.lang.String getPlatformVersion()
+com.google.firebase.database.android.SqlPersistenceStorageEngine$PersistentCacheOpenHelper:
+    private static final int DATABASE_VERSION
+com.google.firebase.database.android.SqlPersistenceStorageEngine:
+    private static final int CHILDREN_NODE_SPLIT_SIZE_THRESHOLD
+    private static final java.lang.String CREATE_SERVER_CACHE
+    private static final java.lang.String CREATE_TRACKED_KEYS
+    private static final java.lang.String CREATE_TRACKED_QUERIES
+    private static final java.lang.String CREATE_WRITES
+    private static final java.lang.String FIRST_PART_KEY
+    private static final java.lang.String LOGGER_COMPONENT
+    private static final java.lang.String PART_KEY_FORMAT
+    private static final java.lang.String PART_KEY_PREFIX
+    private static final java.lang.String PATH_COLUMN_NAME
+    private static final java.lang.String ROW_ID_COLUMN_NAME
+    private static final int ROW_SPLIT_SIZE
+    private static final java.lang.String SERVER_CACHE_TABLE
+    private static final java.lang.String TRACKED_KEYS_ID_COLUMN_NAME
+    private static final java.lang.String TRACKED_KEYS_KEY_COLUMN_NAME
+    private static final java.lang.String TRACKED_KEYS_TABLE
+    private static final java.lang.String TRACKED_QUERY_ACTIVE_COLUMN_NAME
+    private static final java.lang.String TRACKED_QUERY_COMPLETE_COLUMN_NAME
+    private static final java.lang.String TRACKED_QUERY_ID_COLUMN_NAME
+    private static final java.lang.String TRACKED_QUERY_LAST_USE_COLUMN_NAME
+    private static final java.lang.String TRACKED_QUERY_PARAMS_COLUMN_NAME
+    private static final java.lang.String TRACKED_QUERY_PATH_COLUMN_NAME
+    private static final java.lang.String TRACKED_QUERY_TABLE
+    private static final java.lang.String VALUE_COLUMN_NAME
+    private static final java.lang.String WRITES_TABLE
+    private static final java.lang.String WRITE_ID_COLUMN_NAME
+    private static final java.lang.String WRITE_NODE_COLUMN_NAME
+    private static final java.lang.String WRITE_PART_COLUMN_NAME
+    private static final java.lang.String WRITE_TYPE_COLUMN_NAME
+    private static final java.lang.String WRITE_TYPE_MERGE
+    private static final java.lang.String WRITE_TYPE_OVERWRITE
+    public void close()
+    public void purgeCache()
+com.google.firebase.database.android.package-info
+com.google.firebase.database.annotations.NotNull
+com.google.firebase.database.annotations.Nullable
+com.google.firebase.database.annotations.package-info
+com.google.firebase.database.collection.ArraySortedMap:
+    public java.lang.Object getSuccessorKey(java.lang.Object)
+    public int indexOf(java.lang.Object)
+    public java.util.Iterator iteratorFrom(java.lang.Object)
+    public java.util.Iterator reverseIteratorFrom(java.lang.Object)
+com.google.firebase.database.collection.BuildConfig
+com.google.firebase.database.collection.ImmutableSortedMap$Builder:
+    static final int ARRAY_TO_RB_TREE_SIZE_THRESHOLD
+    public void <init>()
+com.google.firebase.database.collection.ImmutableSortedMap:
+    public abstract java.lang.Object getSuccessorKey(java.lang.Object)
+    public abstract int indexOf(java.lang.Object)
+    public abstract java.util.Iterator iteratorFrom(java.lang.Object)
+    public abstract java.util.Iterator reverseIteratorFrom(java.lang.Object)
+com.google.firebase.database.collection.ImmutableSortedSet:
+    public boolean contains(java.lang.Object)
+    public int indexOf(java.lang.Object)
+    public boolean isEmpty()
+    public java.util.Iterator iteratorFrom(java.lang.Object)
+    public java.util.Iterator reverseIteratorFrom(java.lang.Object)
+    public int size()
+    public com.google.firebase.database.collection.ImmutableSortedSet unionWith(com.google.firebase.database.collection.ImmutableSortedSet)
+com.google.firebase.database.collection.LLRBEmptyNode:
+    public boolean shortCircuitingInOrderTraversal(com.google.firebase.database.collection.LLRBNode$ShortCircuitingNodeVisitor)
+    public boolean shortCircuitingReverseOrderTraversal(com.google.firebase.database.collection.LLRBNode$ShortCircuitingNodeVisitor)
+com.google.firebase.database.collection.LLRBNode$NodeVisitor:
+    public boolean shouldContinue(java.lang.Object,java.lang.Object)
+com.google.firebase.database.collection.LLRBNode$ShortCircuitingNodeVisitor
+com.google.firebase.database.collection.LLRBNode:
+    public abstract boolean shortCircuitingInOrderTraversal(com.google.firebase.database.collection.LLRBNode$ShortCircuitingNodeVisitor)
+    public abstract boolean shortCircuitingReverseOrderTraversal(com.google.firebase.database.collection.LLRBNode$ShortCircuitingNodeVisitor)
+com.google.firebase.database.collection.LLRBValueNode:
+    public boolean shortCircuitingInOrderTraversal(com.google.firebase.database.collection.LLRBNode$ShortCircuitingNodeVisitor)
+    public boolean shortCircuitingReverseOrderTraversal(com.google.firebase.database.collection.LLRBNode$ShortCircuitingNodeVisitor)
+com.google.firebase.database.collection.R$attr
+com.google.firebase.database.collection.R$color
+com.google.firebase.database.collection.R$dimen
+com.google.firebase.database.collection.R$drawable
+com.google.firebase.database.collection.R$id
+com.google.firebase.database.collection.R$integer
+com.google.firebase.database.collection.R$layout
+com.google.firebase.database.collection.R$string
+com.google.firebase.database.collection.R$style
+com.google.firebase.database.collection.R$styleable
+com.google.firebase.database.collection.R
+com.google.firebase.database.collection.RBTreeSortedMap:
+    void <init>(java.util.Comparator)
+    com.google.firebase.database.collection.LLRBNode getRoot()
+    public java.lang.Object getSuccessorKey(java.lang.Object)
+    public int indexOf(java.lang.Object)
+    public java.util.Iterator iteratorFrom(java.lang.Object)
+    public java.util.Iterator reverseIteratorFrom(java.lang.Object)
+com.google.firebase.database.collection.package-info
+com.google.firebase.database.connection.Connection:
+    private static final java.lang.String REQUEST_PAYLOAD
+    private static final java.lang.String REQUEST_TYPE
+    private static final java.lang.String REQUEST_TYPE_DATA
+    private static final java.lang.String SERVER_CONTROL_MESSAGE
+    private static final java.lang.String SERVER_CONTROL_MESSAGE_DATA
+    private static final java.lang.String SERVER_CONTROL_MESSAGE_HELLO
+    private static final java.lang.String SERVER_CONTROL_MESSAGE_RESET
+    private static final java.lang.String SERVER_CONTROL_MESSAGE_SHUTDOWN
+    private static final java.lang.String SERVER_CONTROL_MESSAGE_TYPE
+    private static final java.lang.String SERVER_DATA_MESSAGE
+    private static final java.lang.String SERVER_ENVELOPE_DATA
+    private static final java.lang.String SERVER_ENVELOPE_TYPE
+    private static final java.lang.String SERVER_HELLO_HOST
+    private static final java.lang.String SERVER_HELLO_SESSION_ID
+    private static final java.lang.String SERVER_HELLO_TIMESTAMP
+    public void injectConnectionFailure()
+com.google.firebase.database.connection.ConnectionUtils:
+    public void <init>()
+com.google.firebase.database.connection.Constants
+com.google.firebase.database.connection.HostInfo:
+    private static final java.lang.String LAST_SESSION_ID_PARAM
+    private static final java.lang.String VERSION_PARAM
+com.google.firebase.database.connection.PersistentConnection:
+    public abstract boolean isInterrupted(java.lang.String)
+    public abstract void refreshAppCheckToken()
+    public abstract void refreshAppCheckToken(java.lang.String)
+    public abstract void refreshAuthToken()
+    public abstract void refreshAuthToken(java.lang.String)
+    public abstract void shutdown()
+com.google.firebase.database.connection.PersistentConnectionImpl:
+    private static final java.lang.String IDLE_INTERRUPT_REASON
+    private static final long IDLE_TIMEOUT
+    private static final java.lang.String INVALID_APP_CHECK_TOKEN
+    private static final long INVALID_TOKEN_THRESHOLD
+    private static final java.lang.String REQUEST_ACTION
+    private static final java.lang.String REQUEST_ACTION_APPCHECK
+    private static final java.lang.String REQUEST_ACTION_AUTH
+    private static final java.lang.String REQUEST_ACTION_GAUTH
+    private static final java.lang.String REQUEST_ACTION_GET
+    private static final java.lang.String REQUEST_ACTION_MERGE
+    private static final java.lang.String REQUEST_ACTION_ONDISCONNECT_CANCEL
+    private static final java.lang.String REQUEST_ACTION_ONDISCONNECT_MERGE
+    private static final java.lang.String REQUEST_ACTION_ONDISCONNECT_PUT
+    private static final java.lang.String REQUEST_ACTION_PUT
+    private static final java.lang.String REQUEST_ACTION_QUERY
+    private static final java.lang.String REQUEST_ACTION_QUERY_UNLISTEN
+    private static final java.lang.String REQUEST_ACTION_STATS
+    private static final java.lang.String REQUEST_ACTION_UNAPPCHECK
+    private static final java.lang.String REQUEST_ACTION_UNAUTH
+    private static final java.lang.String REQUEST_APPCHECK_TOKEN
+    private static final java.lang.String REQUEST_AUTHVAR
+    private static final java.lang.String REQUEST_COMPOUND_HASH
+    private static final java.lang.String REQUEST_COMPOUND_HASH_HASHES
+    private static final java.lang.String REQUEST_COMPOUND_HASH_PATHS
+    private static final java.lang.String REQUEST_COUNTERS
+    private static final java.lang.String REQUEST_CREDENTIAL
+    private static final java.lang.String REQUEST_DATA_HASH
+    private static final java.lang.String REQUEST_DATA_PAYLOAD
+    private static final java.lang.String REQUEST_ERROR
+    private static final java.lang.String REQUEST_NUMBER
+    private static final java.lang.String REQUEST_PATH
+    private static final java.lang.String REQUEST_PAYLOAD
+    private static final java.lang.String REQUEST_QUERIES
+    private static final java.lang.String REQUEST_STATUS
+    private static final java.lang.String REQUEST_TAG
+    private static final java.lang.String RESPONSE_FOR_REQUEST
+    private static final java.lang.String SERVER_ASYNC_ACTION
+    private static final java.lang.String SERVER_ASYNC_APP_CHECK_REVOKED
+    private static final java.lang.String SERVER_ASYNC_AUTH_REVOKED
+    private static final java.lang.String SERVER_ASYNC_DATA_MERGE
+    private static final java.lang.String SERVER_ASYNC_DATA_RANGE_MERGE
+    private static final java.lang.String SERVER_ASYNC_DATA_UPDATE
+    private static final java.lang.String SERVER_ASYNC_LISTEN_CANCELLED
+    private static final java.lang.String SERVER_ASYNC_PAYLOAD
+    private static final java.lang.String SERVER_ASYNC_SECURITY_DEBUG
+    private static final java.lang.String SERVER_DATA_END_PATH
+    private static final java.lang.String SERVER_DATA_RANGE_MERGE
+    private static final java.lang.String SERVER_DATA_START_PATH
+    private static final java.lang.String SERVER_DATA_TAG
+    private static final java.lang.String SERVER_DATA_UPDATE_BODY
+    private static final java.lang.String SERVER_DATA_UPDATE_PATH
+    private static final java.lang.String SERVER_DATA_WARNINGS
+    private static final java.lang.String SERVER_KILL_INTERRUPT_REASON
+    private static final java.lang.String SERVER_RESPONSE_DATA
+    private static final long SUCCESSFUL_CONNECTION_ESTABLISHED_DELAY
+    private static final java.lang.String TOKEN_REFRESH_INTERRUPT_REASON
+    public void injectConnectionFailure()
+    public void refreshAppCheckToken()
+    public void refreshAppCheckToken(java.lang.String)
+    public void refreshAuthToken()
+    public void refreshAuthToken(java.lang.String)
+    private void sendUnAppCheck()
+    private void sendUnauth()
+    public void shutdown()
+    private void upgradeAppCheck()
+    private void upgradeAuth()
+com.google.firebase.database.connection.WebsocketConnection$WSClientTubesock:
+    public void onLogMessage(java.lang.String)
+com.google.firebase.database.connection.WebsocketConnection:
+    private static final long CONNECT_TIMEOUT_MS
+    private static final long KEEP_ALIVE_TIMEOUT_MS
+    private static final int MAX_FRAME_SIZE
+com.google.firebase.database.connection.package-info
+com.google.firebase.database.connection.util.package-info
+com.google.firebase.database.core.ChildEventRegistration:
+    com.google.firebase.database.core.Repo getRepo()
+com.google.firebase.database.core.CompoundWrite:
+    public static com.google.firebase.database.core.CompoundWrite fromChildMerge(java.util.Map)
+com.google.firebase.database.core.Constants:
+    public static final java.lang.String WIRE_PROTOCOL_VERSION
+    public void <init>()
+com.google.firebase.database.core.Context:
+    private static final long DEFAULT_CACHE_SIZE
+    void forcePersistenceManager(com.google.firebase.database.core.persistence.PersistenceManager)
+    public com.google.firebase.database.logging.Logger$Level getLogLevel()
+    public com.google.firebase.database.logging.LogWrapper getLogger(java.lang.String,java.lang.String)
+    public java.util.List getOptDebugLogComponents()
+    public java.lang.String getPlatformVersion()
+    public boolean isStopped()
+    void stop()
+com.google.firebase.database.core.DatabaseConfig:
+    public synchronized void setDebugLogComponents(java.util.List)
+    public synchronized void setEventTarget(com.google.firebase.database.core.EventTarget)
+    public synchronized void setLogger(com.google.firebase.database.logging.Logger)
+    public void setRunLoop(com.google.firebase.database.core.RunLoop)
+com.google.firebase.database.core.EventRegistration:
+    com.google.firebase.database.core.Repo getRepo()
+com.google.firebase.database.core.EventTarget:
+    public abstract void shutdown()
+com.google.firebase.database.core.Platform:
+    public abstract java.lang.String getPlatformVersion()
+com.google.firebase.database.core.Repo$2:
+    public void onTokenChange()
+    public void onTokenChange(java.lang.String)
+com.google.firebase.database.core.Repo$3:
+    public void onTokenChange()
+    public void onTokenChange(java.lang.String)
+com.google.firebase.database.core.Repo:
+    private static final int GET_TIMEOUT_MS
+    private static final java.lang.String INTERRUPT_REASON
+    private static final int TRANSACTION_MAX_RETRIES
+    private static final java.lang.String TRANSACTION_OVERRIDE_BY_SET
+    private static final java.lang.String TRANSACTION_TOO_MANY_RETRIES
+    static synthetic com.google.firebase.database.logging.LogWrapper access$100(com.google.firebase.database.core.Repo)
+    com.google.firebase.database.connection.PersistentConnection getConnection()
+    public com.google.firebase.database.FirebaseDatabase getDatabase()
+    com.google.firebase.database.core.SyncTree getInfoSyncTree()
+    public com.google.firebase.database.core.RepoInfo getRepoInfo()
+    public long getServerTime()
+    boolean hasListeners()
+    public void setHijackHash(boolean)
+com.google.firebase.database.core.RepoInfo:
+    private static final java.lang.String LAST_SESSION_ID_PARAM
+    private static final java.lang.String VERSION_PARAM
+    public java.net.URI getConnectionURL(java.lang.String)
+    public boolean isCacheableHost()
+    public boolean isCustomHost()
+    public boolean isDemoHost()
+    public boolean isSecure()
+    public java.lang.String toDebugString()
+com.google.firebase.database.core.RepoManager$3
+com.google.firebase.database.core.RepoManager$4
+com.google.firebase.database.core.RepoManager:
+    static synthetic java.util.Map access$000(com.google.firebase.database.core.RepoManager)
+    public static void clear()
+    private void clearRepos()
+    private com.google.firebase.database.core.Repo getLocalRepo(com.google.firebase.database.core.Context,com.google.firebase.database.core.RepoInfo)
+    public static com.google.firebase.database.core.Repo getRepo(com.google.firebase.database.core.Context,com.google.firebase.database.core.RepoInfo)
+    public static void interrupt(com.google.firebase.database.core.Context)
+    private void interruptInternal(com.google.firebase.database.core.Context)
+    public static void resume(com.google.firebase.database.core.Context)
+    private void resumeInternal(com.google.firebase.database.core.Context)
+com.google.firebase.database.core.RunLoop:
+    public abstract void shutdown()
+com.google.firebase.database.core.ServerValues:
+    public static final java.lang.String NAME_OP_INCREMENT
+    public static final java.lang.String NAME_OP_TIMESTAMP
+    public static final java.lang.String NAME_SUBKEY_SERVERVALUE
+    public void <init>()
+com.google.firebase.database.core.SyncPoint:
+    java.util.Map getViews()
+com.google.firebase.database.core.SyncTree$12
+com.google.firebase.database.core.SyncTree:
+    private static final long SIZE_THRESHOLD_FOR_COMPOUND_HASH
+    public com.google.firebase.database.snapshot.Node calcCompleteEventCacheFromRoot(com.google.firebase.database.core.Path,java.util.List)
+    com.google.firebase.database.core.utilities.ImmutableTree getSyncPointTree()
+    public boolean isEmpty()
+    public void keepSynced(com.google.firebase.database.core.view.QuerySpec,boolean)
+    public void setQueryInactive(com.google.firebase.database.core.view.QuerySpec)
+com.google.firebase.database.core.ThreadBackgroundExecutor
+com.google.firebase.database.core.ThreadPoolEventTarget$1
+com.google.firebase.database.core.ThreadPoolEventTarget
+com.google.firebase.database.core.TokenProvider$TokenChangeListener:
+    public abstract void onTokenChange()
+    public abstract void onTokenChange(java.lang.String)
+com.google.firebase.database.core.TokenProvider:
+    public abstract void removeTokenChangeListener(com.google.firebase.database.core.TokenProvider$TokenChangeListener)
+com.google.firebase.database.core.UserWriteRecord:
+    public boolean isMerge()
+com.google.firebase.database.core.ValidationPath:
+    public static final int MAX_PATH_DEPTH
+    public static final int MAX_PATH_LENGTH_BYTES
+com.google.firebase.database.core.ValueEventRegistration:
+    com.google.firebase.database.core.Repo getRepo()
+com.google.firebase.database.core.WriteTree:
+    public com.google.firebase.database.snapshot.Node calcCompleteEventCache(com.google.firebase.database.core.Path,com.google.firebase.database.snapshot.Node)
+    public com.google.firebase.database.snapshot.Node calcCompleteEventCache(com.google.firebase.database.core.Path,com.google.firebase.database.snapshot.Node,java.util.List)
+    public com.google.firebase.database.snapshot.Node getCompleteWriteData(com.google.firebase.database.core.Path)
+com.google.firebase.database.core.operation.package-info
+com.google.firebase.database.core.package-info
+com.google.firebase.database.core.persistence.CachePolicy$1
+com.google.firebase.database.core.persistence.CachePolicy:
+    public static final com.google.firebase.database.core.persistence.CachePolicy NONE
+    static void <clinit>()
+com.google.firebase.database.core.persistence.LRUCachePolicy:
+    private static final long MAX_NUMBER_OF_PRUNABLE_QUERIES_TO_KEEP
+    private static final float PERCENT_OF_QUERIES_TO_PRUNE_AT_ONCE
+    private static final long SERVER_UPDATES_BETWEEN_CACHE_SIZE_CHECKS
+com.google.firebase.database.core.persistence.NoopPersistenceManager:
+    private static final java.lang.String TAG
+com.google.firebase.database.core.persistence.PersistenceStorageEngine:
+    public abstract void close()
+com.google.firebase.database.core.persistence.PruneForest:
+    public boolean affectsPath(com.google.firebase.database.core.Path)
+    public com.google.firebase.database.core.persistence.PruneForest child(com.google.firebase.database.core.Path)
+    private com.google.firebase.database.core.persistence.PruneForest doAll(com.google.firebase.database.core.Path,java.util.Set,com.google.firebase.database.core.utilities.ImmutableTree)
+    public com.google.firebase.database.core.persistence.PruneForest keepAll(com.google.firebase.database.core.Path,java.util.Set)
+    public com.google.firebase.database.core.persistence.PruneForest pruneAll(com.google.firebase.database.core.Path,java.util.Set)
+com.google.firebase.database.core.persistence.TrackedQueryManager$7
+com.google.firebase.database.core.persistence.TrackedQueryManager$8
+com.google.firebase.database.core.persistence.TrackedQueryManager:
+    void verifyCache()
+com.google.firebase.database.core.persistence.package-info
+com.google.firebase.database.core.utilities.DefaultRunLoop:
+    public void shutdown()
+com.google.firebase.database.core.utilities.ImmutableTree:
+    public java.lang.Object rootMostValue(com.google.firebase.database.core.Path)
+com.google.firebase.database.core.utilities.NodeSizeEstimator:
+    private static final int LEAF_PRIORITY_OVERHEAD
+    public void <init>()
+com.google.firebase.database.core.utilities.PushIdGenerator:
+    private static final int MAX_KEY_LEN
+    private static final char MAX_PUSH_CHAR
+    private static final char MIN_PUSH_CHAR
+    private static final java.lang.String PUSH_CHARS
+    public void <init>()
+    public static synchronized java.lang.String generatePushChildName(long)
+    private static void incrementArray()
+com.google.firebase.database.core.utilities.Tree:
+    public void forEachDescendant(com.google.firebase.database.core.utilities.Tree$TreeVisitor,boolean)
+    public com.google.firebase.database.snapshot.ChildKey getName()
+    public com.google.firebase.database.core.utilities.Tree getParent()
+    public com.google.firebase.database.core.utilities.TreeNode lastNodeOnPath(com.google.firebase.database.core.Path)
+com.google.firebase.database.core.utilities.Utilities:
+    public void <init>()
+    public static java.lang.Object castOrNull(java.lang.Object,java.lang.Class)
+    public static java.lang.Object getOrNull(java.lang.Object,java.lang.String,java.lang.Class)
+com.google.firebase.database.core.utilities.Validation:
+    public void <init>()
+com.google.firebase.database.core.utilities.encoding.CustomClassMapper$BeanMapper:
+    static synthetic java.lang.Class access$000(com.google.firebase.database.core.utilities.encoding.CustomClassMapper$BeanMapper)
+    public java.lang.Object deserialize(java.util.Map)
+    public java.lang.Object deserialize(java.util.Map,java.util.Map)
+    private java.lang.reflect.Type resolveType(java.lang.reflect.Type,java.util.Map)
+com.google.firebase.database.core.utilities.encoding.CustomClassMapper:
+    private static final java.lang.String LOG_TAG
+    public void <init>()
+    static synthetic java.lang.Object access$100(java.lang.Object,java.lang.reflect.Type)
+    private static java.lang.Object convertBean(java.lang.Object,java.lang.Class)
+    private static java.lang.Boolean convertBoolean(java.lang.Object)
+    private static java.lang.Double convertDouble(java.lang.Object)
+    private static java.lang.Integer convertInteger(java.lang.Object)
+    private static java.lang.Long convertLong(java.lang.Object)
+    private static java.lang.String convertString(java.lang.Object)
+    public static java.lang.Object convertToCustomClass(java.lang.Object,com.google.firebase.database.GenericTypeIndicator)
+    public static java.lang.Object convertToCustomClass(java.lang.Object,java.lang.Class)
+    private static java.lang.Object deserializeToClass(java.lang.Object,java.lang.Class)
+    private static java.lang.Object deserializeToEnum(java.lang.Object,java.lang.Class)
+    private static java.lang.Object deserializeToParameterizedType(java.lang.Object,java.lang.reflect.ParameterizedType)
+    private static java.lang.Object deserializeToPrimitive(java.lang.Object,java.lang.Class)
+    private static java.lang.Object deserializeToType(java.lang.Object,java.lang.reflect.Type)
+    private static java.util.Map expectMap(java.lang.Object)
+com.google.firebase.database.core.utilities.encoding.package-info
+com.google.firebase.database.core.utilities.package-info
+com.google.firebase.database.core.utilities.tuple.NameAndPriority
+com.google.firebase.database.core.utilities.tuple.NodeAndPath
+com.google.firebase.database.core.utilities.tuple.PathAndId
+com.google.firebase.database.core.utilities.tuple.package-info
+com.google.firebase.database.core.view.Change:
+    public static com.google.firebase.database.core.view.Change childMovedChange(com.google.firebase.database.snapshot.ChildKey,com.google.firebase.database.snapshot.Node)
+com.google.firebase.database.core.view.Event:
+    public abstract com.google.firebase.database.core.Path getPath()
+com.google.firebase.database.core.view.QueryParams:
+    private static final java.lang.String INDEX
+    private static final java.lang.String INDEX_END_NAME
+    private static final java.lang.String INDEX_END_VALUE
+    private static final java.lang.String INDEX_START_NAME
+    private static final java.lang.String INDEX_START_VALUE
+    private static final java.lang.String LIMIT
+    private static final java.lang.String VIEW_FROM
+com.google.firebase.database.core.view.View:
+    java.util.List getEventRegistrations()
+com.google.firebase.database.core.view.filter.package-info
+com.google.firebase.database.core.view.package-info
+com.google.firebase.database.logging.package-info
+com.google.firebase.database.snapshot.ChildKey:
+    public static final java.lang.String MAX_KEY_NAME
+    public static final java.lang.String MIN_KEY_NAME
+com.google.firebase.database.snapshot.ChildrenNode:
+    public com.google.firebase.database.snapshot.ChildKey getSuccessorChildKey(com.google.firebase.database.snapshot.ChildKey)
+com.google.firebase.database.snapshot.EmptyNode:
+    public com.google.firebase.database.snapshot.ChildKey getSuccessorChildKey(com.google.firebase.database.snapshot.ChildKey)
+com.google.firebase.database.snapshot.LeafNode:
+    public abstract boolean equals(java.lang.Object)
+    public com.google.firebase.database.snapshot.ChildKey getSuccessorChildKey(com.google.firebase.database.snapshot.ChildKey)
+    public abstract int hashCode()
+com.google.firebase.database.snapshot.Node:
+    public abstract com.google.firebase.database.snapshot.ChildKey getSuccessorChildKey(com.google.firebase.database.snapshot.ChildKey)
+com.google.firebase.database.snapshot.NodeUtilities:
+    public void <init>()
+com.google.firebase.database.snapshot.PriorityUtilities:
+    public void <init>()
+com.google.firebase.database.snapshot.RangeMerge:
+    public void <init>(com.google.firebase.database.core.Path,com.google.firebase.database.core.Path,com.google.firebase.database.snapshot.Node)
+    com.google.firebase.database.core.Path getEnd()
+    com.google.firebase.database.core.Path getStart()
+com.google.firebase.database.snapshot.package-info
+com.google.firebase.database.tubesock.MessageBuilderFactory$TextBuilder:
+    private java.lang.String decodeStringStreaming(byte[])
+    private java.nio.ByteBuffer getBuffer(byte[])
+com.google.firebase.database.tubesock.MessageBuilderFactory:
+    void <init>()
+com.google.firebase.database.tubesock.WebSocket:
+    static final byte OPCODE_BINARY
+    static final byte OPCODE_CLOSE
+    static final byte OPCODE_NONE
+    static final byte OPCODE_PING
+    static final byte OPCODE_PONG
+    static final byte OPCODE_TEXT
+    private static final int SSL_HANDSHAKE_TIMEOUT_MS
+    private static final java.lang.String THREAD_BASE_NAME
+    public void <init>(com.google.firebase.database.connection.ConnectionContext,java.net.URI)
+    public void <init>(com.google.firebase.database.connection.ConnectionContext,java.net.URI,java.lang.String)
+    public synchronized void send(byte[])
+    public static void setThreadFactory(java.util.concurrent.ThreadFactory,com.google.firebase.database.tubesock.ThreadInitializer)
+com.google.firebase.database.tubesock.WebSocketEventHandler:
+    public abstract void onLogMessage(java.lang.String)
+com.google.firebase.database.tubesock.WebSocketException:
+    private static final long serialVersionUID
+com.google.firebase.database.tubesock.WebSocketHandshake:
+    private static final java.lang.String WEBSOCKET_VERSION
+com.google.firebase.database.tubesock.WebSocketMessage:
+    public byte[] getBytes()
+    public boolean isBinary()
+    public boolean isText()
+com.google.firebase.database.tubesock.WebSocketReceiver:
+    boolean isRunning()
+com.google.firebase.database.tubesock.package-info
+com.google.firebase.database.util.GAuthToken:
+    private static final java.lang.String AUTH_KEY
+    private static final java.lang.String TOKEN_KEY
+    private static final java.lang.String TOKEN_PREFIX
+    public java.lang.String serializeToString()
+com.google.firebase.database.util.JsonMapper:
+    public void <init>()
+com.google.firebase.database.util.package-info
+com.google.firebase.dynamicloading.ComponentLoader:
+    public abstract void discoverComponents()
+com.google.firebase.events.Event:
+    public java.lang.Object getPayload()
+com.google.firebase.events.Subscriber:
+    public abstract void subscribe(java.lang.Class,com.google.firebase.events.EventHandler)
+    public abstract void subscribe(java.lang.Class,java.util.concurrent.Executor,com.google.firebase.events.EventHandler)
+    public abstract void unsubscribe(java.lang.Class,com.google.firebase.events.EventHandler)
+com.google.firebase.heartbeatinfo.AutoValue_HeartBeatResult
+com.google.firebase.heartbeatinfo.AutoValue_SdkHeartBeatResult
+com.google.firebase.heartbeatinfo.DefaultHeartBeatController:
+    public synchronized com.google.firebase.heartbeatinfo.HeartBeatInfo$HeartBeat getHeartBeatCode(java.lang.String)
+    public com.google.android.gms.tasks.Task getHeartBeatsHeader()
+    private synthetic java.lang.String lambda$getHeartBeatsHeader$2()
+com.google.firebase.heartbeatinfo.HeartBeatConsumerComponent$1
+com.google.firebase.heartbeatinfo.HeartBeatConsumerComponent
+com.google.firebase.heartbeatinfo.HeartBeatController:
+    public abstract com.google.android.gms.tasks.Task getHeartBeatsHeader()
+com.google.firebase.heartbeatinfo.HeartBeatInfo$HeartBeat
+com.google.firebase.heartbeatinfo.HeartBeatInfo:
+    public abstract com.google.firebase.heartbeatinfo.HeartBeatInfo$HeartBeat getHeartBeatCode(java.lang.String)
+com.google.firebase.heartbeatinfo.HeartBeatInfoStorage:
+    private static final java.lang.String GLOBAL
+    private static final java.lang.String HEARTBEAT_PREFERENCES_NAME
+    private static final int HEART_BEAT_COUNT_LIMIT
+    private static final java.lang.String HEART_BEAT_COUNT_TAG
+    private static final java.lang.String LAST_STORED_DATE
+    private static final java.lang.String PREFERENCES_NAME
+    void <init>(android.content.SharedPreferences)
+    synchronized void deleteAllHeartBeats()
+    synchronized java.util.List getAllHeartBeats()
+    int getHeartBeatCount()
+    synchronized long getLastGlobalHeartBeat()
+    private synchronized java.lang.String getStoredUserAgentString(java.lang.String)
+    synchronized boolean isSameDateUtc(long,long)
+    synchronized void postHeartBeatCleanUp()
+    private synchronized void removeStoredDate(java.lang.String)
+    synchronized boolean shouldSendGlobalHeartBeat(long)
+    synchronized boolean shouldSendSdkHeartBeat(java.lang.String,long)
+    synchronized void updateGlobalHeartBeat(long)
+com.google.firebase.heartbeatinfo.HeartBeatResult
+com.google.firebase.heartbeatinfo.SdkHeartBeatResult
+com.google.firebase.internal.DataCollectionConfigStorage:
+    public static final java.lang.String DATA_COLLECTION_DEFAULT_ENABLED
+    private static final java.lang.String FIREBASE_APP_PREFS
+com.google.firebase.internal.InternalTokenProvider
+com.google.firebase.internal.InternalTokenResult
+com.google.firebase.internal.api.FirebaseNoSignedInUserException:
+    public void <init>(java.lang.String)
+com.google.firebase.platforminfo.GlobalLibraryVersionRegistrar:
+    public void registerVersion(java.lang.String,java.lang.String)
+com.google.firebase.platforminfo.KotlinDetector:
+    private void <init>()
+com.google.firebase.platforminfo.LibraryVersionComponent:
+    private void <init>()
+com.google.firebase.provider.FirebaseInitProvider:
+    static final java.lang.String EMPTY_APPLICATION_ID_PROVIDER_AUTHORITY
+    private static final java.lang.String TAG
+com.google.firebase.tracing.FirebaseTrace:
+    private void <init>()
 dev.fluttercommunity.plus.share.BuildConfig
 dev.fluttercommunity.plus.share.R$attr
 dev.fluttercommunity.plus.share.R$color
@@ -7267,10 +8065,8 @@ io.flutter.plugin.common.BinaryMessenger:
 io.flutter.plugin.common.ErrorLogResult
 io.flutter.plugin.common.EventChannel$EventSink:
     public abstract void endOfStream()
-    public abstract void error(java.lang.String,java.lang.String,java.lang.Object)
 io.flutter.plugin.common.EventChannel$IncomingStreamRequestHandler$EventSinkImplementation:
     public void endOfStream()
-    public void error(java.lang.String,java.lang.String,java.lang.Object)
 io.flutter.plugin.common.EventChannel:
     private static final java.lang.String TAG
 io.flutter.plugin.common.FlutterException:
@@ -7348,6 +8144,62 @@ io.flutter.plugin.platform.SingleViewPresentation$WindowManagerHandler:
 io.flutter.plugin.platform.VirtualDisplayController:
     public void dispose()
     void onFlutterViewDetached()
+io.flutter.plugins.firebase.core.BuildConfig
+io.flutter.plugins.firebase.core.GeneratedAndroidFirebaseCore$PigeonFirebaseOptions$Builder:
+    public io.flutter.plugins.firebase.core.GeneratedAndroidFirebaseCore$PigeonFirebaseOptions$Builder setAndroidClientId(java.lang.String)
+    public io.flutter.plugins.firebase.core.GeneratedAndroidFirebaseCore$PigeonFirebaseOptions$Builder setAppGroupId(java.lang.String)
+    public io.flutter.plugins.firebase.core.GeneratedAndroidFirebaseCore$PigeonFirebaseOptions$Builder setAuthDomain(java.lang.String)
+    public io.flutter.plugins.firebase.core.GeneratedAndroidFirebaseCore$PigeonFirebaseOptions$Builder setDeepLinkURLScheme(java.lang.String)
+    public io.flutter.plugins.firebase.core.GeneratedAndroidFirebaseCore$PigeonFirebaseOptions$Builder setIosBundleId(java.lang.String)
+    public io.flutter.plugins.firebase.core.GeneratedAndroidFirebaseCore$PigeonFirebaseOptions$Builder setIosClientId(java.lang.String)
+    public io.flutter.plugins.firebase.core.GeneratedAndroidFirebaseCore$PigeonFirebaseOptions$Builder setMeasurementId(java.lang.String)
+io.flutter.plugins.firebase.core.GeneratedAndroidFirebaseCore$PigeonFirebaseOptions:
+    public java.lang.String getAndroidClientId()
+    public java.lang.String getAppGroupId()
+    public java.lang.String getAuthDomain()
+    public java.lang.String getDeepLinkURLScheme()
+    public java.lang.String getIosBundleId()
+    public java.lang.String getIosClientId()
+    public java.lang.String getMeasurementId()
+io.flutter.plugins.firebase.core.GeneratedAndroidFirebaseCore$PigeonInitializeResponse:
+    public java.lang.Boolean getIsAutomaticDataCollectionEnabled()
+    public java.lang.String getName()
+    public io.flutter.plugins.firebase.core.GeneratedAndroidFirebaseCore$PigeonFirebaseOptions getOptions()
+    public java.util.Map getPluginConstants()
+io.flutter.plugins.firebase.core.GeneratedAndroidFirebaseCore:
+    public void <init>()
+io.flutter.plugins.firebase.core.R$attr
+io.flutter.plugins.firebase.core.R$color
+io.flutter.plugins.firebase.core.R$dimen
+io.flutter.plugins.firebase.core.R$drawable
+io.flutter.plugins.firebase.core.R$id
+io.flutter.plugins.firebase.core.R$integer
+io.flutter.plugins.firebase.core.R$layout
+io.flutter.plugins.firebase.core.R$raw
+io.flutter.plugins.firebase.core.R$string
+io.flutter.plugins.firebase.core.R$style
+io.flutter.plugins.firebase.core.R$styleable
+io.flutter.plugins.firebase.core.R
+io.flutter.plugins.firebase.database.BuildConfig
+io.flutter.plugins.firebase.database.Constants
+io.flutter.plugins.firebase.database.FirebaseDatabasePlugin:
+    private static final java.lang.String METHOD_CHANNEL_NAME
+io.flutter.plugins.firebase.database.FlutterFirebaseDatabaseException:
+    private static final java.lang.String MODULE
+    public static final java.lang.String UNKNOWN_ERROR_CODE
+    public static final java.lang.String UNKNOWN_ERROR_MESSAGE
+io.flutter.plugins.firebase.database.R$attr
+io.flutter.plugins.firebase.database.R$color
+io.flutter.plugins.firebase.database.R$dimen
+io.flutter.plugins.firebase.database.R$drawable
+io.flutter.plugins.firebase.database.R$id
+io.flutter.plugins.firebase.database.R$integer
+io.flutter.plugins.firebase.database.R$layout
+io.flutter.plugins.firebase.database.R$raw
+io.flutter.plugins.firebase.database.R$string
+io.flutter.plugins.firebase.database.R$style
+io.flutter.plugins.firebase.database.R$styleable
+io.flutter.plugins.firebase.database.R
 io.flutter.plugins.googlemobileads.AdInstanceManager:
     void onRewardedInterstitialAdUserEarnedReward(int,io.flutter.plugins.googlemobileads.FlutterRewardedAd$FlutterRewardItem)
 io.flutter.plugins.googlemobileads.AdMessageCodec:
@@ -7554,9 +8406,14 @@ kotlin.KotlinNothingValueException:
     public void <init>(java.lang.String,java.lang.Throwable)
     public void <init>(java.lang.Throwable)
 kotlin.KotlinNullPointerException
-kotlin.KotlinVersion$Companion
-kotlin.KotlinVersion
-kotlin.KotlinVersionCurrentValue
+kotlin.KotlinVersion:
+    public static final int MAX_COMPONENT_VALUE
+    public void <init>(int,int)
+    public final int getMajor()
+    public final int getMinor()
+    public final int getPatch()
+    public final boolean isAtLeast(int,int)
+    public final boolean isAtLeast(int,int,int)
 kotlin.LateinitKt
 kotlin.Lazy:
     public abstract boolean isInitialized()
@@ -14117,6 +14974,11 @@ com.google.android.gms.internal.ads.zzja:
     public final com.google.android.gms.internal.ads.zzjx zza
 com.google.android.gms.internal.ads.zzpg
 com.google.android.gms.internal.consent_sdk.zzcj
+com.google.firebase.FirebaseApiNotAvailableException
+com.google.firebase.FirebaseException
+com.google.firebase.heartbeatinfo.HeartBeatInfoStorage:
+    private static com.google.firebase.heartbeatinfo.HeartBeatInfoStorage instance
+com.google.firebase.internal.api.FirebaseNoSignedInUserException
 io.flutter.Log:
     public static int ASSERT
     public static int DEBUG

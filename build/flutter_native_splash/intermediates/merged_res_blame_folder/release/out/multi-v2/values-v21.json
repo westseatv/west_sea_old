@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\sanelebam\\Projects\\west sea tv\\west_sea\\build\\flutter_native_splash\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-v21\\values-v21.xml",
+            "outputFile": "/home/ubuntu/Documents/GitHub/west_sea_old/build/flutter_native_splash/intermediates/incremental/mergeReleaseResources/merged.dir/values-v21/values-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\sanelebam\\.gradle\\caches\\transforms-3\\acbce933e4b464a5224ed377a62db1f5\\transformed\\core-1.6.0\\res\\values-v21\\values-v21.xml",
+                    "source": "/home/ubuntu/.gradle/caches/transforms-3/b11c0e2c212c747cb4bcf29314469768/transformed/core-1.6.0/res/values-v21/values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -17,10 +17,10 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\sanelebam\\Projects\\west sea tv\\west_sea\\build\\flutter_native_splash\\intermediates\\merged_res\\release\\values-v21\\values-v21.xml",
+            "outputFile": "/home/ubuntu/Documents/GitHub/west_sea_old/build/flutter_native_splash/intermediates/merged_res/release/values-v21/values-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\sanelebam\\.gradle\\caches\\transforms-3\\acbce933e4b464a5224ed377a62db1f5\\transformed\\core-1.6.0\\res\\values-v21\\values-v21.xml",
+                    "source": "/home/ubuntu/.gradle/caches/transforms-3/b11c0e2c212c747cb4bcf29314469768/transformed/core-1.6.0/res/values-v21/values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",

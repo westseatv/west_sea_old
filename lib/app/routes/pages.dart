@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:west_sea/app/bindings/home_binding.dart';
 import 'package:west_sea/app/ui/pages/generator_page/generator_page.dart';
 import 'package:west_sea/app/ui/pages/home_page/home_page.dart';
-
 import '../bindings/generator_binding.dart';
 import 'routes.dart';
 
