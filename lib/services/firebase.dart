@@ -67,6 +67,26 @@ class FirebaseDb extends GetxController {
     }
   }
 
+  void clear(String b) {
+    List<dynamic> newList = [];
+    switch (b) {
+      case '2':
+        newList.add(twoBallPredictions[0]);
+        dbRef.child('vouchers/predictions/').update({'2ball': newList});
+        break;
+      case '3':
+        newList.add(threeBallPredictions[0]);
+        dbRef.child('vouchers/predictions/').update({'3ball': newList});
+        break;
+      case 'all':
+        newList.add(twoBallPredictions[0]);
+        dbRef.child('vouchers/predictions/').update({'2ball': newList});
+        dbRef.child('vouchers/predictions/').update({'3ball': newList});
+        break;
+      default:
+    }
+  }
+
   @override
   void onInit() {
     voucherStream = dbRef.child('vouchers/list').onValue.asBroadcastStream();

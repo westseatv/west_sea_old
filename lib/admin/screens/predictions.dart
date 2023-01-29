@@ -34,19 +34,34 @@ class AdminPredictionsPage extends GetView<AdminPredictionsController> {
           ),
         ),
         body: body(),
-        floatingActionButton: IconButton(
-          icon: const Icon(
-            Icons.add,
-            size: 30,
-          ),
-          onPressed: () {
-            showDialog(
-              context: context,
-              builder: (context) {
-                return add();
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            ElevatedButton(
+              child: const Text('Add'),
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return add();
+                  },
+                );
               },
-            );
-          },
+            ),
+            const SizedBox(width: 20),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return clear();
+                  },
+                );
+              },
+              child: const Text('Delete'),
+            ),
+          ],
         ),
       ),
     );
@@ -148,6 +163,7 @@ class AdminPredictionsPage extends GetView<AdminPredictionsController> {
                     controller.b1TxtCtrl.clear();
                     controller.b2TxtCtrl.clear();
                     controller.b3TxtCtrl.clear();
+                    controller.ball.value = '0';
                     navigator!.pop();
                   },
                 ),
@@ -188,6 +204,7 @@ class AdminPredictionsPage extends GetView<AdminPredictionsController> {
                           controller.b1TxtCtrl.clear();
                           controller.b2TxtCtrl.clear();
                           controller.b3TxtCtrl.clear();
+                          controller.ball.value = '0';
                           navigator!.pop();
                         } else {
                           Get.showSnackbar(
@@ -216,6 +233,7 @@ class AdminPredictionsPage extends GetView<AdminPredictionsController> {
                           controller.b1TxtCtrl.clear();
                           controller.b2TxtCtrl.clear();
                           controller.b3TxtCtrl.clear();
+                          controller.ball.value = '0';
                           navigator!.pop();
                         } else {
                           Get.showSnackbar(
@@ -233,6 +251,50 @@ class AdminPredictionsPage extends GetView<AdminPredictionsController> {
               ]
             : null,
       ),
+    );
+  }
+
+  Widget clear() {
+    controller.b.clear();
+    return AlertDialog(
+      backgroundColor: const Color.fromARGB(255, 13, 34, 51),
+      content: TextField(
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 24,
+        ),
+        controller: controller.b,
+        decoration: const InputDecoration(
+          label: Text('2, 3 or all'),
+          labelStyle: TextStyle(
+            fontSize: 18,
+            color: Colors.white,
+          ),
+          border: OutlineInputBorder(),
+        ),
+      ),
+      actions: [
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.red,
+          ),
+          onPressed: () {
+            controller.firebaseDb.clear(
+              controller.b.text.trim(),
+            );
+            controller.b.clear();
+            navigator!.pop();
+          },
+          child: const Text('Clear'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            controller.b.clear();
+            navigator!.pop();
+          },
+          child: const Text('Cancel'),
+        ),
+      ],
     );
   }
 
