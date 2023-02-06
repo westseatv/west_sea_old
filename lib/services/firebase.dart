@@ -11,9 +11,11 @@ class FirebaseDb extends GetxController {
   late StreamSubscription<DatabaseEvent> vouchersSubcription;
   late StreamSubscription<DatabaseEvent> twoBallPredictionsSubcription;
   late StreamSubscription<DatabaseEvent> threeBallPredictionsSubcription;
+  late StreamSubscription<DatabaseEvent> bonusesPredictionsSubcription;
   late List<dynamic> vouchers;
   late List<dynamic> twoBallPredictions;
   late List<dynamic> threeBallPredictions;
+  late List<dynamic> bonusesPredictions;
 
   void onDeleteVouchers({
     required int index,
@@ -54,6 +56,11 @@ class FirebaseDb extends GetxController {
         newList.add({'balls': balls, 'date': date});
         dbRef.child('vouchers/predictions/').update({'3ball': newList});
         break;
+      case 'b':
+        newList.assignAll(bonusesPredictions);
+        newList.add({'ball': balls[0], 'date': date});
+        dbRef.child('vouchers/predictions/').update({'bonuses': newList});
+        break;
       default:
         Get.showSnackbar(
           const GetSnackBar(
@@ -68,20 +75,29 @@ class FirebaseDb extends GetxController {
   }
 
   void clear(String b) {
-    List<dynamic> newList = [];
+    List<dynamic> newList2 = [];
+    List<dynamic> newList3 = [];
+    List<dynamic> newListb = [];
     switch (b) {
       case '2':
-        newList.add(twoBallPredictions[0]);
-        dbRef.child('vouchers/predictions/').update({'2ball': newList});
+        newList2.add(twoBallPredictions[0]);
+        dbRef.child('vouchers/predictions/').update({'2ball': newList2});
         break;
       case '3':
-        newList.add(threeBallPredictions[0]);
-        dbRef.child('vouchers/predictions/').update({'3ball': newList});
+        newList3.add(threeBallPredictions[0]);
+        dbRef.child('vouchers/predictions/').update({'3ball': newList3});
+        break;
+      case 'b':
+        newListb.add(bonusesPredictions[0]);
+        dbRef.child('vouchers/predictions/').update({'bonuses': newListb});
         break;
       case 'all':
-        newList.add(twoBallPredictions[0]);
-        dbRef.child('vouchers/predictions/').update({'2ball': newList});
-        dbRef.child('vouchers/predictions/').update({'3ball': newList});
+        newList2.add(twoBallPredictions[0]);
+        newList3.add(twoBallPredictions[0]);
+        newListb.add(bonusesPredictions[0]);
+        dbRef.child('vouchers/predictions/').update({'2ball': newList2});
+        dbRef.child('vouchers/predictions/').update({'3ball': newList3});
+        dbRef.child('vouchers/predictions/').update({'bonuses': newListb});
         break;
       default:
     }
@@ -110,6 +126,12 @@ class FirebaseDb extends GetxController {
         threeBallPredictions = event.snapshot.value as List;
       },
     );
+    bonusesPredictionsSubcription =
+        dbRef.child('vouchers/predictions/bonuses').onValue.listen(
+      (event) {
+        bonusesPredictions = event.snapshot.value as List;
+      },
+    );
 
     super.onInit();
   }
@@ -119,6 +141,7 @@ class FirebaseDb extends GetxController {
     vouchersSubcription.cancel();
     twoBallPredictionsSubcription.cancel();
     threeBallPredictionsSubcription.cancel();
+    bonusesPredictionsSubcription.cancel();
     super.onClose();
   }
 }

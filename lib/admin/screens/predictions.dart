@@ -10,23 +10,27 @@ class AdminPredictionsPage extends GetView<AdminPredictionsController> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Admin\'s Predictions'),
+          title: const Text('westseatv predictions'),
           bottom: const TabBar(
             tabs: [
               Text(
                 '2 Balls',
                 style: TextStyle(
-                  fontSize: 28,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
                 '3 Balls',
                 style: TextStyle(
-                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                'Bonuses',
+                style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -34,36 +38,40 @@ class AdminPredictionsPage extends GetView<AdminPredictionsController> {
           ),
         ),
         body: body(),
-        floatingActionButton: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            ElevatedButton(
-              child: const Text('Add'),
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return add();
-                  },
-                );
-              },
-            ),
-            const SizedBox(width: 20),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return clear();
-                  },
-                );
-              },
-              child: const Text('Delete'),
-            ),
-          ],
-        ),
+        floatingActionButton: addDelete(context),
       ),
+    );
+  }
+
+  Row addDelete(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        ElevatedButton(
+          child: const Text('Add'),
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (context) {
+                return add();
+              },
+            );
+          },
+        ),
+        const SizedBox(width: 20),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (context) {
+                return clear();
+              },
+            );
+          },
+          child: const Text('Delete'),
+        ),
+      ],
     );
   }
 
@@ -81,7 +89,7 @@ class AdminPredictionsPage extends GetView<AdminPredictionsController> {
               ),
               controller: controller.b,
               decoration: const InputDecoration(
-                label: Text('Ball type (write 2 or 3)'),
+                label: Text('Ball type (write 2, 3 or b)'),
                 labelStyle: TextStyle(
                   fontSize: 18,
                   color: Colors.white,
@@ -94,21 +102,22 @@ class AdminPredictionsPage extends GetView<AdminPredictionsController> {
             ),
             const SizedBox(height: 20),
             Visibility(
-              visible:
-                  controller.ball.value == '2' || controller.ball.value == '3',
+              visible: controller.ball.value == '2' ||
+                  controller.ball.value == '3' ||
+                  controller.ball.value == 'b',
               child: TextField(
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 24,
                 ),
                 controller: controller.b1TxtCtrl,
-                decoration: const InputDecoration(
-                  label: Text('Ball 1'),
-                  labelStyle: TextStyle(
+                decoration: InputDecoration(
+                  label: Text(controller.b.text == 'b' ? 'Bonus' : 'Ball 1'),
+                  labelStyle: const TextStyle(
                     fontSize: 18,
                     color: Colors.white,
                   ),
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                 ),
               ),
             ),
@@ -153,7 +162,9 @@ class AdminPredictionsPage extends GetView<AdminPredictionsController> {
             ),
           ],
         ),
-        actions: controller.ball.value == '2' || controller.ball.value == '3'
+        actions: controller.ball.value == '2' ||
+                controller.ball.value == '3' ||
+                controller.ball.value == 'b'
             ? [
                 MaterialButton(
                   color: Colors.red,
@@ -200,12 +211,10 @@ class AdminPredictionsPage extends GetView<AdminPredictionsController> {
                             ],
                             date: date,
                           );
-                          controller.b.clear();
+
                           controller.b1TxtCtrl.clear();
                           controller.b2TxtCtrl.clear();
                           controller.b3TxtCtrl.clear();
-                          controller.ball.value = '0';
-                          navigator!.pop();
                         } else {
                           Get.showSnackbar(
                             const GetSnackBar(
@@ -229,16 +238,35 @@ class AdminPredictionsPage extends GetView<AdminPredictionsController> {
                             ],
                             date: date,
                           );
-                          controller.b.clear();
+
                           controller.b1TxtCtrl.clear();
                           controller.b2TxtCtrl.clear();
                           controller.b3TxtCtrl.clear();
-                          controller.ball.value = '0';
-                          navigator!.pop();
                         } else {
                           Get.showSnackbar(
                             const GetSnackBar(
                               message: 'Please enter all 3 balls',
+                              backgroundColor: Colors.red,
+                              snackPosition: SnackPosition.TOP,
+                            ),
+                          );
+                        }
+                        break;
+                      case 'b':
+                        if (controller.b1TxtCtrl.text.isNotEmpty) {
+                          controller.firebaseDb.onAddPrediction(
+                            b: controller.b.text.trim(),
+                            balls: [controller.b1TxtCtrl.text.trim()],
+                            date: date,
+                          );
+
+                          controller.b1TxtCtrl.clear();
+                          controller.b2TxtCtrl.clear();
+                          controller.b3TxtCtrl.clear();
+                        } else {
+                          Get.showSnackbar(
+                            const GetSnackBar(
+                              message: 'Please enter bonus ball',
                               backgroundColor: Colors.red,
                               snackPosition: SnackPosition.TOP,
                             ),
@@ -265,7 +293,7 @@ class AdminPredictionsPage extends GetView<AdminPredictionsController> {
         ),
         controller: controller.b,
         decoration: const InputDecoration(
-          label: Text('2, 3 or all'),
+          label: Text('2, 3, b or all'),
           labelStyle: TextStyle(
             fontSize: 18,
             color: Colors.white,
@@ -314,6 +342,9 @@ class AdminPredictionsPage extends GetView<AdminPredictionsController> {
                 controller.firebaseDb.threeBallPredictions.length < 2
                     ? empty()
                     : threeBall(),
+                controller.firebaseDb.bonusesPredictions.length < 2
+                    ? empty()
+                    : bonuses(),
               ],
             );
           } else {
@@ -410,6 +441,47 @@ class AdminPredictionsPage extends GetView<AdminPredictionsController> {
     );
   }
 
+  ListView bonuses() {
+    List<dynamic> balls = [];
+    for (var p in controller.firebaseDb.bonusesPredictions) {
+      balls.add(p);
+    }
+    balls.assignAll(balls.reversed.toList());
+    return ListView.builder(
+      itemCount: balls.length - 1,
+      itemBuilder: (context, index) {
+        int i = 0;
+        if (index > 0) {
+          i = 2 * index;
+        }
+        return Column(
+          children: [
+            ListTile(
+              title: Row(
+                children: [
+                  ball(balls[index]['ball'], balls.length - 1, i, 2),
+                ],
+              ),
+              subtitle: Column(
+                children: [
+                  const Divider(),
+                  Text(
+                    '${balls[index]['date']}',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Divider(thickness: 10),
+          ],
+        );
+      },
+    );
+  }
+
   Center loading() {
     return Center(
       child: Column(
@@ -421,7 +493,7 @@ class AdminPredictionsPage extends GetView<AdminPredictionsController> {
           ),
           SizedBox(height: 20),
           Text(
-            'Maybe you offline??...',
+            'Loading...',
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,

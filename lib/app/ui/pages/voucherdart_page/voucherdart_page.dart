@@ -151,7 +151,7 @@ class VoucherDartPage extends GetView<VoucherDartController> {
           ),
           SizedBox(height: 20),
           Text(
-            'Maybe you offline??...',
+            'Loading...',
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
