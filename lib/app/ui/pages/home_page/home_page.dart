@@ -5,8 +5,10 @@ import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:west_sea/app/bindings/dice_binding.dart';
 import 'package:west_sea/app/bindings/predictionsdart_binding.dart';
 import 'package:west_sea/app/bindings/voucherdart_binding.dart';
+import 'package:west_sea/app/ui/pages/dice/app_dice_page.dart';
 import 'package:west_sea/app/ui/pages/predictionsdart_page/predictionsdart_page.dart';
 import 'package:west_sea/app/ui/pages/voucherdart_page/voucherdart_page.dart';
 import '../../../controllers/home_controller.dart';
@@ -83,8 +85,11 @@ class HomePage extends GetView<HomeController> {
   List<Widget> get bodyBtns => [
         feature(
           image: 'results.jpeg',
-          title: 'RESULTS',
-          onTap: () => openUrl(url: 'https://www.49s.co.uk/49s/results'),
+          title: 'Dice 4 Voucher',
+          onTap: () => Get.to(
+            () => const AppDicePage(),
+            binding: AppDiceBinding(),
+          ),
         ),
         feature(
           image: 'youtube.png',
