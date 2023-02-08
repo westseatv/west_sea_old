@@ -29,8 +29,8 @@ class DiceFirebaseDb extends GetxController {
     required String desc,
   }) {
     List<dynamic> newRewards = [];
-    RewardModel newReward =
-        RewardModel(name: name, cost: cost, isClaimed: 0, desc: desc);
+    RewardModel newReward = RewardModel(
+        name: name, cost: cost, isClaimed: 1, desc: desc, value: value);
 
     newRewards.assignAll(rewards);
     newRewards.insert(

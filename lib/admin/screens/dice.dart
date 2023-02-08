@@ -18,7 +18,7 @@ class AdminDicePage extends GetView<AdminDiceController> {
             if (snapshot.hasData) {
               List<dynamic> rewards = snapshot.data?.snapshot.value as List;
               return Scaffold(
-                appBar: AppBar(title: const Text('Rewars')),
+                appBar: AppBar(title: const Text('Rewards')),
                 body: rewards.length > 1 ? rewardsList(rewards) : ranOut(),
                 floatingActionButton: add(context),
               );
@@ -47,7 +47,7 @@ class AdminDicePage extends GetView<AdminDiceController> {
       itemBuilder: (context, index) {
         return ListTile(
           title: Text(
-              '${rewards[index + 1]['name']} R${rewards[index + 1]['amount']}'),
+              '${rewards[index + 1]['name']} ${rewards[index + 1]['cost']}D'),
           subtitle: Text(
             '${rewards[index + 1]['value']}',
             style: const TextStyle(fontFamily: 'Tahoma'),
@@ -158,10 +158,11 @@ class AdminDicePage extends GetView<AdminDiceController> {
                         controller.valueTxtCtrl.text.isNotEmpty &&
                         controller.amountTxtCtrl.text.isNotEmpty &&
                         controller.descTxtCtrl.text.isNotEmpty) {
+                      int cost = int.parse(controller.amountTxtCtrl.text);
                       controller.firebaseDb.onAddReward(
                         name: controller.nameTxtCtrl.text,
                         value: controller.valueTxtCtrl.text,
-                        cost: controller.amountTxtCtrl.text as int,
+                        cost: cost,
                         desc: controller.descTxtCtrl.text,
                       );
                       controller.amountTxtCtrl.clear();

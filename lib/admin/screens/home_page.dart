@@ -3,11 +3,13 @@ import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:west_sea/admin/bindings/predictions_bindings.dart';
 import 'package:west_sea/admin/bindings/vouchers_binding.dart';
+import 'package:west_sea/admin/screens/dice.dart';
 import 'package:west_sea/admin/screens/predictions.dart';
 import 'package:west_sea/admin/screens/vouchers.dart';
 import 'package:west_sea/app/routes/routes.dart';
 
 import '../../app/ui/theme/apptheme.dart';
+import '../bindings/dice_binding.dart';
 
 class AdminHomePage extends StatelessWidget {
   const AdminHomePage({super.key});
@@ -16,8 +18,9 @@ class AdminHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
         child: Center(
-          child: Column(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
@@ -39,6 +42,14 @@ class AdminHomePage extends StatelessWidget {
                   binding: AdminPredictionsBinding(),
                 ),
               ),
+              feature(
+                image: 'dice.png',
+                title: '',
+                onTap: () => Get.to(
+                  () => const AdminDicePage(),
+                  binding: AdminDiceBinding(),
+                ),
+              ),
             ],
           ),
         ),
@@ -54,7 +65,8 @@ class AdminHomePage extends StatelessWidget {
       highlightColor: Colors.transparent,
       child: Container(
         color: Colors.transparent,
-        height: Get.height * 0.5,
+        height: Get.height * 0.3,
+        width: Get.width * 0.3,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
