@@ -161,7 +161,7 @@ class AdminDicePage extends GetView<AdminDiceController> {
                       controller.firebaseDb.onAddReward(
                         name: controller.nameTxtCtrl.text,
                         value: controller.valueTxtCtrl.text,
-                        amount: controller.amountTxtCtrl.text,
+                        cost: controller.amountTxtCtrl.text as int,
                         desc: controller.descTxtCtrl.text,
                       );
                       controller.amountTxtCtrl.clear();

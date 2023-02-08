@@ -14,10 +14,9 @@ const int maxFailedLoadAttempts = 3;
 
 class AppDiceController extends GetxController {
   final advancedDrawerController = AdvancedDrawerController();
-
+  bool again = true;
   late int coinAmount;
   late int diamondAmount;
-  int numberOfReward = 5;
   BannerAd? bannerAd;
   BannerAd? inlineAd;
   BannerAd? inlineAd1;
@@ -56,11 +55,12 @@ class AppDiceController extends GetxController {
   List<int> fourPredictions = [6, 6, 6, 6];
 
   int reset = 0;
+  int playCounter = 0;
 
   void oneToss() {
     if (coinAmount > 2) {
       tossing(3);
-      numOne = Random(Timeline.now).nextInt(24) + 1;
+      numOne = Random(Timeline.now * 857).nextInt(24) + 1;
       int i = -1;
       isOneTossing(true);
 
@@ -110,8 +110,7 @@ class AppDiceController extends GetxController {
             duration: Duration(seconds: 5),
             backgroundColor: Colors.red,
             snackPosition: SnackPosition.TOP,
-            message:
-                'You don\'t have enough coins to toss, Click an ad or watch an to get coins',
+            message: 'You don\'t have enough coins to toss',
           ),
         );
       }
@@ -124,8 +123,7 @@ class AppDiceController extends GetxController {
       tossing(2);
       numTwo.assignAll(
         List.generate(2, (index) {
-          return index + 1;
-          //return (Random(index + 6 * Timeline.now ~/ 23).nextInt(30));
+          return (Random(index + 6 * Timeline.now ~/ 23).nextInt(30));
         }),
       );
       int maxi = 0;
@@ -154,7 +152,6 @@ class AppDiceController extends GetxController {
             if (i + 1 == twoPredictions[0]) {
               twoTraceWin[0] = true;
             }
-            print('0: ${twoTraceWin[0]}');
             update();
             // if (numTwo[0] == maxi) {
             //   timer.cancel();
@@ -176,7 +173,6 @@ class AppDiceController extends GetxController {
             if (i + 1 == twoPredictions[1]) {
               twoTraceWin[1] = true;
             }
-            print('1: ${twoTraceWin[1]}');
             update();
           }
           if (reset == maxi) {
@@ -186,7 +182,6 @@ class AppDiceController extends GetxController {
             isTwoTossing(false);
 
             bool won = twoTraceWin[0] && twoTraceWin[1];
-            print('won: $won');
             if (won) {
               localDbService.incrementDiamonds(2);
               diamondAmount = localDbService.diamondAmount();
@@ -210,8 +205,7 @@ class AppDiceController extends GetxController {
             duration: Duration(seconds: 5),
             backgroundColor: Colors.red,
             snackPosition: SnackPosition.TOP,
-            message:
-                'You don\'t have enough coins to toss, Click an ad or watch an to get coins',
+            message: 'You don\'t have enough coins to toss',
           ),
         );
       }
@@ -225,8 +219,8 @@ class AppDiceController extends GetxController {
 
       numFour.assignAll(
         List.generate(4, (index) {
-          return index + 1;
-          // return (Random(index + 6 * Timeline.now ~/ 13).nextInt(30));
+          return (Random(index + 6 * Timeline.now ~/ 13 + 98 - 18998)
+              .nextInt(30));
         }),
       );
       int maxi = 0;
@@ -320,8 +314,8 @@ class AppDiceController extends GetxController {
                   message: 'Congratilations you won 3 diamond',
                 ),
               );
-              update();
             }
+            update();
           }
         },
       );
@@ -332,8 +326,7 @@ class AppDiceController extends GetxController {
             duration: Duration(seconds: 5),
             backgroundColor: Colors.red,
             snackPosition: SnackPosition.TOP,
-            message:
-                'You don\'t have enough coins to toss, Click an ad or watch an to get coins',
+            message: 'You don\'t have enough coins to toss',
           ),
         );
       }
@@ -377,7 +370,7 @@ class AppDiceController extends GetxController {
             backgroundColor: Colors.red,
             snackPosition: SnackPosition.TOP,
             message:
-                'You don\'t have enough coins to buy Diamomd, Click an ad or watch an to get coins',
+                'You don\'t have enough coins to buy Diamomd, watch an to get coins',
           ),
         );
       }
@@ -387,9 +380,14 @@ class AppDiceController extends GetxController {
   }
 
   void tossing(int value) {
+    playCounter++;
     if (coinAmount >= value) {
       localDbService.decrementCoins(value);
       coinAmount = localDbService.coinAmount();
+      if (playCounter > 3) {
+        showRewardedInterstitialAd();
+        playCounter = 0;
+      }
     }
     update();
   }
@@ -411,8 +409,13 @@ class AppDiceController extends GetxController {
           Get.log('Banner Ad failed to load');
         },
         onAdOpened: (ad) => Get.log('Banner ad openned'),
-        onAdClicked: (ad) {
-          getCoin(isFromBanner: true);
+        onAdClicked: (ad) async {
+          if (again) {
+            getCoin(isFromBanner: true);
+            again = false;
+            await 10.delay();
+            again = true;
+          }
         },
         onAdClosed: (ad) => Get.log('Banner ad closed'),
       ),
@@ -433,8 +436,13 @@ class AppDiceController extends GetxController {
           Get.log('Banner Ad failed to load');
         },
         onAdOpened: (ad) => Get.log('Banner ad openned'),
-        onAdClicked: (ad) {
-          getCoin(isFromBanner: true);
+        onAdClicked: (ad) async {
+          if (again) {
+            getCoin(isFromBanner: true);
+            again = false;
+            await 10.delay();
+            again = true;
+          }
         },
         onAdClosed: (ad) => Get.log('Banner ad closed'),
       ),
@@ -455,8 +463,13 @@ class AppDiceController extends GetxController {
           Get.log('Banner Ad failed to load');
         },
         onAdOpened: (ad) => Get.log('Banner ad openned'),
-        onAdClicked: (ad) {
-          getCoin(isFromBanner: true);
+        onAdClicked: (ad) async {
+          if (again) {
+            getCoin(isFromBanner: true);
+            again = false;
+            await 10.delay();
+            again = true;
+          }
         },
         onAdClosed: (ad) => Get.log('Banner ad closed'),
       ),
@@ -477,8 +490,13 @@ class AppDiceController extends GetxController {
           Get.log('Banner Ad failed to load');
         },
         onAdOpened: (ad) => Get.log('Banner ad openned'),
-        onAdClicked: (ad) {
-          getCoin(isFromBanner: true);
+        onAdClicked: (ad) async {
+          if (again) {
+            getCoin(isFromBanner: true);
+            again = false;
+            await 10.delay();
+            again = true;
+          }
         },
         onAdClosed: (ad) => Get.log('Banner ad closed'),
       ),
@@ -517,8 +535,13 @@ class AppDiceController extends GetxController {
     _interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
       onAdShowedFullScreenContent: (InterstitialAd ad) =>
           Get.log('ad onAdShowedFullScreenContent.'),
-      onAdClicked: (ad) {
-        getCoin(isFromBanner: true);
+      onAdClicked: (ad) async {
+        if (again) {
+          getCoin(isFromBanner: true);
+          again = false;
+          await 10.delay();
+          again = true;
+        }
       },
       onAdDismissedFullScreenContent: (InterstitialAd ad) {
         Get.log('$ad onAdDismissedFullScreenContent.');
@@ -667,6 +690,7 @@ class AppDiceController extends GetxController {
 
 class AdHelper {
   //FOR TESTING
+  /*
   static const bannerAd = 'ca-app-pub-3940256099942544/6300978111';
   static const inlineAd = 'ca-app-pub-3940256099942544/6300978111';
   static const inlineAd1 = 'ca-app-pub-3940256099942544/6300978111';
@@ -674,15 +698,15 @@ class AdHelper {
   static const interstitialAd = 'ca-app-pub-3940256099942544/1033173712';
   static const interstitailRAd = 'ca-app-pub-3940256099942544/5354046379';
   static const rewardedAd = 'ca-app-pub-3940256099942544/5224354917';
+  */
 
   //FOR PRODUCTION
-/*
-  static const bannerAd = 'ca-app-pub-6775397213739769/3887594338';
-  static const inlineAd = 'ca-app-pub-6775397213739769/5009104318';
-  static const inlineAd1 = 'ca-app-pub-6775397213739769/7443695963';
-  static const inlineAd2 = 'ca-app-pub-6775397213739769/5336407370';
-  static const interstitialAd = 'ca-app-pub-6775397213739769/3961145329';
-  static const interstitailRAd = 'ca-app-pub-6775397213739769/4699511920';
-  static const rewardedAd = 'ca-app-pub-6775397213739769/2889389197';
-  */
+
+  static const bannerAd = 'ca-app-pub-7019809493231784/8607919033';
+  static const inlineAd = 'ca-app-pub-7019809493231784/7542518871';
+  static const inlineAd1 = 'ca-app-pub-7019809493231784/6729513546';
+  static const inlineAd2 = 'ca-app-pub-7019809493231784/1028811914';
+  static const interstitialAd = 'ca-app-pub-7019809493231784/5500192351';
+  static const interstitailRAd = 'ca-app-pub-7019809493231784/3303890967';
+  static const rewardedAd = 'ca-app-pub-7019809493231784/9729429016';
 }

@@ -36,7 +36,7 @@ class HomePage extends GetView<HomeController> {
             return isQuiting;
           },
           child: AdvancedDrawer(
-            backdropColor: Colors.blueGrey,
+            backdropColor: Colors.white,
             controller: controller.drawerCtrl,
             animationCurve: Curves.easeInOut,
             animationDuration: const Duration(milliseconds: 300),
@@ -84,7 +84,7 @@ class HomePage extends GetView<HomeController> {
 
   List<Widget> get bodyBtns => [
         feature(
-          image: 'results.jpeg',
+          image: 'dice.png',
           title: 'Dice 4 Voucher',
           onTap: () => Get.to(
             () => const AppDicePage(),

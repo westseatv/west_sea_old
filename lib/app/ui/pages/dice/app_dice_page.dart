@@ -4,7 +4,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:west_sea/app/bindings/rewards_bindings.dart';
 import 'package:west_sea/app/routes/routes.dart';
+import 'package:west_sea/app/ui/pages/dice/rewards_page.dart';
 
 import '../../../controllers/dice_controller.dart';
 import '../../core/constants.dart';
@@ -48,9 +50,10 @@ class AppDicePage extends GetView<AppDiceController> {
                     style:
                         ElevatedButton.styleFrom(backgroundColor: Colors.green),
                     onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) => rewardDialog(context, 5),
+                      controller.showRewardedInterstitialAd();
+                      Get.to(
+                        () => const RewardsPage(),
+                        binding: RewardsBinding(),
                       );
                     },
                     child: Row(
@@ -61,12 +64,8 @@ class AppDicePage extends GetView<AppDiceController> {
                           width: 30,
                           color: Colors.amber,
                         ),
-                        Text(
-                          '(${controller.numberOfReward})',
-                          style: const TextStyle(
-                            fontFamily: 'Tahoma',
-                            fontSize: 18,
-                          ),
+                        const Text(
+                          'Rewards',
                         ),
                       ],
                     ),
@@ -88,7 +87,7 @@ class AppDicePage extends GetView<AppDiceController> {
                   },
                 ),
               ),
-              title: const Text('The Plug'),
+              title: const Text('westseatv'),
             ),
             body: child(context),
             bottomNavigationBar: controller.bannerAd == null
@@ -157,13 +156,8 @@ class AppDicePage extends GetView<AppDiceController> {
             const SizedBox(height: 15),
             ListTile(
               onTap: () {
-                controller.showInterstitialAd();
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return rewardDialog(context, controller.numberOfReward);
-                  },
-                );
+                controller.showRewardedInterstitialAd();
+                Get.to(() => const RewardsPage());
                 controller.advancedDrawerController.hideDrawer();
               },
               tileColor: Colors.deepPurpleAccent,
@@ -213,7 +207,7 @@ class AppDicePage extends GetView<AppDiceController> {
               },
               tileColor: Colors.green,
               leading: const Icon(Icons.help_sharp),
-              title: const Text('How to Play'),
+              title: const Text('How It Work'),
             ),
           ],
         ),
@@ -290,73 +284,6 @@ class AppDicePage extends GetView<AppDiceController> {
     );
   }
 
-  AlertDialog rewardDialog(BuildContext context, int numOfRewards) {
-    return AlertDialog(
-      backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-      title: Center(
-        child: RichText(
-          text: TextSpan(
-            text: numOfRewards > 1 ? 'We have ' : 'You out of Rewards',
-            style: const TextStyle(fontWeight: FontWeight.bold),
-            children: numOfRewards > 1
-                ? [
-                    TextSpan(
-                      text: '$numOfRewards',
-                      style: TextStyle(
-                        color: numOfRewards > 5
-                            ? Colors.green
-                            : numOfRewards > 3
-                                ? Colors.yellow
-                                : Colors.red,
-                        fontFamily: 'Ghostclan',
-                        fontSize: 25,
-                      ),
-                    ),
-                    TextSpan(text: numOfRewards > 1 ? ' Rewards' : 'Reward')
-                  ]
-                : null,
-          ),
-        ),
-      ),
-      content: Container(
-        height: Get.height * 0.60,
-      ),
-      actions: [
-        ElevatedButton.icon(
-          onPressed: () {
-            navigator?.pop();
-            showDialog(
-              context: context,
-              builder: (context) =>
-                  diamondDialog(context, controller.diamondAmount),
-            );
-          },
-          icon: const Icon(Icons.video_collection),
-          label: const Text(
-            'Get Diamonds',
-            style: TextStyle(fontFamily: 'Tahoma'),
-          ),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.green,
-          ),
-        ),
-        ElevatedButton.icon(
-          onPressed: () {
-            navigator?.pop();
-          },
-          icon: const Icon(Icons.close),
-          label: const Text(
-            'Close',
-            style: TextStyle(fontFamily: 'Tahoma'),
-          ),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.red,
-          ),
-        ),
-      ],
-    );
-  }
-
   AlertDialog coinDialog(BuildContext context, int coinAmount) {
     return AlertDialog(
       backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
@@ -401,23 +328,6 @@ class AppDicePage extends GetView<AppDiceController> {
                   color: Colors.yellow,
                 ),
               ),
-              TextSpan(
-                text: ' or ',
-                children: [
-                  TextSpan(
-                    text: 'CLICK ANY AD DISPLAYED AD AND WAIT FOR A SECOND.',
-                    style: TextStyle(
-                      color: Colors.green,
-                    ),
-                  ),
-                  TextSpan(
-                    text: ' Click in any ad is worthy of 3 coins',
-                    style: TextStyle(
-                      color: Colors.orange,
-                    ),
-                  ),
-                ],
-              ),
             ],
           ),
         ),
@@ -425,7 +335,8 @@ class AppDicePage extends GetView<AppDiceController> {
       actions: [
         ElevatedButton.icon(
           onPressed: () {
-            controller.getCoin(isFromBanner: true);
+            controller.showRewardedAd();
+            //controller.getCoin(isFromBanner: true);
           },
           icon: const Icon(Icons.video_collection),
           label: const Text(
@@ -475,7 +386,7 @@ class AppDicePage extends GetView<AppDiceController> {
       actions: [
         ElevatedButton.icon(
           onPressed: () {
-            controller.getCoin(isFromBanner: true);
+            controller.showRewardedAd();
           },
           icon: const Icon(Icons.video_collection),
           label: const Text(
@@ -560,9 +471,32 @@ class AppDicePage extends GetView<AppDiceController> {
   AlertDialog howToPlayDialog(BuildContext context) {
     return AlertDialog(
       backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-      title: const Center(child: Text('How To Play')),
-      content: Container(
-        height: Get.height * 0.60,
+      title: const Center(child: Text('How It Work')),
+      content: SingleChildScrollView(
+        child: Column(
+          children: const [
+            Text(
+              '1. You get Coins by watching video ads',
+              style: TextStyle(color: Colors.white),
+            ),
+            SizedBox(height: 20),
+            Text(
+              '2. Spend Coins by playing and win Diamonds',
+              style: TextStyle(color: Colors.white),
+            ),
+            SizedBox(height: 20),
+            Text(
+              '3. Spend Diamonds by buy vouchers with Diamonds on Rewards',
+              style: TextStyle(color: Colors.white),
+            ),
+            SizedBox(height: 20),
+            Text(
+              '4. You win if the selected number matches drawn by the dice',
+              style: TextStyle(color: Colors.white),
+            ),
+            SizedBox(height: 20),
+          ],
+        ),
       ),
       actions: [
         ElevatedButton.icon(
@@ -1154,147 +1088,3 @@ class AppDicePage extends GetView<AppDiceController> {
     controller.advancedDrawerController.showDrawer();
   }
 }
-
-/*
-
-
-import 'package:flutter/material.dart';
-import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: HomeScreen(),
-    );
-  }
-}
-
-class HomeScreen extends StatefulWidget {
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  final _advancedDrawerController = AdvancedDrawerController();
-
-  @override
-  Widget build(BuildContext context) {
-    return AdvancedDrawer(
-      backdropColor: Colors.blueGrey,
-      controller: _advancedDrawerController,
-      animationCurve: Curves.easeInOut,
-      animationDuration: const Duration(milliseconds: 300),
-      animateChildDecoration: true,
-      rtlOpening: false,
-      // openScale: 1.0,
-      disabledGestures: false,
-      childDecoration: const BoxDecoration(
-        // NOTICE: Uncomment if you want to add shadow behind the page.
-        // Keep in mind that it may cause animation jerks.
-        // boxShadow: <BoxShadow>[
-        //   BoxShadow(
-        //     color: Colors.black12,
-        //     blurRadius: 0.0,
-        //   ),
-        // ],
-        borderRadius: const BorderRadius.all(Radius.circular(16)),
-      ),
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Advanced Drawer Example'),
-          leading: IconButton(
-            onPressed: _handleMenuButtonPressed,
-            icon: ValueListenableBuilder<AdvancedDrawerValue>(
-              valueListenable: _advancedDrawerController,
-              builder: (_, value, __) {
-                return AnimatedSwitcher(
-                  duration: Duration(milliseconds: 250),
-                  child: Icon(
-                    value.visible ? Icons.clear : Icons.menu,
-                    key: ValueKey<bool>(value.visible),
-                  ),
-                );
-              },
-            ),
-          ),
-        ),
-        body: Container(),
-      ),
-      drawer: SafeArea(
-        child: Container(
-          child: ListTileTheme(
-            textColor: Colors.white,
-            iconColor: Colors.white,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Container(
-                  width: 128.0,
-                  height: 128.0,
-                  margin: const EdgeInsets.only(
-                    top: 24.0,
-                    bottom: 64.0,
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(
-                    color: Colors.black26,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Image.asset(
-                    'assets/images/flutter_logo.png',
-                  ),
-                ),
-                ListTile(
-                  onTap: () {},
-                  leading: Icon(Icons.home),
-                  title: Text('Home'),
-                ),
-                ListTile(
-                  onTap: () {},
-                  leading: Icon(Icons.account_circle_rounded),
-                  title: Text('Profile'),
-                ),
-                ListTile(
-                  onTap: () {},
-                  leading: Icon(Icons.favorite),
-                  title: Text('Favourites'),
-                ),
-                ListTile(
-                  onTap: () {},
-                  leading: Icon(Icons.settings),
-                  title: Text('Settings'),
-                ),
-                Spacer(),
-                DefaultTextStyle(
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.white54,
-                  ),
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(
-                      vertical: 16.0,
-                    ),
-                    child: Text('Terms of Service | Privacy Policy'),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  void _handleMenuButtonPressed() {
-    // NOTICE: Manage Advanced Drawer state through the Controller.
-    // _advancedDrawerController.value = AdvancedDrawerValue.visible();
-    _advancedDrawerController.showDrawer();
-  }
-}
-
- */

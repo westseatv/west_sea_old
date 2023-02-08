@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:west_sea/services/firebase.dart';
+import 'package:west_sea/services/data/firebase.dart';
 
 class VouchersController extends GetxController {
   final firebaseDb = Get.put(FirebaseDb());

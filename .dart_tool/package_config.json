@@ -206,6 +206,30 @@
       "languageVersion": "2.15"
     },
     {
+      "name": "get_core",
+      "rootUri": "file:///home/mpakathibayanda/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/get_core-3.13.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
+      "name": "get_instance",
+      "rootUri": "file:///home/mpakathibayanda/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/get_instance-3.13.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
+      "name": "get_rx",
+      "rootUri": "file:///home/mpakathibayanda/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/get_rx-3.13.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
+      "name": "get_state_manager",
+      "rootUri": "file:///home/mpakathibayanda/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/get_state_manager-3.13.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
       "name": "google_mobile_ads",
       "rootUri": "file:///home/mpakathibayanda/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/google_mobile_ads-2.3.0",
       "packageUri": "lib/",
@@ -560,7 +584,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-02-07T19:24:05.458040Z",
+  "generated": "2023-02-08T19:34:20.099883Z",
   "generator": "pub",
   "generatorVersion": "2.18.6"
 }

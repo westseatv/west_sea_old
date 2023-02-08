@@ -2,76 +2,66 @@ import 'dart:async';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:get/get.dart';
+import 'package:west_sea/services/models/reward.dart';
 
-class FirebaseDb extends GetxController {
+const reward = 'rewards';
+
+class DiceFirebaseDb extends GetxController {
   final _database = FirebaseDatabase.instance.ref();
   List<dynamic> rewards = List.empty(growable: true);
 
   late StreamSubscription<DatabaseEvent> rewardsStreamSubscription;
   late Stream<DatabaseEvent> stream;
-  int rewardsCounter = 0;
+  late int rewardsCounter;
 
   void onDeleteReward(int index) {
     List<dynamic> newRewards = rewards;
 
     newRewards.removeAt(index);
 
-    _database.update({'rewards': newRewards});
+    _database.update({reward: newRewards});
   }
 
   void onAddReward({
     required String name,
     required String value,
-    required String amount,
+    required int cost,
     required String desc,
   }) {
     List<dynamic> newRewards = [];
+    RewardModel newReward =
+        RewardModel(name: name, cost: cost, isClaimed: 0, desc: desc);
 
     newRewards.assignAll(rewards);
     newRewards.insert(
       1,
-      {
-        'name': name,
-        'value': value,
-        'amount': amount,
-        'desc': desc,
-        'isClaimed': 1
-      },
+      newReward.toMap(),
     );
 
-    _database.update({'rewards': newRewards});
+    _database.update({reward: newRewards});
   }
 
-  void onGetReward(
-      {required String name,
-      required String value,
-      required String amount,
-      required String desc,
-      String claimer = 'Sakhe',
-      required int index}) {
+  void onGetReward({
+    required String name,
+    required String value,
+    required int cost,
+    required String desc,
+    required int index,
+  }) {
     List<dynamic> newRewards = [];
-
+    RewardModel newReward = RewardModel(
+        name: name, cost: cost, isClaimed: 0, value: value, desc: desc);
     newRewards.assignAll(rewards);
-    newRewards.insert(
-      index,
-      {
-        'name': name,
-        'value': value,
-        'amount': amount,
-        'desc': desc,
-        'isClaimed': 1,
-        'claimer': claimer
-      },
-    );
+    newRewards[index] = newReward.toMap();
 
-    _database.update({'rewards': newRewards});
+    _database.update({reward: newRewards});
   }
 
   @override
   void onInit() {
-    stream = _database.child('rewards').onValue.asBroadcastStream();
+    stream = _database.child(reward).onValue.asBroadcastStream();
 
-    rewardsStreamSubscription = _database.child('rewards').onValue.listen(
+    rewardsStreamSubscription = _database.child(reward).onValue.listen(
       (event) {
         rewards = event.snapshot.value as List;
         rewardsCounter = rewards.length;

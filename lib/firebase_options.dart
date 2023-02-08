@@ -57,6 +57,7 @@ class DefaultFirebaseOptions {
     authDomain: 'west-sea-tv-5144e.firebaseapp.com',
     databaseURL: 'https://west-sea-tv-5144e-default-rtdb.firebaseio.com',
     storageBucket: 'west-sea-tv-5144e.appspot.com',
+    measurementId: 'G-3RE4ZHMER6',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
