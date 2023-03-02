@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:west_sea/app/ui/pages/predictionsdart_page/launchtime.dart';
-import 'package:west_sea/app/ui/pages/predictionsdart_page/predictionsdart_page.dart';
 import 'package:west_sea/app/ui/pages/predictionsdart_page/teatime.dart';
 
 import '../../../bindings/predictionsdart_binding.dart';
@@ -21,22 +20,22 @@ class PredictionsView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           feature(
-            image: 'teatime.png',
-            title: 'Teatime',
+            image: 'launchtime.png',
+            title: 'Lunchtime',
             onTap: () {
               Get.to(
-                () => const Teatime(),
+                () => const Launchtime(),
                 binding: PredictionsBinding(),
               );
             },
           ),
           const SizedBox(height: 20),
           feature(
-            image: 'launchtime.png',
-            title: 'Launchtime',
+            image: 'teatime.png',
+            title: 'Teatime',
             onTap: () {
               Get.to(
-                () => const Launchtime(),
+                () => const Teatime(),
                 binding: PredictionsBinding(),
               );
             },

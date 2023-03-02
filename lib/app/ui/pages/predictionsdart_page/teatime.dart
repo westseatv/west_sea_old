@@ -18,7 +18,17 @@ class Teatime extends GetView<PredictionsControler> {
           length: 3,
           child: Scaffold(
             appBar: AppBar(
-              title: const Text('Teatime predictions'),
+              centerTitle: true,
+              toolbarHeight: 120,
+              title: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  SizedBox(height: 15),
+                  Text('westseatv'),
+                  SizedBox(height: 15),
+                  Text('Teatime predictions'),
+                ],
+              ),
               bottom: const TabBar(
                 tabs: [
                   Text(
