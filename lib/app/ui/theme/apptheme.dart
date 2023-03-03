@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 
 final ThemeData appThemeData = ThemeData(
@@ -9,7 +11,6 @@ final ThemeData appThemeData = ThemeData(
       fontWeight: FontWeight.bold,
     ),
   ),
-  
   scaffoldBackgroundColor: const Color.fromARGB(255, 72, 111, 179),
   appBarTheme: const AppBarTheme(
     elevation: 0,

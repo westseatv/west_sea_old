@@ -2,14 +2,14 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:west_sea/app/controllers/predictionsdart_controller.dart';
+import 'package:west_sea/app/controllers/teatime_ctrl.dart';
 
-class Teatime extends GetView<PredictionsControler> {
+class Teatime extends GetView<TeatimController> {
   const Teatime({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<PredictionsControler>(
+    return GetBuilder<TeatimController>(
       initState: (state) {
         controller.homeCtrl.createBannerAd();
       },
@@ -87,13 +87,13 @@ class Teatime extends GetView<PredictionsControler> {
           if (snapshot.hasData) {
             return TabBarView(
               children: [
-                controller.firebaseDb.twoBallPredictions.length < 2
+                controller.firebaseDb.teatimeTwoBallPredictions.length < 2
                     ? empty()
                     : twoBall(),
-                controller.firebaseDb.threeBallPredictions.length < 2
+                controller.firebaseDb.teatimeThreeBallPredictions.length < 2
                     ? empty()
                     : threeBall(),
-                controller.firebaseDb.bonusesPredictions.length < 2
+                controller.firebaseDb.teatimeBonusesPredictions.length < 2
                     ? empty()
                     : bonuses(),
               ],
@@ -108,7 +108,7 @@ class Teatime extends GetView<PredictionsControler> {
 
   ListView threeBall() {
     List<dynamic> balls = [];
-    for (var p in controller.firebaseDb.threeBallPredictions) {
+    for (var p in controller.firebaseDb.teatimeThreeBallPredictions) {
       balls.add(p);
     }
     balls.assignAll(balls.reversed.toList());
@@ -152,7 +152,7 @@ class Teatime extends GetView<PredictionsControler> {
 
   ListView twoBall() {
     List<dynamic> balls = [];
-    for (var p in controller.firebaseDb.twoBallPredictions) {
+    for (var p in controller.firebaseDb.teatimeTwoBallPredictions) {
       balls.add(p);
     }
     balls.assignAll(balls.reversed.toList());
@@ -194,7 +194,7 @@ class Teatime extends GetView<PredictionsControler> {
 
   ListView bonuses() {
     List<dynamic> balls = [];
-    for (var p in controller.firebaseDb.bonusesPredictions) {
+    for (var p in controller.firebaseDb.teatimeBonusesPredictions) {
       balls.add(p);
     }
     balls.assignAll(balls.reversed.toList());

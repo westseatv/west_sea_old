@@ -45,7 +45,7 @@ class AuthPage extends GetView<AuthController> {
                 IconButton(
                   onPressed: controller.attempts.value > 0
                       ? () {
-                          if (controller.txtCtrl.text == 'zakaweezy129') {
+                          if (controller.txtCtrl.text == '') {
                             controller.txtCtrl.clear();
                             Get.offAllNamed(AdminRoutes.home);
                           } else {

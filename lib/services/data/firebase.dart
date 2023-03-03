@@ -9,13 +9,23 @@ class FirebaseDb extends GetxController {
   late Stream<DatabaseEvent> voucherStream;
   late Stream<DatabaseEvent> predictionsStream;
   late StreamSubscription<DatabaseEvent> vouchersSubcription;
-  late StreamSubscription<DatabaseEvent> twoBallPredictionsSubcription;
-  late StreamSubscription<DatabaseEvent> threeBallPredictionsSubcription;
-  late StreamSubscription<DatabaseEvent> bonusesPredictionsSubcription;
+
+  late StreamSubscription<DatabaseEvent> lunchtimeTwoBallPredictionsSubcription;
+  late StreamSubscription<DatabaseEvent>
+      lunchtimeThreeBallPredictionsSubcription;
+  late StreamSubscription<DatabaseEvent> lunchtimeBonusesPredictionsSubcription;
+  late StreamSubscription<DatabaseEvent> teatimeTwoBallPredictionsSubcription;
+  late StreamSubscription<DatabaseEvent> teatimeThreeBallPredictionsSubcription;
+  late StreamSubscription<DatabaseEvent> teatimeBonusesPredictionsSubcription;
+
   late List<dynamic> vouchers;
-  late List<dynamic> twoBallPredictions;
-  late List<dynamic> threeBallPredictions;
-  late List<dynamic> bonusesPredictions;
+
+  late List<dynamic> lunchtimeTwoBallPredictions;
+  late List<dynamic> lunchtimeThreeBallPredictions;
+  late List<dynamic> lunchtimeBonusesPredictions;
+  late List<dynamic> teatimeTwoBallPredictions;
+  late List<dynamic> teatimeThreeBallPredictions;
+  late List<dynamic> teatimeBonusesPredictions;
 
   void onDeleteVouchers({
     required int index,
@@ -43,63 +53,123 @@ class FirebaseDb extends GetxController {
   }
 
   void onAddPrediction(
-      {required String b, required List<String> balls, required String date}) {
+      {required String b,
+      required List<String> balls,
+      required String date,
+      required String whichOne}) {
     List<dynamic> newList = [];
-    switch (b) {
-      case '2':
-        newList.assignAll(twoBallPredictions);
-        newList.add({'balls': balls, 'date': date});
-        dbRef.child('vouchers/predictions/').update({'2ball': newList});
-        break;
-      case '3':
-        newList.assignAll(threeBallPredictions);
-        newList.add({'balls': balls, 'date': date});
-        dbRef.child('vouchers/predictions/').update({'3ball': newList});
-        break;
-      case 'b':
-        newList.assignAll(bonusesPredictions);
-        newList.add({'ball': balls[0], 'date': date});
-        dbRef.child('vouchers/predictions/').update({'bonuses': newList});
-        break;
-      default:
-        Get.showSnackbar(
-          const GetSnackBar(
-            duration: Duration(seconds: 5),
-            message: 'Invalid ball',
-            backgroundColor: Colors.red,
-            snackPosition: SnackPosition.TOP,
-          ),
-        );
-        break;
+    if (whichOne == 'lunchtime') {
+      switch (b) {
+        case '2':
+          newList.assignAll(lunchtimeTwoBallPredictions);
+          newList.add({'balls': balls, 'date': date});
+          dbRef.child('predictions/lunchtime/').update({'2ball': newList});
+          break;
+        case '3':
+          newList.assignAll(lunchtimeThreeBallPredictions);
+          newList.add({'balls': balls, 'date': date});
+          dbRef.child('predictions/lunchtime/').update({'3ball': newList});
+          break;
+        case 'b':
+          newList.assignAll(lunchtimeBonusesPredictions);
+          newList.add({'ball': balls[0], 'date': date});
+          dbRef.child('predictions/lunchtime/').update({'bonuses': newList});
+          break;
+        default:
+          Get.showSnackbar(
+            const GetSnackBar(
+              duration: Duration(seconds: 5),
+              message: 'Invalid ball',
+              backgroundColor: Colors.red,
+              snackPosition: SnackPosition.TOP,
+            ),
+          );
+          break;
+      }
+    } else {
+      switch (b) {
+        case '2':
+          newList.assignAll(teatimeTwoBallPredictions);
+          newList.add({'balls': balls, 'date': date});
+          dbRef.child('predictions/teatime/').update({'2ball': newList});
+          break;
+        case '3':
+          newList.assignAll(teatimeThreeBallPredictions);
+          newList.add({'balls': balls, 'date': date});
+          dbRef.child('predictions/teatime/').update({'3ball': newList});
+          break;
+        case 'b':
+          newList.assignAll(teatimeBonusesPredictions);
+          newList.add({'ball': balls[0], 'date': date});
+          dbRef.child('predictions/teatime/').update({'bonuses': newList});
+          break;
+        default:
+          Get.showSnackbar(
+            const GetSnackBar(
+              duration: Duration(seconds: 5),
+              message: 'Invalid ball',
+              backgroundColor: Colors.red,
+              snackPosition: SnackPosition.TOP,
+            ),
+          );
+          break;
+      }
     }
   }
 
-  void clear(String b) {
+  void clear(String b, String whichOne) {
     List<dynamic> newList2 = [];
     List<dynamic> newList3 = [];
     List<dynamic> newListb = [];
-    switch (b) {
-      case '2':
-        newList2.add(twoBallPredictions[0]);
-        dbRef.child('vouchers/predictions/').update({'2ball': newList2});
-        break;
-      case '3':
-        newList3.add(threeBallPredictions[0]);
-        dbRef.child('vouchers/predictions/').update({'3ball': newList3});
-        break;
-      case 'b':
-        newListb.add(bonusesPredictions[0]);
-        dbRef.child('vouchers/predictions/').update({'bonuses': newListb});
-        break;
-      case 'all':
-        newList2.add(twoBallPredictions[0]);
-        newList3.add(twoBallPredictions[0]);
-        newListb.add(bonusesPredictions[0]);
-        dbRef.child('vouchers/predictions/').update({'2ball': newList2});
-        dbRef.child('vouchers/predictions/').update({'3ball': newList3});
-        dbRef.child('vouchers/predictions/').update({'bonuses': newListb});
-        break;
-      default:
+
+    if (whichOne == 'lunchtime') {
+      switch (b) {
+        case '2':
+          newList2.add(lunchtimeTwoBallPredictions[0]);
+          dbRef.child('predictions/lunchtime/').update({'2ball': newList2});
+          break;
+        case '3':
+          newList3.add(lunchtimeThreeBallPredictions[0]);
+          dbRef.child('predictions/lunchtime/').update({'3ball': newList3});
+          break;
+        case 'b':
+          newListb.add(lunchtimeBonusesPredictions[0]);
+          dbRef.child('predictions/lunchtime/').update({'bonuses': newListb});
+          break;
+        case 'all':
+          newList2.add(lunchtimeTwoBallPredictions[0]);
+          newList3.add(lunchtimeTwoBallPredictions[0]);
+          newListb.add(lunchtimeBonusesPredictions[0]);
+          dbRef.child('predictions/lunchtime/').update({'2ball': newList2});
+          dbRef.child('predictions/lunchtime/').update({'3ball': newList3});
+          dbRef.child('predictions/lunchtime/').update({'bonuses': newListb});
+          break;
+        default:
+      }
+    } else {
+      switch (b) {
+        case '2':
+          newList2.add(teatimeTwoBallPredictions[0]);
+          dbRef.child('predictions/teatime/').update({'2ball': newList2});
+          break;
+        case '3':
+          newList3.add(teatimeThreeBallPredictions[0]);
+          dbRef.child('predictions/teatime/').update({'3ball': newList3});
+          break;
+        case 'b':
+          newListb.add(teatimeBonusesPredictions[0]);
+          dbRef.child('predictions/teatime/').update({'bonuses': newListb});
+          break;
+        case 'all':
+          newList2.add(teatimeTwoBallPredictions[0]);
+          newList3.add(teatimeTwoBallPredictions[0]);
+          newListb.add(teatimeBonusesPredictions[0]);
+          dbRef.child('predictions/teatime/').update({'2ball': newList2});
+          dbRef.child('predictions/teatime/').update({'3ball': newList3});
+          dbRef.child('predictions/teatime/').update({'bonuses': newListb});
+          break;
+        default:
+      }
     }
   }
 
@@ -112,24 +182,43 @@ class FirebaseDb extends GetxController {
       },
     );
 
-    predictionsStream =
-        dbRef.child('vouchers/predictions').onValue.asBroadcastStream();
-    twoBallPredictionsSubcription =
-        dbRef.child('vouchers/predictions/2ball').onValue.listen(
+    predictionsStream = dbRef.child('predictions').onValue.asBroadcastStream();
+
+    lunchtimeTwoBallPredictionsSubcription =
+        dbRef.child('predictions/lunchtime/2ball').onValue.listen(
       (event) {
-        twoBallPredictions = event.snapshot.value as List;
+        lunchtimeTwoBallPredictions = event.snapshot.value as List;
       },
     );
-    threeBallPredictionsSubcription =
-        dbRef.child('vouchers/predictions/3ball').onValue.listen(
+    lunchtimeThreeBallPredictionsSubcription =
+        dbRef.child('predictions/lunchtime/3ball').onValue.listen(
       (event) {
-        threeBallPredictions = event.snapshot.value as List;
+        lunchtimeThreeBallPredictions = event.snapshot.value as List;
       },
     );
-    bonusesPredictionsSubcription =
-        dbRef.child('vouchers/predictions/bonuses').onValue.listen(
+    lunchtimeBonusesPredictionsSubcription =
+        dbRef.child('predictions/lunchtime/bonuses').onValue.listen(
       (event) {
-        bonusesPredictions = event.snapshot.value as List;
+        lunchtimeBonusesPredictions = event.snapshot.value as List;
+      },
+    );
+
+    teatimeTwoBallPredictionsSubcription =
+        dbRef.child('predictions/teatime/2ball').onValue.listen(
+      (event) {
+        teatimeTwoBallPredictions = event.snapshot.value as List;
+      },
+    );
+    teatimeThreeBallPredictionsSubcription =
+        dbRef.child('predictions/teatime/3ball').onValue.listen(
+      (event) {
+        teatimeThreeBallPredictions = event.snapshot.value as List;
+      },
+    );
+    teatimeBonusesPredictionsSubcription =
+        dbRef.child('predictions/teatime/bonuses').onValue.listen(
+      (event) {
+        teatimeBonusesPredictions = event.snapshot.value as List;
       },
     );
 
@@ -139,9 +228,14 @@ class FirebaseDb extends GetxController {
   @override
   void onClose() {
     vouchersSubcription.cancel();
-    twoBallPredictionsSubcription.cancel();
-    threeBallPredictionsSubcription.cancel();
-    bonusesPredictionsSubcription.cancel();
+
+    lunchtimeTwoBallPredictionsSubcription.cancel();
+    lunchtimeThreeBallPredictionsSubcription.cancel();
+    lunchtimeBonusesPredictionsSubcription.cancel();
+
+    teatimeTwoBallPredictionsSubcription.cancel();
+    teatimeThreeBallPredictionsSubcription.cancel();
+    teatimeBonusesPredictionsSubcription.cancel();
     super.onClose();
   }
 }

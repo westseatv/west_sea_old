@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
-import 'package:west_sea/admin/bindings/predictions_bindings.dart';
+import 'package:west_sea/admin/bindings/lunchtime_binding.dart';
 import 'package:west_sea/admin/bindings/vouchers_binding.dart';
-import 'package:west_sea/admin/screens/dice.dart';
-import 'package:west_sea/admin/screens/predictions.dart';
+import 'package:west_sea/admin/screens/lunchtime.dart';
+import 'package:west_sea/admin/screens/teatime.dart';
 import 'package:west_sea/admin/screens/vouchers.dart';
 import 'package:west_sea/app/routes/routes.dart';
 
 import '../../app/ui/theme/apptheme.dart';
-import '../bindings/dice_binding.dart';
+import '../bindings/teatime_bindings.dart';
 
 class AdminHomePage extends StatelessWidget {
   const AdminHomePage({super.key});
@@ -18,12 +18,11 @@ class AdminHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
+        scrollDirection: Axis.vertical,
         child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
             children: [
               feature(
                 image: 'foryou.png',
@@ -35,19 +34,19 @@ class AdminHomePage extends StatelessWidget {
                 ),
               ),
               feature(
-                image: 'logo_49s.png',
+                image: 'launchtime.png',
                 title: '',
                 onTap: () => Get.to(
-                  () => const AdminPredictionsPage(),
-                  binding: AdminPredictionsBinding(),
+                  () => const AdminLunchtimePage(),
+                  binding: AdminLunchtimeBinding(),
                 ),
               ),
               feature(
-                image: 'dice.png',
+                image: 'teatime.png',
                 title: '',
                 onTap: () => Get.to(
-                  () => const AdminDicePage(),
-                  binding: AdminDiceBinding(),
+                  () => const AdminTeatimePage(),
+                  binding: AdminTeatimeBinding(),
                 ),
               ),
             ],
@@ -83,6 +82,7 @@ class AdminHomePage extends StatelessWidget {
             Expanded(
               child: Text(
                 title,
+                // ignore: deprecated_member_use
                 style: appThemeData.textTheme.bodyText1,
               ),
             ),
