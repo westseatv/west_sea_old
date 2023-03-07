@@ -31,7 +31,7 @@ class PredictionsView extends GetView<HomeController> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               feature(
-                image: 'launchtime.png',
+                image: 'logo_49s.png',
                 title: 'Lunchtime',
                 onTap: () async {
                   Get.lazyPut(() => FirebaseDb());
@@ -45,7 +45,7 @@ class PredictionsView extends GetView<HomeController> {
               ),
               const SizedBox(height: 20),
               feature(
-                image: 'teatime.png',
+                image: 'logo_49s.png',
                 title: 'Teatime',
                 onTap: () async {
                   Get.lazyPut(() => FirebaseDb());

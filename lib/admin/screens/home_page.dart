@@ -34,7 +34,7 @@ class AdminHomePage extends StatelessWidget {
                 ),
               ),
               feature(
-                image: 'launchtime.png',
+                image: 'logo_49s.png',
                 title: '',
                 onTap: () => Get.to(
                   () => const AdminLunchtimePage(),
@@ -42,7 +42,7 @@ class AdminHomePage extends StatelessWidget {
                 ),
               ),
               feature(
-                image: 'teatime.png',
+                image: 'logo_49s.png',
                 title: '',
                 onTap: () => Get.to(
                   () => const AdminTeatimePage(),

@@ -18,17 +18,7 @@ class Launchtime extends GetView<LunchtimeController> {
           length: 3,
           child: Scaffold(
             appBar: AppBar(
-              centerTitle: true,
-              toolbarHeight: 120,
-              title: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: const [
-                  SizedBox(height: 15),
-                  Text('westseatv'),
-                  SizedBox(height: 15),
-                  Text('Lunchtime predictions'),
-                ],
-              ),
+              title: const Text('Lunchtime predictions'),
               bottom: const TabBar(
                 tabs: [
                   Text(

@@ -13,7 +13,7 @@ class AdminTeatimePage extends GetView<AdminTeatimeController> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('westseatv predictions'),
+          title: const Text('teatime predictions'),
           bottom: const TabBar(
             tabs: [
               Text(
@@ -510,8 +510,8 @@ class AdminTeatimePage extends GetView<AdminTeatimeController> {
   Container ball(String number, int l, int i, int b) {
     return Container(
       alignment: Alignment.center,
-      width: 50,
-      height: 50,
+      width: 40,
+      height: 40,
       margin: const EdgeInsets.only(left: 10),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
