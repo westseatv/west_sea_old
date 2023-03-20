@@ -13,7 +13,7 @@
   </intent>
 </queries>
    <application
-        android:label="WEST SEA TV"
+        android:label="WEST SEA TV ADMIN"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true">

@@ -51,7 +51,6 @@ class AdminVouchersPage extends GetView<VouchersController> {
           const SizedBox(height: 20),
           TextField(
             controller: controller.fTxtCtrl,
-            keyboardType: TextInputType.number,
             style: const TextStyle(
               color: Colors.white,
               fontSize: 24,
