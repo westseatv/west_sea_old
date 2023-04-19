@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
-import 'package:west_sea/admin/bindings/lunchtime_binding.dart';
-import 'package:west_sea/admin/bindings/vouchers_binding.dart';
-import 'package:west_sea/admin/screens/lunchtime.dart';
-import 'package:west_sea/admin/screens/teatime.dart';
-import 'package:west_sea/admin/screens/vouchers.dart';
-import 'package:west_sea/app/routes/routes.dart';
-
-import '../../app/ui/theme/apptheme.dart';
-import '../bindings/teatime_bindings.dart';
+import 'package:west_sea/admin/bindings/predictions/lunchtime_binding.dart';
+import 'package:west_sea/admin/bindings/mo4mo/mo4mo.dart';
+import 'package:west_sea/admin/screens/mo4mo/admin_mo4mo_view.dart';
+import 'package:west_sea/admin/screens/predictions/lunchtime.dart';
+import 'package:west_sea/admin/screens/predictions/teatime.dart';
+import '../bindings/predictions/teatime_bindings.dart';
 
 class AdminHomePage extends StatelessWidget {
   const AdminHomePage({super.key});
@@ -25,17 +22,16 @@ class AdminHomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               feature(
-                image: 'foryou.png',
-                title: '',
+                image: 'mo4mo.png',
+                title: 'MO4MO',
                 onTap: () => Get.to(
-                  () => const AdminVouchersPage(),
-                  binding: AdminVouchersBinding(),
-                  routeName: Routes.vouchers,
+                  () => const AdminMo4moPage(),
+                  binding: AdminMom4moBinding(),
                 ),
               ),
               feature(
                 image: 'logo_49s.png',
-                title: '',
+                title: 'LUNCHTIME',
                 onTap: () => Get.to(
                   () => const AdminLunchtimePage(),
                   binding: AdminLunchtimeBinding(),
@@ -43,7 +39,7 @@ class AdminHomePage extends StatelessWidget {
               ),
               feature(
                 image: 'logo_49s.png',
-                title: '',
+                title: 'TEATIME',
                 onTap: () => Get.to(
                   () => const AdminTeatimePage(),
                   binding: AdminTeatimeBinding(),
@@ -70,7 +66,6 @@ class AdminHomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
-              flex: 2,
               child: Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
@@ -79,12 +74,8 @@ class AdminHomePage extends StatelessWidget {
                 ),
               ),
             ),
-            Expanded(
-              child: Text(
-                title,
-                // ignore: deprecated_member_use
-                style: appThemeData.textTheme.bodyText1,
-              ),
+            Text(
+              title,
             ),
           ],
         ),

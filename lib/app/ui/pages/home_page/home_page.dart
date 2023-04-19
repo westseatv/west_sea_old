@@ -12,7 +12,7 @@ import 'package:west_sea/app/ui/pages/predictionsdart_page/view.dart';
 import 'package:west_sea/app/ui/pages/voucherdart_page/voucherdart_page.dart';
 import '../../../controllers/home_controller.dart';
 import '../../../routes/routes.dart';
-import '../../theme/apptheme.dart';
+import '../../../../common/theme/apptheme.dart';
 import '../../utils/app_icons_icons.dart';
 import '../../utils/url_opener.dart';
 

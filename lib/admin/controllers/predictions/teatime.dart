@@ -3,9 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../services/data/firebase.dart';
+import '../../../services/firebase.dart';
 
-class AdminLunchtimeController extends GetxController {
+class AdminTeatimeController extends GetxController {
   final firebaseDb = Get.put(FirebaseDb());
   final b1TxtCtrl = TextEditingController();
   final b2TxtCtrl = TextEditingController();

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:west_sea/services/data/firebase.dart';
+import 'package:west_sea/services/firebase.dart';
 
 import 'home_controller.dart';
 

@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../controllers/lunchtime.dart';
+import '../../controllers/predictions/lunchtime.dart';
 
 class AdminLunchtimeBinding implements Bindings {
   @override

@@ -2,10 +2,10 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../controllers/lunchtime.dart';
+import '../../controllers/predictions/teatime.dart';
 
-class AdminLunchtimePage extends GetView<AdminLunchtimeController> {
-  const AdminLunchtimePage({super.key});
+class AdminTeatimePage extends GetView<AdminTeatimeController> {
+  const AdminTeatimePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class AdminLunchtimePage extends GetView<AdminLunchtimeController> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('lunchtime predictions'),
+          title: const Text('teatime predictions'),
           bottom: const TabBar(
             tabs: [
               Text(
@@ -204,13 +204,14 @@ class AdminLunchtimePage extends GetView<AdminLunchtimeController> {
                         if (controller.b1TxtCtrl.text.isNotEmpty &&
                             controller.b2TxtCtrl.text.isNotEmpty) {
                           controller.firebaseDb.onAddPrediction(
-                              b: controller.b.text.trim(),
-                              balls: [
-                                controller.b1TxtCtrl.text.trim(),
-                                controller.b2TxtCtrl.text.trim(),
-                              ],
-                              date: date,
-                              whichOne: 'lunchtime');
+                            b: controller.b.text.trim(),
+                            balls: [
+                              controller.b1TxtCtrl.text.trim(),
+                              controller.b2TxtCtrl.text.trim(),
+                            ],
+                            date: date,
+                            whichOne: '',
+                          );
 
                           controller.b1TxtCtrl.clear();
                           controller.b2TxtCtrl.clear();
@@ -230,14 +231,15 @@ class AdminLunchtimePage extends GetView<AdminLunchtimeController> {
                             controller.b2TxtCtrl.text.isNotEmpty &&
                             controller.b3TxtCtrl.text.isNotEmpty) {
                           controller.firebaseDb.onAddPrediction(
-                              b: controller.b.text.trim(),
-                              balls: [
-                                controller.b1TxtCtrl.text.trim(),
-                                controller.b2TxtCtrl.text.trim(),
-                                controller.b3TxtCtrl.text.trim(),
-                              ],
-                              date: date,
-                              whichOne: 'lunchtime');
+                            b: controller.b.text.trim(),
+                            balls: [
+                              controller.b1TxtCtrl.text.trim(),
+                              controller.b2TxtCtrl.text.trim(),
+                              controller.b3TxtCtrl.text.trim(),
+                            ],
+                            date: date,
+                            whichOne: 'teatime',
+                          );
 
                           controller.b1TxtCtrl.clear();
                           controller.b2TxtCtrl.clear();
@@ -255,10 +257,11 @@ class AdminLunchtimePage extends GetView<AdminLunchtimeController> {
                       case 'b':
                         if (controller.b1TxtCtrl.text.isNotEmpty) {
                           controller.firebaseDb.onAddPrediction(
-                              b: controller.b.text.trim(),
-                              balls: [controller.b1TxtCtrl.text.trim()],
-                              date: date,
-                              whichOne: 'lunchtime');
+                            b: controller.b.text.trim(),
+                            balls: [controller.b1TxtCtrl.text.trim()],
+                            date: date,
+                            whichOne: 'teatime',
+                          );
 
                           controller.b1TxtCtrl.clear();
                           controller.b2TxtCtrl.clear();
@@ -307,7 +310,7 @@ class AdminLunchtimePage extends GetView<AdminLunchtimeController> {
             backgroundColor: Colors.red,
           ),
           onPressed: () {
-            controller.firebaseDb.clear(controller.b.text.trim(), 'lunchtime');
+            controller.firebaseDb.clear(controller.b.text.trim(), 'teatime');
             controller.b.clear();
             navigator!.pop();
           },
@@ -334,13 +337,13 @@ class AdminLunchtimePage extends GetView<AdminLunchtimeController> {
           if (snapshot.hasData) {
             return TabBarView(
               children: [
-                controller.firebaseDb.lunchtimeTwoBallPredictions.length < 2
+                controller.firebaseDb.teatimeTwoBallPredictions.length < 2
                     ? empty()
                     : twoBall(),
-                controller.firebaseDb.lunchtimeThreeBallPredictions.length < 2
+                controller.firebaseDb.teatimeThreeBallPredictions.length < 2
                     ? empty()
                     : threeBall(),
-                controller.firebaseDb.lunchtimeBonusesPredictions.length < 2
+                controller.firebaseDb.teatimeBonusesPredictions.length < 2
                     ? empty()
                     : bonuses(),
               ],
@@ -355,7 +358,7 @@ class AdminLunchtimePage extends GetView<AdminLunchtimeController> {
 
   ListView threeBall() {
     List<dynamic> balls = [];
-    for (var p in controller.firebaseDb.lunchtimeThreeBallPredictions) {
+    for (var p in controller.firebaseDb.teatimeThreeBallPredictions) {
       balls.add(p);
     }
     balls.assignAll(balls.reversed.toList());
@@ -399,7 +402,7 @@ class AdminLunchtimePage extends GetView<AdminLunchtimeController> {
 
   ListView twoBall() {
     List<dynamic> balls = [];
-    for (var p in controller.firebaseDb.lunchtimeTwoBallPredictions) {
+    for (var p in controller.firebaseDb.teatimeTwoBallPredictions) {
       balls.add(p);
     }
     balls.assignAll(balls.reversed.toList());
@@ -441,7 +444,7 @@ class AdminLunchtimePage extends GetView<AdminLunchtimeController> {
 
   ListView bonuses() {
     List<dynamic> balls = [];
-    for (var p in controller.firebaseDb.lunchtimeBonusesPredictions) {
+    for (var p in controller.firebaseDb.teatimeBonusesPredictions) {
       balls.add(p);
     }
     balls.assignAll(balls.reversed.toList());

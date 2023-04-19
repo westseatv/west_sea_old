@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../controllers/teatime.dart';
+import '../../controllers/predictions/teatime.dart';
 
 class AdminTeatimeBinding implements Bindings {
   @override

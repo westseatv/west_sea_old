@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:west_sea/admin/controllers/predictions_ctrl.dart';
+import 'package:west_sea/admin/controllers/predictions/predictions_ctrl.dart';
 
 class AdminPredictionsBinding implements Bindings {
   @override

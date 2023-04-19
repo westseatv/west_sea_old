@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 
-import 'package:west_sea/app/ui/theme/apptheme.dart';
+import 'package:west_sea/common/theme/apptheme.dart';
 
 class IconTextBtn extends StatelessWidget {
   const IconTextBtn({

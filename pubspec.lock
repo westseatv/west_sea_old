@@ -264,38 +264,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.6.5"
-  get_core:
-    dependency: transitive
-    description:
-      name: get_core
-      sha256: cdb31a5b500e4b7d1473b25a4fdee554216f7014aa54c913d0c022df88bdcdd2
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.13.0"
-  get_instance:
-    dependency: transitive
-    description:
-      name: get_instance
-      sha256: "59dcd81946537017c60f35abe62156857884dde417d89d8b1e483c5219aabbe1"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.13.0"
-  get_rx:
-    dependency: transitive
-    description:
-      name: get_rx
-      sha256: "59d54b13d39d63bf0bffca5073a2d61cafb4d5f31d5a706c0537a2aae024c68d"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.13.0"
-  get_state_manager:
-    dependency: "direct main"
-    description:
-      name: get_state_manager
-      sha256: e7ae0c9c5135e3350e9a503aca8883977762d8f3023e5abecc41f060131972a8
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.13.0"
   google_mobile_ads:
     dependency: "direct main"
     description:

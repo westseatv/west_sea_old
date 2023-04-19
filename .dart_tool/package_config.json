@@ -206,30 +206,6 @@
       "languageVersion": "2.15"
     },
     {
-      "name": "get_core",
-      "rootUri": "file:///home/bayanda/.pub-cache/hosted/pub.dev/get_core-3.13.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.7"
-    },
-    {
-      "name": "get_instance",
-      "rootUri": "file:///home/bayanda/.pub-cache/hosted/pub.dev/get_instance-3.13.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.7"
-    },
-    {
-      "name": "get_rx",
-      "rootUri": "file:///home/bayanda/.pub-cache/hosted/pub.dev/get_rx-3.13.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.7"
-    },
-    {
-      "name": "get_state_manager",
-      "rootUri": "file:///home/bayanda/.pub-cache/hosted/pub.dev/get_state_manager-3.13.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.7"
-    },
-    {
       "name": "google_mobile_ads",
       "rootUri": "file:///home/bayanda/.pub-cache/hosted/pub.dev/google_mobile_ads-2.3.0",
       "packageUri": "lib/",
@@ -536,7 +512,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-03-17T01:22:46.511352Z",
+  "generated": "2023-04-10T18:55:48.887041Z",
   "generator": "pub",
   "generatorVersion": "2.19.4"
 }

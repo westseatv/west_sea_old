@@ -1,11 +1,10 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:west_sea/services/firebase.dart';
 
-import '../../services/data/firebase.dart';
-
-class AdminTeatimeController extends GetxController {
+class AdminPredictionsController extends GetxController {
   final firebaseDb = Get.put(FirebaseDb());
   final b1TxtCtrl = TextEditingController();
   final b2TxtCtrl = TextEditingController();

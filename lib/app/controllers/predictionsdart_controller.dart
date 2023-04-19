@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:west_sea/app/controllers/home_controller.dart';
-import 'package:west_sea/services/data/firebase.dart';
+import 'package:west_sea/services/firebase.dart';
 
 class PredictionsControler extends GetxController {
   final firebaseDb = Get.put(FirebaseDb());

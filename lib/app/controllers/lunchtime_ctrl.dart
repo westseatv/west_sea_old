@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../services/data/firebase.dart';
+import '../../services/firebase.dart';
 import 'home_controller.dart';
 
 class LunchtimeController extends GetxController {
