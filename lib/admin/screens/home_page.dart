@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:west_sea/admin/bindings/predictions/lunchtime_binding.dart';
-import 'package:west_sea/admin/bindings/mo4mo/mo4mo.dart';
+import 'package:west_sea/admin/bindings/mo4mo/admin_mo4mo.dart';
 import 'package:west_sea/admin/screens/mo4mo/admin_mo4mo_view.dart';
 import 'package:west_sea/admin/screens/predictions/lunchtime.dart';
 import 'package:west_sea/admin/screens/predictions/teatime.dart';
@@ -25,7 +25,7 @@ class AdminHomePage extends StatelessWidget {
                 image: 'mo4mo.png',
                 title: 'MO4MO',
                 onTap: () => Get.to(
-                  () => const AdminMo4moPage(),
+                  () => AdminMo4moPage(),
                   binding: AdminMom4moBinding(),
                 ),
               ),

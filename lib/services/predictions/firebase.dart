@@ -6,9 +6,7 @@ import 'package:get/get.dart';
 
 class FirebaseDb extends GetxController {
   final dbRef = FirebaseDatabase.instance.ref();
-  late Stream<DatabaseEvent> voucherStream;
   late Stream<DatabaseEvent> predictionsStream;
-  late StreamSubscription<DatabaseEvent> vouchersSubcription;
 
   late StreamSubscription<DatabaseEvent> lunchtimeTwoBallPredictionsSubcription;
   late StreamSubscription<DatabaseEvent>
@@ -18,39 +16,12 @@ class FirebaseDb extends GetxController {
   late StreamSubscription<DatabaseEvent> teatimeThreeBallPredictionsSubcription;
   late StreamSubscription<DatabaseEvent> teatimeBonusesPredictionsSubcription;
 
-  late List<dynamic> vouchers;
-
   late List<dynamic> lunchtimeTwoBallPredictions;
   late List<dynamic> lunchtimeThreeBallPredictions;
   late List<dynamic> lunchtimeBonusesPredictions;
   late List<dynamic> teatimeTwoBallPredictions;
   late List<dynamic> teatimeThreeBallPredictions;
   late List<dynamic> teatimeBonusesPredictions;
-
-  void onDeleteVouchers({
-    required int index,
-  }) {
-    List<dynamic> newVouchers = [];
-    for (var v in vouchers) {
-      if (v != vouchers[index]) {
-        newVouchers.add(v);
-      }
-    }
-    dbRef.child('vouchers/').update({'list': newVouchers});
-  }
-
-  void onAddVoucher({required String v, required String f, required String c}) {
-    List<dynamic> newList = [];
-
-    newList.assignAll(vouchers);
-
-    newList.add({'v': v, 'f': f, 'c': c, 't': 1});
-    dbRef.child('vouchers/').update({'list': newList});
-  }
-
-  void claiming(int index) {
-    dbRef.child('vouchers/list/$index/').update({'t': 0});
-  }
 
   void onAddPrediction(
       {required String b,
@@ -175,13 +146,6 @@ class FirebaseDb extends GetxController {
 
   @override
   void onInit() {
-    voucherStream = dbRef.child('vouchers/list').onValue.asBroadcastStream();
-    vouchersSubcription = dbRef.child('vouchers/list').onValue.listen(
-      (event) {
-        vouchers = event.snapshot.value as List;
-      },
-    );
-
     predictionsStream = dbRef.child('predictions').onValue.asBroadcastStream();
 
     lunchtimeTwoBallPredictionsSubcription =
@@ -227,8 +191,6 @@ class FirebaseDb extends GetxController {
 
   @override
   void onClose() {
-    vouchersSubcription.cancel();
-
     lunchtimeTwoBallPredictionsSubcription.cancel();
     lunchtimeThreeBallPredictionsSubcription.cancel();
     lunchtimeBonusesPredictionsSubcription.cancel();

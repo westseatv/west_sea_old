@@ -6,7 +6,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:west_sea/app/controllers/home_controller.dart';
 import 'package:west_sea/app/ui/pages/predictionsdart_page/launchtime.dart';
 import 'package:west_sea/app/ui/pages/predictionsdart_page/teatime.dart';
-import 'package:west_sea/services/firebase.dart';
+import 'package:west_sea/services/predictions/firebase.dart';
 
 import '../../../bindings/predictionsdart_binding.dart';
 import '../../../../common/theme/apptheme.dart';

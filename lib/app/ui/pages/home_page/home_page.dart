@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:west_sea/app/bindings/voucherdart_binding.dart';
 import 'package:west_sea/app/ui/pages/predictionsdart_page/view.dart';
 import 'package:west_sea/app/ui/pages/voucherdart_page/voucherdart_page.dart';
 import '../../../controllers/home_controller.dart';
@@ -82,22 +81,22 @@ class HomePage extends GetView<HomeController> {
   }
 
   List<Widget> get bodyBtns => [
-        feature(
-          image: 'youtube.png',
-          title: 'STRATEGIES',
-          onTap: () => openUrl(url: 'https://www.youtube.com/@westseatv'),
-        ),
-        feature(
-          image: 'foryou.png',
-          title: 'FREE VOUCHER',
-          onTap: () {
-            controller.showInterstitialAd();
-            Get.to(
-              () => const VoucherDartPage(),
-              binding: VoucherDartBinding(),
-            );
-          },
-        ),
+        // feature(
+        //   image: 'youtube.png',
+        //   title: 'STRATEGIES',
+        //   onTap: () => openUrl(url: 'https://www.youtube.com/@westseatv'),
+        // ),
+        // feature(
+        //   image: 'foryou.png',
+        //   title: 'FREE VOUCHER',
+        //   onTap: () {
+        //     controller.showInterstitialAd();
+        //     Get.to(
+        //       () => const VoucherDartPage(),
+        //       binding: VoucherDartBinding(),
+        //     );
+        //   },
+        // ),
         feature(
           image: 'logo_49s.png',
           title: 'PREDICTIONS',

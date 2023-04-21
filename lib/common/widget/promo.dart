@@ -33,13 +33,13 @@ class PromoCard extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 12),
-            Text(competion.name),
+            Center(child: Text(competion.name)),
             const Spacer(),
             Ink(
               padding: const EdgeInsets.symmetric(vertical: 10),
               color: Pallete.bgColor,
               child: const Center(
-                child: Text('Open'),
+                child: Text('Details'),
               ),
             ),
           ],

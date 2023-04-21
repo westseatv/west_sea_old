@@ -200,6 +200,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "fluttertoast",
+      "rootUri": "file:///home/bayanda/.pub-cache/hosted/pub.dev/fluttertoast-8.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "get",
       "rootUri": "file:///home/bayanda/.pub-cache/hosted/pub.dev/get-4.6.5",
       "packageUri": "lib/",
@@ -512,7 +518,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-04-10T18:55:48.887041Z",
+  "generated": "2023-04-20T18:54:34.753436Z",
   "generator": "pub",
   "generatorVersion": "2.19.4"
 }

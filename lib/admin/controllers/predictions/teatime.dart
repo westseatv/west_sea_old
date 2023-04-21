@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../services/firebase.dart';
+import '../../../services/predictions/firebase.dart';
 
 class AdminTeatimeController extends GetxController {
   final firebaseDb = Get.put(FirebaseDb());

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:west_sea/app/controllers/home_controller.dart';
 
-import '../../services/firebase.dart';
+import '../../services/predictions/firebase.dart';
 
 class TeatimController extends GetxController {
   final firebaseDb = Get.find<FirebaseDb>();

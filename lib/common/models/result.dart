@@ -34,7 +34,7 @@ class ResultModel {
     return ResultModel(
       id: map['id'] as String,
       results: List<String>.from(
-        (map['results'] as List<String>),
+        (map['results']),
       ),
       date: map['date'] as String,
     );

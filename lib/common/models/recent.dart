@@ -4,25 +4,21 @@ class Recent {
   String name;
   String prize;
   List<String> prizes;
-  List<String> winners;
   Recent({
     required this.name,
     required this.prize,
     required this.prizes,
-    required this.winners,
   });
 
   Recent copyWith({
     String? name,
     String? prize,
     List<String>? prizes,
-    List<String>? winners,
   }) {
     return Recent(
       name: name ?? this.name,
       prize: prize ?? this.prize,
       prizes: prizes ?? this.prizes,
-      winners: winners ?? this.winners,
     );
   }
 
@@ -31,7 +27,6 @@ class Recent {
       'name': name,
       'prize': prize,
       'prizes': prizes,
-      'winners': winners,
     };
   }
 
@@ -40,17 +35,14 @@ class Recent {
       name: map['name'] as String,
       prize: map['prize'] as String,
       prizes: List<String>.from(
-        (map['prizes'] as List<String>),
-      ),
-      winners: List<String>.from(
-        (map['winners'] as List<String>),
+        (map['prizes']),
       ),
     );
   }
 
   @override
   String toString() {
-    return 'Recent(name: $name, prize: $prize, prizes: $prizes, winners: $winners)';
+    return 'Recent(name: $name, prize: $prize, prizes: $prizes)';
   }
 
   @override
@@ -59,13 +51,12 @@ class Recent {
 
     return other.name == name &&
         other.prize == prize &&
-        listEquals(other.prizes, prizes) &&
-        listEquals(other.winners, winners);
+        listEquals(other.prizes, prizes);
   }
 
   @override
   int get hashCode {
-    return name.hashCode ^ prize.hashCode ^ prizes.hashCode ^ winners.hashCode;
+    return name.hashCode ^ prize.hashCode ^ prizes.hashCode;
   }
 }
 
@@ -92,7 +83,7 @@ class RecentList {
   factory RecentList.fromMap(Map<String, dynamic> map) {
     return RecentList(
       recentList: List<Recent>.from(
-        (map['recentList'] as List<Map<String, dynamic>>).map<Recent>(
+        (map['recentList'] as List<dynamic>).map<Recent>(
           (x) => Recent.fromMap(x),
         ),
       ),

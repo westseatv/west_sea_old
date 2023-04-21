@@ -11,10 +11,8 @@ class CompetionModel {
   final List<String> prizes;
   final String prize;
   final String desc;
-  final String status;
-  final int stake;
+  String status;
   final String endDate;
-  final List<Contender> winners;
   final List<Contender> contenders;
   final List<Map<String, dynamic>> results;
   CompetionModel({
@@ -24,9 +22,7 @@ class CompetionModel {
     required this.prize,
     required this.desc,
     required this.status,
-    required this.stake,
     required this.endDate,
-    required this.winners,
     required this.contenders,
     required this.results,
   });
@@ -38,9 +34,7 @@ class CompetionModel {
     String? prize,
     String? desc,
     String? status,
-    int? stake,
     String? endDate,
-    List<Contender>? winners,
     List<Contender>? contenders,
     List<Map<String, dynamic>>? results,
   }) {
@@ -51,9 +45,7 @@ class CompetionModel {
       prize: prize ?? this.prize,
       desc: desc ?? this.desc,
       status: status ?? this.status,
-      stake: stake ?? this.stake,
       endDate: endDate ?? this.endDate,
-      winners: winners ?? this.winners,
       contenders: contenders ?? this.contenders,
       results: results ?? this.results,
     );
@@ -67,9 +59,7 @@ class CompetionModel {
       'prize': prize,
       'desc': desc,
       'status': status,
-      'stake': stake,
       'endDate': endDate,
-      'winners': winners.map((x) => x.toMap()).toList(),
       'contenders': contenders.map((x) => x.toMap()).toList(),
       'results': results,
     };
@@ -80,21 +70,15 @@ class CompetionModel {
       id: map['id'] as String,
       name: map['name'] as String,
       prizes: List<String>.from(
-        (map['prizes'] as List<String>),
+        (map['prizes']),
       ),
       prize: map['prize'] as String,
       desc: map['desc'] as String,
       status: map['status'] as String,
-      stake: map['stake'] as int,
       endDate: map['endDate'] as String,
-      winners: List<Contender>.from(
-        (map['winners'] as List<dynamic>).map<Contender>(
-          (x) => Contender.fromMap(x as Map<String, dynamic>),
-        ),
-      ),
       contenders: List<Contender>.from(
         (map['contenders'] as List<dynamic>).map<Contender>(
-          (x) => Contender.fromMap(x as Map<String, dynamic>),
+          (x) => Contender.fromMap(x),
         ),
       ),
       results: List<Map<String, dynamic>>.from(
@@ -107,7 +91,7 @@ class CompetionModel {
 
   @override
   String toString() {
-    return 'CompetionModel(id: $id, name: $name, prizes: $prizes, prize: $prize, desc: $desc, status: $status, stake: $stake, endDate: $endDate, winners: $winners, contenders: $contenders, results: $results)';
+    return 'CompetionModel(id: $id, name: $name, prizes: $prizes, prize: $prize, desc: $desc, status: $status, endDate: $endDate,contenders: $contenders, results: $results)';
   }
 
   @override
@@ -120,9 +104,7 @@ class CompetionModel {
         other.prize == prize &&
         other.desc == desc &&
         other.status == status &&
-        other.stake == stake &&
         other.endDate == endDate &&
-        listEquals(other.winners, winners) &&
         listEquals(other.contenders, contenders) &&
         listEquals(other.results, results);
   }
@@ -135,15 +117,8 @@ class CompetionModel {
         prize.hashCode ^
         desc.hashCode ^
         status.hashCode ^
-        stake.hashCode ^
         endDate.hashCode ^
-        winners.hashCode ^
         contenders.hashCode ^
         results.hashCode;
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory CompetionModel.fromJson(String source) =>
-      CompetionModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

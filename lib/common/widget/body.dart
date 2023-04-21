@@ -1,15 +1,17 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../theme/pallete.dart';
 import 'logo.dart';
 
 class Body extends StatelessWidget {
   final Widget child;
+  final Widget? floating;
   const Body({
-    super.key,
+    Key? key,
     required this.child,
-  });
+    this.floating,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +23,6 @@ class Body extends StatelessWidget {
         toolbarHeight: 100,
       ),
       body: Container(
-        height: Get.height,
-        width: Get.width,
         alignment: Alignment.topCenter,
         padding: const EdgeInsets.all(25),
         margin: const EdgeInsets.only(top: 20),
@@ -34,6 +34,7 @@ class Body extends StatelessWidget {
         ),
         child: child,
       ),
+      floatingActionButton: floating,
     );
   }
 }
