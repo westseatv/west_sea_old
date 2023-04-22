@@ -4,21 +4,25 @@ class Recent {
   String name;
   String prize;
   List<String> prizes;
+  String endDate;
   Recent({
     required this.name,
     required this.prize,
     required this.prizes,
+    required this.endDate,
   });
 
   Recent copyWith({
     String? name,
     String? prize,
     List<String>? prizes,
+    String? endDate,
   }) {
     return Recent(
       name: name ?? this.name,
       prize: prize ?? this.prize,
       prizes: prizes ?? this.prizes,
+      endDate: endDate ?? this.endDate,
     );
   }
 
@@ -27,6 +31,7 @@ class Recent {
       'name': name,
       'prize': prize,
       'prizes': prizes,
+      'endDate': endDate,
     };
   }
 
@@ -37,12 +42,13 @@ class Recent {
       prizes: List<String>.from(
         (map['prizes']),
       ),
+      endDate: map['endDate'] as String,
     );
   }
 
   @override
   String toString() {
-    return 'Recent(name: $name, prize: $prize, prizes: $prizes)';
+    return 'Recent(name: $name, prize: $prize, prizes: $prizes, endDate: $endDate)';
   }
 
   @override
@@ -51,12 +57,13 @@ class Recent {
 
     return other.name == name &&
         other.prize == prize &&
-        listEquals(other.prizes, prizes);
+        listEquals(other.prizes, prizes) &&
+        other.endDate == endDate;
   }
 
   @override
   int get hashCode {
-    return name.hashCode ^ prize.hashCode ^ prizes.hashCode;
+    return name.hashCode ^ prize.hashCode ^ prizes.hashCode ^ endDate.hashCode;
   }
 }
 

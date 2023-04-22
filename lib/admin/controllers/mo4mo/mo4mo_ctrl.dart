@@ -9,24 +9,37 @@ class AdminMo4moController extends GetxController {
   late CompetionModel competition;
 
   void onAdd({required CompetionModel competionModel}) async {
-    await dbRef.child('recents').get().then(
-      (event) {
-        recents = event.value as List;
-      },
-    );
+    if (recents.length == 6) {
+      recents.removeAt(1);
+      recents.add(
+        {
+          'name': competition.name,
+          'prize': competition.prize,
+          'prizes': competition.prizes,
+          'endDate': competition.endDate,
+        },
+      );
+    } else {
+      recents.add(
+        {
+          'name': competition.name,
+          'prize': competition.prize,
+          'prizes': competition.prizes,
+          'endDate': competition.endDate,
+        },
+      );
+    }
 
-    recents.add(
-      {
-        'name': competition.name,
-        'prize': competition.prize,
-        'prizes': competition.prizes,
-      },
-    );
-
-    await dbRef.update(
+    dbRef.update(
       {
         'competition': competionModel.toMap(),
         'recents': recents,
+      },
+    );
+
+    await dbRef.child('recents').get().then(
+      (event) {
+        recents = event.value as List;
       },
     );
 
@@ -36,6 +49,7 @@ class AdminMo4moController extends GetxController {
         competition = CompetionModel.fromMap(data as Map<String, dynamic>);
       },
     );
+    //refresh();
   }
 
   void onEnd() async {

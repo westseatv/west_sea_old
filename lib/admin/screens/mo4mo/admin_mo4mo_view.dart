@@ -47,6 +47,15 @@ class AdminMo4moPage extends GetView<AdminMo4moController> {
 
   GetBuilder<AdminMo4moController> body(var data) {
     return GetBuilder<AdminMo4moController>(
+      dispose: (state) {
+        name.dispose();
+        prize.dispose();
+        prize1.dispose();
+        prize2.dispose();
+        prize3.dispose();
+        desc.dispose();
+        endDate.dispose();
+      },
       builder: (controller) {
         CompetionModel competionModel =
             CompetionModel.fromMap(data['competition'] as Map<String, dynamic>);
@@ -96,7 +105,7 @@ class AdminMo4moPage extends GetView<AdminMo4moController> {
     );
   }
 
-  Card ongoing(CompetionModel competionModel) {
+  Widget ongoing(CompetionModel competionModel) {
     return Card(
       elevation: 20,
       child: Padding(
@@ -306,15 +315,16 @@ class AdminMo4moPage extends GetView<AdminMo4moController> {
                       }
                     ],
                   };
-                  CompetionModel competition = CompetionModel.fromMap(data);
+                  CompetionModel? competition = CompetionModel.fromMap(data);
                   controller.onAdd(competionModel: competition);
-                  name.dispose();
-                  prize.dispose();
-                  prize1.dispose();
-                  prize2.dispose();
-                  prize3.dispose();
-                  desc.dispose();
-                  endDate.dispose();
+                  competition = null;
+                  name.text = '';
+                  prize.text = '';
+                  prize1.text = '';
+                  prize2.text = '';
+                  prize3.text = '';
+                  desc.text = '';
+                  endDate.text = '';
                   navigator!.pop();
                 } else {
                   if (!Get.isSnackbarOpen) {
@@ -334,13 +344,14 @@ class AdminMo4moPage extends GetView<AdminMo4moController> {
             ),
             ElevatedButton(
               onPressed: () {
-                name.dispose();
-                prize.dispose();
-                prize1.dispose();
-                prize2.dispose();
-                prize3.dispose();
-                desc.dispose();
-                endDate.dispose();
+                name.text = '';
+                prize.text = '';
+                prize1.text = '';
+                prize2.text = '';
+                prize3.text = '';
+                desc.text = '';
+                endDate.text = '';
+
                 navigator!.pop();
               },
               style: ElevatedButton.styleFrom(
@@ -367,21 +378,30 @@ class AdminMo4moPage extends GetView<AdminMo4moController> {
   }
 
   SizedBox recents(RecentList recentList) {
-    return SizedBox(
-      width: Get.width,
-      height: Get.height * 0.23,
-      child: ListView.separated(
-        itemCount: recentList.recentList.length,
-        scrollDirection: Axis.horizontal,
-        separatorBuilder: (context, index) => const SizedBox(width: 10),
-        itemBuilder: (context, index) {
-          return SizedBox(
-            width: Get.width * 0.35,
-            child: PromoCard(competion: recentList.recentList[index]),
+    var list = recentList.recentList.reversed.toList();
+    return list.length > 1
+        ? SizedBox(
+            width: Get.width,
+            height: Get.height * 0.2,
+            child: ListView.separated(
+              itemCount: list.length - 1,
+              scrollDirection: Axis.horizontal,
+              separatorBuilder: (context, index) => const SizedBox(width: 10),
+              itemBuilder: (context, index) {
+                return SizedBox(
+                  width: Get.width * 0.4,
+                  child: PromoCard(competition: list[index]),
+                );
+              },
+            ),
+          )
+        : SizedBox(
+            width: Get.width,
+            height: Get.height * 0.2,
+            child: const Center(
+              child: Text('No Recent Competitions'),
+            ),
           );
-        },
-      ),
-    );
   }
 
   Widget empty() {
