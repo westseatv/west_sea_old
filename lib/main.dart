@@ -33,8 +33,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:west_sea/admin/bindings/mo4mo/admin_mo4mo.dart';
-import 'package:west_sea/admin/screens/mo4mo/home/admin_mo4mo_view.dart';
+import 'package:west_sea/admin/bindings/mo4mo/admin_auth_binding.dart';
+import 'package:west_sea/admin/screens/auth/auth.dart';
 import 'common/theme/apptheme.dart';
 import 'firebase_options.dart';
 
@@ -58,9 +58,9 @@ class AdminApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: appThemeData,
-      initialBinding: AdminMom4moBinding(),
+      initialBinding: AdminAuthBinding(),
       defaultTransition: Transition.circularReveal,
-      home: AdminMo4moPage(),
+      home: const AdminAuthPage(),
     );
   }
 }
