@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:west_sea/app/controllers/lunchtime_ctrl.dart';
-import 'package:west_sea/app/controllers/teatime_ctrl.dart';
+import 'package:west_sea/app/prediction/controllers/lunchtime_ctrl.dart';
+import 'package:west_sea/app/prediction/controllers/teatime_ctrl.dart';
 import '../controllers/predictionsdart_controller.dart';
 
 class PredictionsBinding implements Bindings {

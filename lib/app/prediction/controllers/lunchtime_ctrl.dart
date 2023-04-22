@@ -2,11 +2,11 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:west_sea/app/controllers/home_controller.dart';
 
-import '../../services/predictions/firebase.dart';
+import '../../../services/predictions/firebase.dart';
+import 'home_controller.dart';
 
-class TeatimController extends GetxController {
+class LunchtimeController extends GetxController {
   final firebaseDb = Get.find<FirebaseDb>();
   final homeCtrl = Get.find<HomeController>();
   int index = 0;

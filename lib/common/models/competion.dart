@@ -1,11 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 
 import 'contender.dart';
 
-class CompetionModel {
+class CompetitionModel {
   final String id;
   final String name;
   final List<String> prizes;
@@ -15,7 +12,7 @@ class CompetionModel {
   final String endDate;
   final List<Contender> contenders;
   final List<Map<String, dynamic>> results;
-  CompetionModel({
+  CompetitionModel({
     required this.id,
     required this.name,
     required this.prizes,
@@ -27,7 +24,7 @@ class CompetionModel {
     required this.results,
   });
 
-  CompetionModel copyWith({
+  CompetitionModel copyWith({
     String? id,
     String? name,
     List<String>? prizes,
@@ -38,7 +35,7 @@ class CompetionModel {
     List<Contender>? contenders,
     List<Map<String, dynamic>>? results,
   }) {
-    return CompetionModel(
+    return CompetitionModel(
       id: id ?? this.id,
       name: name ?? this.name,
       prizes: prizes ?? this.prizes,
@@ -65,8 +62,8 @@ class CompetionModel {
     };
   }
 
-  factory CompetionModel.fromMap(Map<String, dynamic> map) {
-    return CompetionModel(
+  factory CompetitionModel.fromMap(Map<String, dynamic> map) {
+    return CompetitionModel(
       id: map['id'] as String,
       name: map['name'] as String,
       prizes: List<String>.from(
@@ -95,7 +92,7 @@ class CompetionModel {
   }
 
   @override
-  bool operator ==(covariant CompetionModel other) {
+  bool operator ==(covariant CompetitionModel other) {
     if (identical(this, other)) return true;
 
     return other.id == id &&

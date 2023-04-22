@@ -34,7 +34,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:west_sea/admin/bindings/mo4mo/admin_mo4mo.dart';
-import 'package:west_sea/admin/screens/mo4mo/admin_mo4mo_view.dart';
+import 'package:west_sea/admin/screens/mo4mo/home/admin_mo4mo_view.dart';
 import 'common/theme/apptheme.dart';
 import 'firebase_options.dart';
 

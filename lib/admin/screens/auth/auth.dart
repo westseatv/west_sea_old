@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 
 import 'package:west_sea/common/theme/pallete.dart';
 
-import '../../common/widget/logo.dart';
-import '../controllers/auth_ctrl.dart';
+import '../../../common/widget/logo.dart';
+import '../../controllers/auth_ctrl.dart';
 
 class AuthPage extends GetView<AuthController> {
   const AuthPage({super.key});

@@ -5,9 +5,9 @@ import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:west_sea/app/ui/pages/generator_screen.dart';
+import 'package:west_sea/app/prediction/ui/pages/generator_screen.dart';
 import '../../../controllers/generator_controller.dart';
-import '../../../../common/theme/apptheme.dart';
+import '../../../../../common/theme/apptheme.dart';
 import '../../utils/app_icons_icons.dart';
 import '../../utils/url_opener.dart';
 

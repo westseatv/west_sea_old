@@ -7,10 +7,10 @@ import 'package:west_sea/common/theme/pallete.dart';
 import 'package:west_sea/common/models/competion.dart';
 import 'package:west_sea/common/utils/date.dart';
 
-import '../../../common/widget/body.dart';
-import '../../../common/widget/promo.dart';
-import '../../bindings/mo4mo/results_binding.dart';
-import '../../controllers/mo4mo/mo4mo_ctrl.dart';
+import '../../../../common/widget/body.dart';
+import '../../../../common/widget/promo.dart';
+import '../../../bindings/mo4mo/results_binding.dart';
+import '../../../controllers/mo4mo/mo4mo_ctrl.dart';
 
 class AdminMo4moPage extends GetView<AdminMo4moController> {
   AdminMo4moPage({super.key});
@@ -21,6 +21,13 @@ class AdminMo4moPage extends GetView<AdminMo4moController> {
   final TextEditingController prize3 = TextEditingController();
   final TextEditingController desc = TextEditingController();
   final TextEditingController endDate = TextEditingController();
+  final TextEditingController voucher1 = TextEditingController();
+  final TextEditingController pin1 = TextEditingController(text: '0');
+  final TextEditingController voucher2 = TextEditingController();
+  final TextEditingController pin2 = TextEditingController(text: '0');
+  final TextEditingController voucher3 = TextEditingController();
+  final TextEditingController pin3 = TextEditingController(text: '0');
+  final TextEditingController details = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<DatabaseEvent>(
@@ -57,8 +64,8 @@ class AdminMo4moPage extends GetView<AdminMo4moController> {
         endDate.dispose();
       },
       builder: (controller) {
-        CompetionModel competionModel =
-            CompetionModel.fromMap(data['competition'] as Map<String, dynamic>);
+        CompetitionModel competionModel = CompetitionModel.fromMap(
+            data['competition'] as Map<String, dynamic>);
         RecentList recentList = RecentList.fromMap(
           {"recentList": data['recents']},
         );
@@ -105,7 +112,7 @@ class AdminMo4moPage extends GetView<AdminMo4moController> {
     );
   }
 
-  Widget ongoing(CompetionModel competionModel) {
+  Widget ongoing(CompetitionModel competionModel) {
     return Card(
       elevation: 20,
       child: Padding(
@@ -244,7 +251,13 @@ class AdminMo4moPage extends GetView<AdminMo4moController> {
                         ),
                       )
                     : ElevatedButton(
-                        onPressed: () => controller.onEnd(),
+                        onPressed: () {
+                          Get.defaultDialog(
+                            title: 'End Competition',
+                            backgroundColor: Pallete.bgColor,
+                            content: endComp(),
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Pallete.bgColor,
                         ),
@@ -261,63 +274,91 @@ class AdminMo4moPage extends GetView<AdminMo4moController> {
     );
   }
 
-  Column addComp() {
-    return Column(
-      children: [
-        inputTxt(name, 'Name'),
-        const SizedBox(height: 10),
-        inputTxt(prize, 'Prize(R300)'),
-        const SizedBox(height: 10),
-        inputTxt(prize1, 'Prize 1(R150)'),
-        const SizedBox(height: 10),
-        inputTxt(prize2, 'Prize 2(R100)'),
-        const SizedBox(height: 10),
-        inputTxt(prize3, 'Prize 3(R50)'),
-        const SizedBox(height: 10),
-        inputTxt(desc, 'Description'),
-        const SizedBox(height: 10),
-        inputTxt(endDate, 'End date(01/01/2023)'),
-        const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                if (name.text.isNotEmpty &&
-                    prize.text.isNotEmpty &&
-                    prize1.text.isNotEmpty &&
-                    prize2.text.isNotEmpty &&
-                    prize3.text.isNotEmpty &&
-                    desc.text.isNotEmpty &&
-                    endDate.text.isNotEmpty) {
-                  var data = {
-                    'id': date(),
-                    'name': name.text,
-                    'prizes': [prize1.text, prize2.text, prize3.text],
-                    'prize': prize.text,
-                    'desc': desc.text,
-                    'status': 'ONGOING',
-                    'endDate': endDate.text,
-                    'contenders': [
-                      {
-                        "id": "tyttetrffdfsef",
-                        "name": "Punter1",
-                        "points": 27,
-                        "p": 4,
-                        "w": 3
-                      },
-                    ],
-                    'results': [
-                      {
-                        "id": "fake",
-                        "date": "fake",
-                        "results": ["5", "24", "13", "17", "11", "34", "44"]
-                      }
-                    ],
-                  };
-                  CompetionModel? competition = CompetionModel.fromMap(data);
-                  controller.onAdd(competionModel: competition);
-                  competition = null;
+  Widget addComp() {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          inputTxt(name, 'Name'),
+          const SizedBox(height: 10),
+          inputTxt(prize, 'Prize(R300)'),
+          const SizedBox(height: 10),
+          inputTxt(prize1, 'Prize 1(R150)'),
+          const SizedBox(height: 10),
+          inputTxt(prize2, 'Prize 2(R100)'),
+          const SizedBox(height: 10),
+          inputTxt(prize3, 'Prize 3(R50)'),
+          const SizedBox(height: 10),
+          inputTxt(desc, 'Description'),
+          const SizedBox(height: 10),
+          inputTxt(endDate, 'End date(01/01/2023)'),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  if (name.text.isNotEmpty &&
+                      prize.text.isNotEmpty &&
+                      prize1.text.isNotEmpty &&
+                      prize2.text.isNotEmpty &&
+                      prize3.text.isNotEmpty &&
+                      desc.text.isNotEmpty &&
+                      endDate.text.isNotEmpty) {
+                    var data = {
+                      'id': date(),
+                      'name': name.text,
+                      'prizes': [prize1.text, prize2.text, prize3.text],
+                      'prize': prize.text,
+                      'desc': desc.text,
+                      'status': 'ONGOING',
+                      'endDate': endDate.text,
+                      'contenders': [
+                        {
+                          "id": "tyttetrffdfsef",
+                          "name": "Punter1",
+                          "points": 27,
+                          "p": 4,
+                          "w": 3
+                        },
+                      ],
+                      'results': [
+                        {
+                          "id": "fake",
+                          "date": "fake",
+                          "results": ["5", "24", "13", "17", "11", "34", "44"]
+                        }
+                      ],
+                    };
+                    CompetitionModel? competition =
+                        CompetitionModel.fromMap(data);
+                    controller.onAdd(competitionModel: competition);
+                    competition = null;
+                    name.text = '';
+                    prize.text = '';
+                    prize1.text = '';
+                    prize2.text = '';
+                    prize3.text = '';
+                    desc.text = '';
+                    endDate.text = '';
+                    navigator!.pop();
+                  } else {
+                    if (!Get.isSnackbarOpen) {
+                      Get.showSnackbar(const GetSnackBar(
+                        duration: Duration(seconds: 2),
+                        snackPosition: SnackPosition.TOP,
+                        backgroundColor: Colors.red,
+                        message: 'Fill All Field',
+                      ));
+                    }
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                ),
+                child: const Text('Done'),
+              ),
+              ElevatedButton(
+                onPressed: () {
                   name.text = '';
                   prize.text = '';
                   prize1.text = '';
@@ -325,43 +366,97 @@ class AdminMo4moPage extends GetView<AdminMo4moController> {
                   prize3.text = '';
                   desc.text = '';
                   endDate.text = '';
-                  navigator!.pop();
-                } else {
-                  if (!Get.isSnackbarOpen) {
-                    Get.showSnackbar(const GetSnackBar(
-                      duration: Duration(seconds: 2),
-                      snackPosition: SnackPosition.TOP,
-                      backgroundColor: Colors.red,
-                      message: 'Fill All Field',
-                    ));
-                  }
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
-              ),
-              child: const Text('Done'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                name.text = '';
-                prize.text = '';
-                prize1.text = '';
-                prize2.text = '';
-                prize3.text = '';
-                desc.text = '';
-                endDate.text = '';
 
-                navigator!.pop();
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
+                  navigator!.pop();
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                ),
+                child: const Text('Discard'),
               ),
-              child: const Text('Discard'),
-            ),
-          ],
-        )
-      ],
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget endComp() {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          inputTxt(voucher1, '1st prize voucher'),
+          const SizedBox(height: 10),
+          inputTxt(pin1, '1st prize pin'),
+          const SizedBox(height: 20),
+          inputTxt(voucher2, '2nd prize voucher'),
+          const SizedBox(height: 10),
+          inputTxt(pin2, '2nd prize pin'),
+          const SizedBox(height: 10),
+          const SizedBox(height: 20),
+          inputTxt(voucher3, '3rd prize voucher'),
+          const SizedBox(height: 10),
+          inputTxt(pin2, '3rd prize pin'),
+          const SizedBox(height: 20),
+          inputTxt(details, 'Details'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  if (voucher1.text.isNotEmpty &&
+                      voucher2.text.isNotEmpty &&
+                      voucher3.text.isNotEmpty &&
+                      pin1.text.isNotEmpty &&
+                      pin2.text.isNotEmpty &&
+                      pin3.text.isNotEmpty &&
+                      details.text.isNotEmpty) {
+                    controller.onEnd();
+                    voucher1.text = '';
+                    voucher2.text = '';
+                    voucher3.text = '';
+                    pin1.text = '0';
+                    pin2.text = '0';
+                    pin3.text = '0';
+                    details.text = '';
+                    navigator!.pop();
+                  } else {
+                    if (!Get.isSnackbarOpen) {
+                      Get.showSnackbar(const GetSnackBar(
+                        duration: Duration(seconds: 2),
+                        snackPosition: SnackPosition.TOP,
+                        backgroundColor: Colors.red,
+                        message: 'Fill All Field',
+                      ));
+                    }
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                ),
+                child: const Text('Done'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  voucher1.text = '';
+                  voucher2.text = '';
+                  voucher3.text = '';
+                  pin1.text = '0';
+                  pin2.text = '0';
+                  pin3.text = '0';
+                  details.text = '';
+
+                  navigator!.pop();
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                ),
+                child: const Text('Discard'),
+              ),
+            ],
+          )
+        ],
+      ),
     );
   }
 

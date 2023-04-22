@@ -49,10 +49,12 @@ class AdminResultsPage extends GetView<AdminResultsController> {
                       Column(
                         children: [
                           ListTile(
-                            title: Row(
-                              children: controller.genetedResults
-                                  .map((e) => ball(e))
-                                  .toList(),
+                            title: Obx(
+                              () => Row(
+                                children: controller.generated
+                                    .map((e) => ball(e))
+                                    .toList(),
+                              ),
                             ),
                           ),
                           const SizedBox(height: 25),
@@ -60,7 +62,7 @@ class AdminResultsPage extends GetView<AdminResultsController> {
                             children: [
                               const SizedBox(width: 10),
                               ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () => controller.generate(),
                                 child: const Text('Generate'),
                               ),
                               const Spacer(),
@@ -94,10 +96,12 @@ class AdminResultsPage extends GetView<AdminResultsController> {
                             Column(
                               children: [
                                 ListTile(
-                                  title: Row(
-                                    children: controller.genetedResults
-                                        .map((e) => ball(e))
-                                        .toList(),
+                                  title: Obx(
+                                    () => Row(
+                                      children: controller.generated
+                                          .map((e) => ball(e))
+                                          .toList(),
+                                    ),
                                   ),
                                 ),
                                 const SizedBox(height: 25),

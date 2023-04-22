@@ -2,12 +2,13 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:west_sea/app/controllers/home_controller.dart';
-import 'package:west_sea/services/predictions/firebase.dart';
+import 'package:west_sea/app/prediction/controllers/home_controller.dart';
 
-class PredictionsControler extends GetxController {
-  final firebaseDb = Get.put(FirebaseDb());
-  final homeCtrl = Get.put(HomeController());
+import '../../../services/predictions/firebase.dart';
+
+class TeatimController extends GetxController {
+  final firebaseDb = Get.find<FirebaseDb>();
+  final homeCtrl = Get.find<HomeController>();
   int index = 0;
   List<Color> colors(int l, int b) {
     int length = b * l;
@@ -21,12 +22,5 @@ class PredictionsControler extends GetxController {
         return Color.fromARGB(255, r, g, b);
       },
     );
-  }
-
-  @override
-  void onClose() {
-    firebaseDb.onClose();
-    homeCtrl.dispose();
-    super.onClose();
   }
 }

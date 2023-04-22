@@ -2,14 +2,14 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:west_sea/app/controllers/lunchtime_ctrl.dart';
+import 'package:west_sea/app/prediction/controllers/teatime_ctrl.dart';
 
-class Launchtime extends GetView<LunchtimeController> {
-  const Launchtime({super.key});
+class Teatime extends GetView<TeatimController> {
+  const Teatime({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<LunchtimeController>(
+    return GetBuilder<TeatimController>(
       initState: (state) {
         controller.homeCtrl.createBannerAd();
       },
@@ -18,7 +18,8 @@ class Launchtime extends GetView<LunchtimeController> {
           length: 3,
           child: Scaffold(
             appBar: AppBar(
-              title: const Text('Lunchtime predictions'),
+              centerTitle: true,
+              title: const Text('Teatime predictions'),
               bottom: const TabBar(
                 tabs: [
                   Text(
@@ -77,13 +78,13 @@ class Launchtime extends GetView<LunchtimeController> {
           if (snapshot.hasData) {
             return TabBarView(
               children: [
-                controller.firebaseDb.lunchtimeTwoBallPredictions.length < 2
+                controller.firebaseDb.teatimeTwoBallPredictions.length < 2
                     ? empty()
                     : twoBall(),
-                controller.firebaseDb.lunchtimeThreeBallPredictions.length < 2
+                controller.firebaseDb.teatimeThreeBallPredictions.length < 2
                     ? empty()
                     : threeBall(),
-                controller.firebaseDb.lunchtimeBonusesPredictions.length < 2
+                controller.firebaseDb.teatimeBonusesPredictions.length < 2
                     ? empty()
                     : bonuses(),
               ],
@@ -98,7 +99,7 @@ class Launchtime extends GetView<LunchtimeController> {
 
   ListView threeBall() {
     List<dynamic> balls = [];
-    for (var p in controller.firebaseDb.lunchtimeThreeBallPredictions) {
+    for (var p in controller.firebaseDb.teatimeThreeBallPredictions) {
       balls.add(p);
     }
     balls.assignAll(balls.reversed.toList());
@@ -142,7 +143,7 @@ class Launchtime extends GetView<LunchtimeController> {
 
   ListView twoBall() {
     List<dynamic> balls = [];
-    for (var p in controller.firebaseDb.lunchtimeTwoBallPredictions) {
+    for (var p in controller.firebaseDb.teatimeTwoBallPredictions) {
       balls.add(p);
     }
     balls.assignAll(balls.reversed.toList());
@@ -184,7 +185,7 @@ class Launchtime extends GetView<LunchtimeController> {
 
   ListView bonuses() {
     List<dynamic> balls = [];
-    for (var p in controller.firebaseDb.lunchtimeBonusesPredictions) {
+    for (var p in controller.firebaseDb.teatimeBonusesPredictions) {
       balls.add(p);
     }
     balls.assignAll(balls.reversed.toList());

@@ -1,9 +1,10 @@
 import 'dart:async';
+import 'dart:developer';
+import 'dart:math';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:get/get.dart';
 import 'package:west_sea/common/utils/date.dart';
-import 'package:west_sea/common/utils/toast.dart';
 
 const competitionPath = 'mo4mo/competition';
 const resultsPath = 'results';
@@ -14,7 +15,26 @@ class AdminResultsController extends GetxController {
   late StreamSubscription<DatabaseEvent> resultsSubcription;
   late List<dynamic> results;
 
-  List<String> genetedResults = List.generate(7, (index) => '${index + 1}');
+  RxList<String> generated = RxList.empty(growable: true);
+
+  void generate() {
+    int radNum;
+    generated.assignAll(
+      List.generate(
+        7,
+        (index) {
+          radNum = Random(Timeline.now * (index + index + 1)).nextInt(49) + 1;
+          while (generated.contains(radNum.toString())) {
+            radNum =
+                Random(Timeline.now + (index + index + 20)).nextInt(49) + 1;
+          }
+          return radNum.toString();
+        },
+      ),
+    );
+    update();
+  }
+
   bool alreadyAdded(List<String> ids) {
     return ids.contains(date());
   }
@@ -29,7 +49,7 @@ class AdminResultsController extends GetxController {
       {
         'date': date(),
         'id': date(),
-        'results': genetedResults,
+        'results': generated,
       },
     );
 
@@ -48,6 +68,7 @@ class AdminResultsController extends GetxController {
         results = event.snapshot.value as List;
       },
     );
+    generate();
     super.onInit();
   }
 }
