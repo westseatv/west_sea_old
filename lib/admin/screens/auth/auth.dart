@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
@@ -8,8 +7,8 @@ import 'package:west_sea/common/theme/pallete.dart';
 import '../../../common/widget/logo.dart';
 import '../../controllers/auth_ctrl.dart';
 
-class AuthPage extends GetView<AuthController> {
-  const AuthPage({super.key});
+class AdminAuthPage extends GetView<AdminAuthController> {
+  const AdminAuthPage({super.key});
 
   @override
   Widget build(BuildContext context) {

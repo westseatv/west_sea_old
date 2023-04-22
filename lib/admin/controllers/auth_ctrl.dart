@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:west_sea/admin/screens/home_page.dart';
+import 'package:west_sea/admin/screens/home/admin_home_page.dart';
 
-class AuthController extends GetxController {
+class AdminAuthController extends GetxController {
   List<String> securedTextList = [];
   var securedText = ''.obs;
   List<String> enterdedPin = [];
